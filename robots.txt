@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://Michaelfriedl7.github.io/Michael--friedl--finanzberatung/sitemap.xml
