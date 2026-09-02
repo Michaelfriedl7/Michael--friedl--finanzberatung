@@ -320,7 +320,7 @@ async function submitForm() {
     access_key: WEB3FORMS_ACCESS_KEY,
     subject: `Neue Erstgespräch-Anfrage: ${a.name}`,
     from_name: 'Website Michael Friedl',
-    to: LEAD_EMPFAENGER,
+    replyto: a.email,
     Name: a.name,
     'E-Mail': a.email,
     Telefon: a.phone || '—',
@@ -355,7 +355,10 @@ async function submitForm() {
       note.style.cssText = 'color:#C43325;font-size:14px;margin-top:14px;';
       funnel.body.appendChild(note);
     }
-    note.textContent = 'Das Senden hat gerade nicht geklappt. Bitte versuchen Sie es erneut oder rufen Sie an: 0152 25658310.';
+    note.innerHTML = 'Das Senden hat gerade nicht geklappt. Bitte versuchen Sie es erneut oder rufen Sie an: '
+      + '<a href="tel:+4915225658310" style="color:inherit">0152 25658310</a>.'
+      + '<br><span style="opacity:.7;font-size:12px">Technischer Hinweis: '
+      + String((err && err.message) || 'unbekannt').replace(/</g, '&lt;') + '</span>';
   }
 }
 
