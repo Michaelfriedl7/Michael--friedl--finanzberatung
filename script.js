@@ -9,7 +9,7 @@
 //    → https://web3forms.com  →  E-Mail michael.friedl@tecis.de eintragen
 //    → Access-Key kommt per Mail  →  hier einsetzen. Danach landen alle
 //      Fragebogen-Anfragen automatisch im Postfach von Michael.
-const WEB3FORMS_ACCESS_KEY = "DEIN-WEB3FORMS-ACCESS-KEY";
+const WEB3FORMS_ACCESS_KEY = "e6cdadea-4baa-4026-b41a-848de0389c26";
 const LEAD_EMPFAENGER      = "michael.friedl@tecis.de";
 
 // 2) Microsoft-Bookings-Buchungsseite (online & vor Ort, synchron mit Outlook):
