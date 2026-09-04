@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Michael Friedl · Finanzberatung</title>
+  <title>Michael Friedl · Finanzberatung in Köln</title>
   <meta name="description" content="Michael Friedl, Finanzberater: Vermögen aufbauen, mit Immobilien Kapital schaffen und Ihre Zukunft sichern. Persönliche Beratung – online und vor Ort. Jetzt kostenloses Erstgespräch sichern." />
-  <meta property="og:title" content="Michael Friedl · Finanzberatung" />
+  <meta property="og:title" content="Michael Friedl · Finanzberatung in Köln" />
   <meta property="og:description" content="Mehr aus Ihrem Geld machen – mit einem klaren Plan, der zu Ihnen passt. Kostenloses Erstgespräch sichern." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0A2540" />
@@ -21,40 +21,86 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FinancialService",
-    "name": "Michael Friedl Finanzberatung",
-    "description": "Persönliche Finanzberatung: Vermögensaufbau am Kapitalmarkt, Immobilien als Kapitalanlage, Immobilienfinanzierung, Altersvorsorge und Absicherung.",
-    "url": "https://michael-friedl.com/",
-    "image": "https://michael-friedl.com/assets/michael-friedl.jpg",
-    "telephone": "+49 152 25658310",
-    "email": "michael.friedl@tecis.de",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Universitätsstraße 91",
-      "postalCode": "50931",
-      "addressLocality": "Köln",
-      "addressCountry": "DE"
-    },
-    "areaServed": [
-      { "@type": "City", "name": "Köln" }
-    ],
-    "availableLanguage": ["Deutsch", "Englisch"],
-    "sameAs": [
-      "https://www.linkedin.com/in/michaelfriedl",
-      "https://www.instagram.com/twogen_finance",
-      "https://www.instagram.com/zet7s"
-    ],
-    "founder": {
-      "@type": "Person",
-      "name": "Michael Friedl",
-      "jobTitle": "Finanzberater"
-    },
-    "makesOffer": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Investment & Kapitalaufbau" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Immobilie als Kapitalanlage" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Immobilienfinanzierung" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Altersvorsorge & Absicherung" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Finanz-Check & Optimierung" } }
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://michael-friedl.com/#michael-friedl",
+        "name": "Michael Friedl",
+        "givenName": "Michael",
+        "familyName": "Friedl",
+        "jobTitle": "Finanzberater",
+        "description": "Michael Friedl ist Finanzberater in Köln. Er begleitet Menschen bei Vermögensaufbau, Altersvorsorge, Immobilien als Kapitalanlage und Absicherung.",
+        "url": "https://michael-friedl.com/",
+        "image": "https://michael-friedl.com/assets/michael-friedl.jpg",
+        "telephone": "+49 152 25658310",
+        "email": "michael.friedl@tecis.de",
+        "knowsLanguage": ["Deutsch", "Englisch"],
+        "knowsAbout": [
+          "Vermögensaufbau",
+          "Altersvorsorge",
+          "Immobilien als Kapitalanlage",
+          "Immobilienfinanzierung",
+          "Absicherung"
+        ],
+        "workLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Köln",
+            "addressCountry": "DE"
+          }
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/michaelfriedl",
+          "https://www.instagram.com/zet7s",
+          "https://www.instagram.com/twogen_finance"
+        ],
+        "worksFor": { "@id": "https://michael-friedl.com/#finanzberatung" }
+      },
+      {
+        "@type": "FinancialService",
+        "@id": "https://michael-friedl.com/#finanzberatung",
+        "name": "Michael Friedl Finanzberatung",
+        "description": "Persönliche Finanzberatung: Vermögensaufbau am Kapitalmarkt, Immobilien als Kapitalanlage, Immobilienfinanzierung, Altersvorsorge und Absicherung.",
+        "url": "https://michael-friedl.com/",
+        "image": "https://michael-friedl.com/assets/michael-friedl.jpg",
+        "telephone": "+49 152 25658310",
+        "email": "michael.friedl@tecis.de",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Universitätsstraße 91",
+          "postalCode": "50931",
+          "addressLocality": "Köln",
+          "addressCountry": "DE"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Köln" }
+        ],
+        "availableLanguage": ["Deutsch", "Englisch"],
+        "sameAs": [
+          "https://www.linkedin.com/in/michaelfriedl",
+          "https://www.instagram.com/twogen_finance",
+          "https://www.instagram.com/zet7s"
+        ],
+        "founder": { "@id": "https://michael-friedl.com/#michael-friedl" },
+        "employee": { "@id": "https://michael-friedl.com/#michael-friedl" },
+        "makesOffer": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Investment & Kapitalaufbau" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Immobilie als Kapitalanlage" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Immobilienfinanzierung" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Altersvorsorge & Absicherung" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Finanz-Check & Optimierung" } }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://michael-friedl.com/#website",
+        "url": "https://michael-friedl.com/",
+        "name": "Michael Friedl · Finanzberatung",
+        "inLanguage": "de-DE",
+        "about": { "@id": "https://michael-friedl.com/#michael-friedl" },
+        "publisher": { "@id": "https://michael-friedl.com/#finanzberatung" }
+      }
     ]
   }
   </script>
@@ -278,7 +324,7 @@
         </figure>
         <div class="about-copy reveal">
           <p class="eyebrow eyebrow-dark">Über mich</p>
-          <h2>Ihr Ansprechpartner fürs Leben</h2>
+          <h2>Michael Friedl – Ihr Ansprechpartner fürs Leben</h2>
           <p>
             Mein Name ist Michael Friedl. Als <strong>Finanzberater</strong>
             begleite ich Menschen bei den wichtigsten finanziellen Entscheidungen ihres Lebens – vom ersten
