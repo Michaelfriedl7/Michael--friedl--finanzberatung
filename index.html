@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="preload" as="image" href="assets/michael-friedl.webp" type="image/webp" fetchpriority="high" />
   <link rel="canonical" href="https://michael-friedl.com/" />
   <meta property="og:url" content="https://michael-friedl.com/" />
   <meta property="og:image" content="https://michael-friedl.com/assets/michael-friedl.jpg" />
@@ -171,8 +172,12 @@
 
         <div class="hero-card reveal">
           <div class="hero-portrait" id="heroPortrait">
-            <img src="assets/michael-friedl.jpg" alt="Michael Friedl, Finanzberater"
-                 onerror="this.style.display='none';this.closest('.hero-portrait').classList.add('is-empty')" />
+            <picture>
+              <source srcset="assets/michael-friedl.webp" type="image/webp" />
+              <img src="assets/michael-friedl.jpg" alt="Michael Friedl, Finanzberater"
+                   width="1000" height="1499" fetchpriority="high" decoding="async"
+                   onerror="this.style.display='none';this.closest('.hero-portrait').classList.add('is-empty')" />
+            </picture>
             <span class="portrait-fallback">Foto ablegen unter<br><code>assets/michael-friedl.jpg</code></span>
           </div>
           <div class="hero-badge">
@@ -313,8 +318,12 @@
       <div class="container about">
         <figure class="about-media reveal" id="aboutMedia">
           <div class="about-photo" id="aboutPhoto">
-            <img src="assets/michael-friedl-about.jpg" alt="Michael Friedl, Finanzberater"
-                 onerror="this.style.display='none';this.closest('.about-photo').classList.add('is-empty')" />
+            <picture>
+              <source srcset="assets/michael-friedl-about.webp" type="image/webp" />
+              <img src="assets/michael-friedl-about.jpg" alt="Michael Friedl, Finanzberater"
+                   width="1000" height="1499" loading="lazy" decoding="async"
+                   onerror="this.style.display='none';this.closest('.about-photo').classList.add('is-empty')" />
+            </picture>
             <span class="portrait-fallback">Foto: <code>assets/michael-friedl.jpg</code></span>
           </div>
           <button class="play-btn" id="playVideo" aria-label="Vorstellungsvideo abspielen" hidden>
