@@ -49,19 +49,54 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* ---------- Microsoft Bookings einbetten ---------- */
+/* ---------- Microsoft Bookings ---------- */
+/* Auf Telefonen und Tablets wird der Kalender NICHT eingebettet: In einem iframe
+   muss man innerhalb eines kleinen Fensters scrollen, und Safari blockiert dort
+   die Cookies, die Microsoft Bookings zum Buchen braucht. Dort bleibt deshalb der
+   Knopf stehen, der die Buchungsseite direkt oeffnet. Eingebettet wird nur auf
+   grossen Bildschirmen mit Maus. */
 (function initBooking() {
   const embed = document.getElementById('bookingEmbed');
   if (!embed) return;
   const url = (embed.dataset.bookingsUrl || BOOKINGS_URL || '').trim();
-  if (!url) return; // Platzhalter bleibt stehen, bis eine URL gesetzt ist
+
+  const link = document.getElementById('bookingLink');
+  if (link) {
+    if (url) link.href = url;
+    else link.closest('.booking-fallback-actions')?.removeChild(link);
+  }
+  if (!url) return;
+
+  const kleinerBildschirm = window.matchMedia('(max-width: 1000px)').matches;
+  const touch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  if (kleinerBildschirm || touch) return;
+
+  const direkt = embed.querySelector('.booking-direct');
+
   const iframe = document.createElement('iframe');
   iframe.src = url;
   iframe.title = 'Termin bei Michael Friedl buchen';
-  iframe.loading = 'lazy';
   iframe.setAttribute('allow', 'fullscreen');
+
+  let geladen = false;
+  iframe.addEventListener('load', () => { geladen = true; });
+
   embed.innerHTML = '';
   embed.appendChild(iframe);
+
+  const hinweis = document.createElement('p');
+  hinweis.className = 'booking-open';
+  hinweis.innerHTML = 'Kalender wird nicht richtig angezeigt? ' +
+    '<a href="' + url + '" target="_blank" rel="noopener">Buchungsseite in neuem Fenster öffnen</a>';
+  embed.after(hinweis);
+
+  // Laedt der Kalender nicht, kommt der Knopf zurueck, statt eine leere Flaeche zu zeigen.
+  setTimeout(() => {
+    if (geladen || !direkt) return;
+    embed.innerHTML = '';
+    embed.appendChild(direkt);
+    hinweis.remove();
+  }, 9000);
 })();
 
 /* ---------- Vorstellungs-Video (auto-erkannt) ---------- */
