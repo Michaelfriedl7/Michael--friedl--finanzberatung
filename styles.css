@@ -288,9 +288,9 @@ code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .85em;
 .booking-direct .booking-hint { margin-top: 18px; }
 
 /* ---------- Stimmen ---------- */
-.stimmen { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 980px; margin-inline: auto; }
+.stimmen { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 1080px; margin-inline: auto; align-items: stretch; }
 .stimme { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px 30px 26px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; }
-.stimme blockquote { font-family: var(--font-serif); font-size: 19px; line-height: 1.5; color: var(--navy); margin: 0 0 20px; flex: 1; }
+.stimme blockquote { font-family: var(--font-serif); font-size: 18px; line-height: 1.5; color: var(--navy); margin: 0 0 20px; flex: 1; }
 .stimme blockquote::before { content: "\201E"; display: block; font-size: 46px; line-height: .6; color: var(--tecis-300); margin-bottom: 8px; }
 .stimme figcaption { font-size: 14px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--slate-300); }
 
