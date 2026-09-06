@@ -398,15 +398,17 @@
         </div>
         <div class="booking reveal">
           <div class="booking-embed" id="bookingEmbed" data-bookings-url="">
-            <div class="booking-placeholder">
+            <!-- Standard fuer alle Geraete: direkter Link zur Buchungsseite.
+                 Auf grossen Bildschirmen ersetzt script.js das durch den eingebetteten Kalender. -->
+            <div class="booking-direct" id="bookingDirect">
               <div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></div>
-              <h3>Kalender wird hier eingebunden</h3>
-              <p>Sobald die <strong>Microsoft-Bookings-Seite</strong> verknüpft ist, buchen Kunden hier direkt ihren Termin (online &amp; vor Ort), synchron mit dem Outlook-Kalender.</p>
-              <p class="booking-hint">Buchungs-URL eintragen in <code>script.js</code> → <code>BOOKINGS_URL</code>.</p>
+              <h3>Kostenloses Erstgespräch buchen</h3>
+              <p>Wunschtermin auswählen – online per Video oder persönlich vor Ort. Dauert keine zwei Minuten.</p>
               <div class="booking-fallback-actions">
-                <a class="btn btn-primary" href="tel:+4915225658310">Anrufen: 0152 25658310</a>
-                <a class="btn btn-ghost" href="mailto:michael.friedl@tecis.de">E-Mail schreiben</a>
+                <a class="btn btn-primary btn-lg" id="bookingLink" href="https://outlook.office.com/book/Buchungsseite-MichaelFriedlFinanzberatung@tecis.de/" target="_blank" rel="noopener">Termin auswählen</a>
+                <a class="btn btn-ghost" href="tel:+4915225658310">Lieber anrufen</a>
               </div>
+              <p class="booking-hint">Öffnet den Kalender in einem neuen Fenster.</p>
             </div>
           </div>
         </div>
