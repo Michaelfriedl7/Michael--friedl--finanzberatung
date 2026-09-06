@@ -271,6 +271,11 @@ code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .85em;
 .fit-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; }
 .fit-list li { position: relative; padding-left: 34px; color: #D6E2EE; font-size: 15.5px; }
 .fit-list li::before { content: "✓"; position: absolute; left: 0; top: -1px; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 700; background: rgba(33,179,106,.18); color: #63E6A0; }
+.fit-yes-head { margin-bottom: 18px; font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #8FA6BC; }
+.fit-not-head { margin-top: 40px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.14); font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #8FA6BC; }
+.fit-not { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; margin-top: 18px; }
+.fit-not li { position: relative; padding-left: 34px; color: #A9BCCF; font-size: 15.5px; }
+.fit-not li::before { content: "✕"; position: absolute; left: 0; top: -1px; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; background: rgba(242,112,94,.16); color: #F2705E; }
 
 /* ---------- Booking ---------- */
 .booking { max-width: 900px; margin-inline: auto; }
@@ -410,7 +415,7 @@ code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .85em;
   .booking-fallback-actions { flex-direction: column; align-items: stretch; }
   .booking-fallback-actions .btn { width: 100%; }
   .hero { padding: 44px 0 70px; }
-  .cards-3, .services-grid, .steps, .promise-points, .footer-inner, .fit-list, .goals-row { grid-template-columns: 1fr; }
+  .cards-3, .services-grid, .steps, .promise-points, .footer-inner, .fit-list, .fit-not, .goals-row { grid-template-columns: 1fr; }
   .signature { font-size: 26px; }
   .hero-quote { position: static; margin-top: 30px; left: 0; right: 0; }
   .funnel-dialog { padding: 22px 20px 24px; border-radius: 18px; }

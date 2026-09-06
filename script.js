@@ -176,6 +176,7 @@ const STEPS = [
       { label: '250 – 750 €' },
       { label: '750 – 1.500 €' },
       { label: 'Mehr als 1.500 € / Einmalbetrag vorhanden' },
+      { label: 'Weiß ich noch nicht' },
     ],
   },
   {
