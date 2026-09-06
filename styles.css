@@ -234,7 +234,7 @@ code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .85em;
 .about-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 7; border-radius: var(--radius-lg); background: #000; }
 
 /* ---------- Signatur ---------- */
-.signature { font-family: var(--font-serif); font-style: italic; font-weight: 500; font-size: 30px; color: var(--navy); margin: 2px 0 22px; opacity: .92; transform: rotate(-3deg); transform-origin: left center; width: max-content; }
+.signature { font-family: var(--font-serif); font-style: italic; font-weight: 500; font-size: 30px; color: var(--navy); margin: 2px 0 22px; opacity: .92; transform: rotate(-3deg); transform-origin: left center; width: max-content; padding-right: .3em; }
 
 /* ---------- Steps ---------- */
 .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; list-style: none; padding: 0; margin: 0; }
