@@ -294,6 +294,7 @@ code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .85em;
 .stimme blockquote::before { content: "\201E"; color: var(--tecis-300); }
 .stimme blockquote::after { content: "\201C"; color: var(--tecis-300); }
 .stimme figcaption { font-size: 12.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--slate-300); }
+.stimmen-hint { display: none; text-align: center; font-size: 13px; color: var(--slate-300); margin-top: 12px; }
 /* Auf schmalen Bildschirmen nebeneinander zum Wischen statt untereinander */
 @media (max-width: 820px) {
   .stimmen { display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
@@ -303,7 +304,6 @@ code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .85em;
   .stimme { flex: 0 0 84%; scroll-snap-align: center; }
   .stimmen-hint { display: block; }
 }
-.stimmen-hint { display: none; text-align: center; font-size: 13px; color: var(--slate-300); margin-top: 12px; }
 
 /* ---------- FAQ ---------- */
 .faq-wrap { max-width: 820px; }
