@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /golf/
 
 Sitemap: https://michael-friedl.com/sitemap.xml
