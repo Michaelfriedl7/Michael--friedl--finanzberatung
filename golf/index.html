@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2E4A3C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232E4A3C'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='15' fill='%23ffffff' text-anchor='middle'%3EJB%3C/text%3E%3C/svg%3E">
+<title>Bümming Golf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Karla:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --paper:#F4F5F1; --paper-2:#EBEDE6; --paper-3:#E2E5DC;
+  --ink:#16211C; --ink-2:#3A4741; --stone:#78807A;
+  --pine:#2E4A3C; --pine-2:#233A2F; --fairway:#5B7F62;
+  --sand:#B08D5B; --sand-2:#C9A879;
+  --line:#D6D9D0; --line-2:#C3C8BC;
+  --draft:#7A5C2E; --draft-bg:#F6EEDE; --draft-line:#DFC79A;
+
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Karla","Helvetica Neue",Arial,sans-serif;
+  --mx:clamp(1.25rem,5vw,4.5rem);
+  --measure:64ch;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:17px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+a{color:inherit}
+
+/* ---------- Entwurfsbanner ---------- */
+.draft{
+  position:sticky; top:0; z-index:60;
+  background:var(--draft-bg); border-bottom:1px solid var(--draft-line);
+  color:var(--draft); font-size:13px; line-height:1.45;
+  padding:9px var(--mx);
+}
+.draft b{font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:11px}
+
+/* ---------- Kopf ---------- */
+.top{
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:2rem; padding:1.6rem var(--mx) 0; flex-wrap:wrap;
+}
+.mark{font-family:var(--serif); font-size:1.35rem; letter-spacing:.01em}
+.mark em{font-style:normal; color:var(--stone)}
+.nav{display:flex; gap:1.6rem; font-size:14.5px; flex-wrap:wrap}
+.nav a{text-decoration:none; color:var(--ink-2); padding-bottom:2px; border-bottom:1px solid transparent}
+.nav a:hover,.nav a:focus-visible{border-color:var(--sand); color:var(--ink)}
+
+/* ---------- Hero ---------- */
+.hero{padding:clamp(3rem,8vw,6.5rem) var(--mx) clamp(2.5rem,6vw,4.5rem)}
+.eyebrow{
+  font-size:11.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--sand);
+}
+.hero h1{
+  font-family:var(--serif); font-weight:300;
+  font-size:clamp(2.6rem,7.5vw,5.6rem); line-height:1.02; letter-spacing:-.02em;
+  margin-top:1.1rem; max-width:14ch; text-wrap:balance;
+}
+.hero h1 em{font-style:italic; color:var(--pine)}
+.hero-grid{
+  display:grid; grid-template-columns:1.15fr .85fr;
+  gap:clamp(2rem,5vw,4.5rem); align-items:end; margin-top:2.4rem;
+}
+.hero-lead{font-size:clamp(1rem,1.5vw,1.18rem); color:var(--ink-2); max-width:46ch}
+.portrait{
+  aspect-ratio:4/5; background:
+    repeating-linear-gradient(135deg, var(--paper-2) 0 12px, var(--paper-3) 12px 24px);
+  border:1px solid var(--line); display:grid; place-items:center; text-align:center;
+  color:var(--stone); font-size:13px; padding:1.5rem;
+}
+.portrait span{display:block; font-family:var(--serif); font-size:1.1rem; color:var(--ink-2); margin-bottom:.35rem}
+@media (max-width:820px){ .hero-grid{grid-template-columns:1fr} }
+
+/* ---------- Fakten-Leiste ---------- */
+.facts{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border-block:1px solid var(--line); margin:0 var(--mx);
+}
+.facts div{padding:1.4rem 1.2rem 1.5rem; border-left:1px solid var(--line)}
+.facts div:first-child{border-left:0; padding-left:0}
+.facts dt{font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--stone); margin-bottom:.5rem}
+.facts dd{font-family:var(--serif); font-size:clamp(1rem,1.5vw,1.22rem); line-height:1.25}
+@media (max-width:760px){
+  .facts{grid-template-columns:1fr 1fr}
+  .facts div{border-left:0; border-top:1px solid var(--line); padding-left:0}
+  .facts div:nth-child(-n+2){border-top:0}
+  .facts div:nth-child(2n){padding-left:1.2rem; border-left:1px solid var(--line)}
+}
+
+/* ---------- Abschnittsrahmen ---------- */
+.band{padding:clamp(3.5rem,8vw,6.5rem) var(--mx)}
+.band.dark{background:var(--pine); color:#EAF0EA}
+.band.dark .eyebrow{color:var(--sand-2)}
+.band.tint{background:var(--paper-2)}
+.h2{
+  font-family:var(--serif); font-weight:300;
+  font-size:clamp(1.9rem,4.2vw,3.1rem); line-height:1.1; letter-spacing:-.015em;
+  margin-top:1rem; max-width:20ch; text-wrap:balance;
+}
+.band.dark .h2{color:#F2F6F1}
+.intro{margin-top:1.3rem; max-width:var(--measure); color:var(--ink-2)}
+.band.dark .intro{color:#C6D3C6}
+
+/* ---------- Ballflug-Grafik ---------- */
+.flight{display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,5vw,4rem); align-items:center; margin-top:2.6rem}
+@media (max-width:880px){ .flight{grid-template-columns:1fr} }
+.flight figure{background:rgba(255,255,255,.05); border:1px solid rgba(234,240,234,.16); padding:1.4rem}
+.flight figcaption{font-size:12.5px; color:#A9BBAA; margin-top:1rem; line-height:1.5}
+.legend{display:flex; gap:1.4rem; flex-wrap:wrap; margin-top:1.2rem; font-size:13px; color:#C6D3C6}
+.legend i{display:inline-block; width:22px; height:3px; margin-right:.5rem; vertical-align:middle}
+.share{display:flex; align-items:baseline; gap:1rem; margin-top:1.6rem}
+.share b{font-family:var(--serif); font-weight:400; font-size:clamp(3rem,8vw,5.5rem); line-height:1; color:var(--sand-2); font-variant-numeric:tabular-nums}
+.share span{font-size:14px; color:#C6D3C6; max-width:24ch}
+
+/* ---------- Grundlagen ---------- */
+.steps{display:grid; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:2.6rem}
+.step{background:var(--paper); padding:1.5rem 1.6rem; display:grid; grid-template-columns:3.2rem 1fr; gap:1.2rem; align-items:start}
+.step .no{font-family:var(--serif); font-size:1.6rem; color:var(--sand); line-height:1; font-variant-numeric:tabular-nums}
+.step h3{font-family:var(--serif); font-weight:400; font-size:1.3rem; margin-bottom:.3rem}
+.step p{font-size:15.5px; color:var(--ink-2); max-width:58ch}
+.step.key{background:var(--pine); color:#EAF0EA}
+.step.key h3{color:#F2F6F1}
+.step.key p{color:#C6D3C6}
+.step.key .no{color:var(--sand-2)}
+
+/* ---------- Zeitstrahl ---------- */
+.years{margin-top:2.6rem; border-top:1px solid var(--line)}
+.year{display:grid; grid-template-columns:8.5rem 1fr; gap:1.5rem; padding:1.15rem 0; border-bottom:1px solid var(--line); align-items:baseline}
+.year dt{font-family:var(--serif); font-size:1.15rem; color:var(--pine); font-variant-numeric:tabular-nums}
+.year dd{color:var(--ink-2); font-size:15.5px}
+.year dd b{font-weight:500; color:var(--ink)}
+@media (max-width:600px){ .year{grid-template-columns:1fr; gap:.2rem} }
+
+/* ---------- Technik ---------- */
+.tech-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.6rem}
+@media (max-width:820px){ .tech-grid{grid-template-columns:1fr} }
+.tech-card{border-top:2px solid var(--sand); padding-top:1.1rem}
+.tech-card h3{font-family:var(--serif); font-weight:400; font-size:1.25rem; margin-bottom:.4rem}
+.tech-card p{font-size:15px; color:var(--ink-2)}
+
+/* ---------- Buchung ---------- */
+.book{display:grid; grid-template-columns:1.4fr .9fr; gap:clamp(1.8rem,4vw,3.5rem); margin-top:2.8rem; align-items:start}
+@media (max-width:940px){ .book{grid-template-columns:1fr} }
+/* Grid- und Flex-Kinder duerfen schrumpfen, sonst schiebt die Buchung die Seite seitwaerts */
+.book > *{min-width:0}
+.opts > *{min-width:0}
+.opt > span:not(.p){min-width:0; display:block; flex:1}
+.opt .t{overflow-wrap:anywhere}
+fieldset{border:0; min-width:0}
+legend, .lab{
+  font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--stone); margin-bottom:.8rem; display:block;
+}
+.opts{display:grid; grid-template-columns:1fr 1fr; gap:.7rem}
+@media (max-width:620px){ .opts{grid-template-columns:1fr} }
+.opt{
+  display:flex; gap:.85rem; align-items:flex-start; cursor:pointer;
+  border:1px solid var(--line-2); background:var(--paper); padding:.95rem 1rem;
+  transition:border-color .15s, background .15s;
+}
+.opt:hover{border-color:var(--stone)}
+.opt input{margin-top:.28rem; accent-color:var(--pine); flex:none}
+.opt .t{display:block; font-family:var(--serif); font-size:1.08rem; line-height:1.25}
+.opt .s{display:block; font-size:13px; color:var(--stone); margin-top:.15rem}
+.opt .p{margin-left:auto; font-size:14.5px; color:var(--pine); font-variant-numeric:tabular-nums; white-space:nowrap; padding-left:.6rem}
+.opt:has(input:checked){border-color:var(--pine); background:#EEF2EC}
+.opt:has(input:focus-visible){outline:2px solid var(--sand); outline-offset:2px}
+
+.days{display:flex; gap:.55rem; overflow-x:auto; padding-bottom:.5rem; scrollbar-width:thin}
+.day{
+  flex:0 0 auto; width:4.4rem; text-align:center; cursor:pointer;
+  border:1px solid var(--line-2); background:var(--paper); padding:.65rem .3rem .7rem;
+}
+.day .wd{display:block; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--stone)}
+.day .dn{display:block; font-family:var(--serif); font-size:1.5rem; line-height:1.15; font-variant-numeric:tabular-nums}
+.day .mo{display:block; font-size:11px; color:var(--stone)}
+.day[aria-pressed="true"]{background:var(--pine); border-color:var(--pine); color:#EAF0EA}
+.day[aria-pressed="true"] .wd,.day[aria-pressed="true"] .mo{color:#A9BBAA}
+.day:disabled{opacity:.35; cursor:not-allowed}
+.day:focus-visible{outline:2px solid var(--sand); outline-offset:2px}
+
+.slots{display:grid; grid-template-columns:repeat(auto-fill,minmax(5.4rem,1fr)); gap:.55rem; margin-top:1rem}
+.slot{
+  border:1px solid var(--line-2); background:var(--paper); padding:.6rem .3rem;
+  font:inherit; font-size:15px; font-variant-numeric:tabular-nums; cursor:pointer;
+}
+.slot[aria-pressed="true"]{background:var(--pine); border-color:var(--pine); color:#EAF0EA}
+.slot:disabled{opacity:.32; cursor:not-allowed; text-decoration:line-through}
+.slot:focus-visible{outline:2px solid var(--sand); outline-offset:2px}
+
+.fields{display:grid; grid-template-columns:1fr 1fr; gap:.9rem; margin-top:.4rem}
+@media (max-width:620px){ .fields{grid-template-columns:1fr} }
+.fields label{display:block}
+.fields .lab{margin-bottom:.35rem}
+.fields input, .fields textarea{
+  width:100%; font:inherit; font-size:15.5px; color:var(--ink);
+  background:var(--paper); border:1px solid var(--line-2); padding:.6rem .7rem;
+}
+.fields input:focus-visible, .fields textarea:focus-visible{outline:2px solid var(--sand); outline-offset:1px; border-color:var(--pine)}
+.fields .wide{grid-column:1/-1}
+
+/* Zusammenfassung */
+.summary{border:1px solid var(--line-2); background:var(--paper); padding:1.5rem 1.5rem 1.6rem; position:sticky; top:5.5rem}
+.summary h3{font-family:var(--serif); font-weight:400; font-size:1.35rem; margin-bottom:1rem}
+.sum-row{display:flex; justify-content:space-between; gap:1rem; padding:.55rem 0; border-bottom:1px solid var(--line); font-size:15px}
+.sum-row span:last-child{font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap}
+.sum-row.muted{color:var(--stone)}
+.sum-row.total{border-bottom:0; padding-top:.9rem; font-family:var(--serif); font-size:1.4rem; color:var(--pine)}
+.sum-note{font-size:12.5px; color:var(--stone); margin-top:.9rem; line-height:1.5}
+.btn{
+  display:block; width:100%; margin-top:1.2rem; font:inherit; font-size:15.5px; font-weight:600;
+  background:var(--pine); color:#F2F6F1; border:1px solid var(--pine); padding:.85rem 1rem; cursor:pointer;
+  transition:background .15s;
+}
+.btn:hover{background:var(--pine-2)}
+.btn:disabled{background:var(--paper-3); border-color:var(--line-2); color:var(--stone); cursor:not-allowed}
+.btn:focus-visible{outline:2px solid var(--sand); outline-offset:2px}
+
+.done{border:1px solid var(--pine); background:#EEF2EC; padding:1.5rem}
+.done h3{font-family:var(--serif); font-weight:400; font-size:1.4rem; color:var(--pine); margin-bottom:.6rem}
+.done p{font-size:15px; color:var(--ink-2)}
+.done .again{margin-top:1rem; font:inherit; font-size:14px; background:none; border:0; border-bottom:1px solid var(--sand); color:var(--ink); cursor:pointer; padding:0 0 2px}
+
+.guest-note{
+  margin-top:1rem; border-left:2px solid var(--sand); padding:.7rem 0 .7rem 1rem;
+  font-size:14.5px; color:var(--ink-2); background:var(--paper-2);
+}
+.guest-note b{font-weight:600}
+
+/* ---------- Offene Angaben ---------- */
+.todo{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:2.4rem}
+@media (max-width:760px){ .todo{grid-template-columns:1fr} }
+.todo div{background:var(--paper); padding:1.3rem 1.4rem}
+.todo .from{font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--sand); margin-bottom:.5rem}
+.todo h3{font-family:var(--serif); font-weight:400; font-size:1.15rem; margin-bottom:.3rem}
+.todo p{font-size:14.5px; color:var(--stone)}
+
+/* ---------- Kontakt / Fuß ---------- */
+.contact{background:var(--pine); color:#EAF0EA; padding:clamp(3.5rem,8vw,6rem) var(--mx)}
+.contact .h2{color:#F2F6F1}
+.contact .eyebrow{color:var(--sand-2)}
+.cgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:2.6rem; border-top:1px solid rgba(234,240,234,.2); padding-top:1.8rem}
+@media (max-width:760px){ .cgrid{grid-template-columns:1fr; gap:1.4rem} }
+.cgrid dt{font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#A9BBAA; margin-bottom:.4rem}
+.cgrid dd{font-family:var(--serif); font-size:1.2rem}
+.cgrid dd a{text-decoration:none; border-bottom:1px solid var(--sand-2)}
+.foot{padding:1.6rem var(--mx) 2.6rem; font-size:13px; color:var(--stone); display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap}
+
+/* ---------- Einblenden ---------- */
+.rev{opacity:1; transform:none}
+@media (prefers-reduced-motion:no-preference){
+  .rev{opacity:.001; transform:translateY(14px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1)}
+  .rev.in{opacity:1; transform:none}
+}
+</style>
+
+</head>
+<body>
+<div class="draft">
+  <b>Entwurf</b> &nbsp;· &nbsp;Prototyp für Jens Bümming, erstellt von Michael Friedl. Noch nicht die offizielle Website. Preise und Termine sind Platzhalter, die Buchung wird noch nicht versendet.
+</div>
+
+<header class="top">
+  <div class="mark">Jens Bümming <em>· Golf</em></div>
+  <nav class="nav" aria-label="Seitenbereiche">
+    <a href="#lehren">Lehren</a>
+    <a href="#werdegang">Werdegang</a>
+    <a href="#technik">Technik</a>
+    <a href="#buchen">Stunde buchen</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="eyebrow">PGA Golf Professional · Golf- und Land-Club Köln</p>
+  <h1>Golf ist kein Gefühl. Es ist <em>Ausrichtung.</em></h1>
+  <div class="hero-grid">
+    <p class="hero-lead">
+      Seit dem Jahr 2000 unterrichte ich im Golf- und Land-Club Köln in Refrath.
+      Davor habe ich selbst gespielt — in Schweden, auf der Challenge Tour. Was ich dort
+      gelernt habe, ist einfacher, als die meisten erwarten: Wer Griff, Stand und
+      Ausrichtung im Griff hat, braucht kein Talent, um besser zu werden.
+    </p>
+    <div class="portrait"><p><span>Foto folgt</span>Porträt beim Unterrichten, hochkant</p></div>
+  </div>
+</section>
+
+<dl class="facts">
+  <div><dt>Qualifikation</dt><dd>Fully Qualified<br>G1 Professional</dd></div>
+  <div><dt>Verband</dt><dd>PGA of Germany<br>DGV C-Lizenz</dd></div>
+  <div><dt>Europameister</dt><dd>1982<br>im Team</dd></div>
+  <div><dt>Im GLC Köln</dt><dd>seit 2000<br>unterrichtend</dd></div>
+</dl>
+
+<!-- ===== Warum Ausrichtung ===== -->
+<section class="band dark">
+  <p class="eyebrow rev">Der Treffmoment</p>
+  <h2 class="h2 rev">Wohin der Ball startet, entscheidet die Schlagfläche.</h2>
+  <div class="flight">
+    <figure class="rev">
+      <svg viewBox="0 0 420 300" role="img" aria-label="Drei Ballflugkurven: geschlossene, quadratische und offene Schlagfläche bei identischem Schwungweg">
+        <line x1="60" y1="270" x2="380" y2="270" stroke="rgba(234,240,234,.28)" stroke-width="1"/>
+        <line x1="60" y1="270" x2="60" y2="30" stroke="rgba(234,240,234,.28)" stroke-width="1" stroke-dasharray="3 5"/>
+        <path d="M60 270 C 130 200, 210 130, 300 60" fill="none" stroke="#EAF0EA" stroke-width="2.5"/>
+        <path d="M60 270 C 120 205, 175 150, 205 78" fill="none" stroke="#B08D5B" stroke-width="2.5"/>
+        <path d="M60 270 C 145 205, 250 155, 355 120" fill="none" stroke="#7FA98A" stroke-width="2.5"/>
+        <circle cx="300" cy="60" r="4.5" fill="#EAF0EA"/>
+        <circle cx="205" cy="78" r="4.5" fill="#B08D5B"/>
+        <circle cx="355" cy="120" r="4.5" fill="#7FA98A"/>
+        <text x="60" y="290" fill="#A9BBAA" font-family="Karla, sans-serif" font-size="12">Abschlag</text>
+        <text x="248" y="46" fill="#EAF0EA" font-family="Karla, sans-serif" font-size="12">quadratisch</text>
+        <text x="150" y="66" fill="#B08D5B" font-family="Karla, sans-serif" font-size="12">geschlossen</text>
+        <text x="300" y="140" fill="#7FA98A" font-family="Karla, sans-serif" font-size="12">offen</text>
+      </svg>
+      <div class="legend">
+        <span><i style="background:#EAF0EA"></i>Ziel getroffen</span>
+        <span><i style="background:#B08D5B"></i>zieht nach links</span>
+        <span><i style="background:#7FA98A"></i>zieht nach rechts</span>
+      </div>
+      <figcaption>Gleicher Schwungweg, gleiche Kraft, gleicher Spieler. Verändert wurde nur die Stellung der Schlagfläche im Treffmoment.</figcaption>
+    </figure>
+    <div class="rev">
+      <div class="share">
+        <b>80 %</b>
+        <span>der Startrichtung entstehen an der Schlagfläche — nicht am Schwungweg.</span>
+      </div>
+      <p class="intro">
+        Nicht die Kraft. Nicht das Gefühl. Wenn der Ball nicht dorthin fliegt, wo Sie hinwollen,
+        liegt es fast immer an der Stellung der Schlagfläche im Moment des Treffens — und die
+        entsteht lange vorher, im Griff und in der Ausrichtung.
+      </p>
+      <p class="intro">
+        Deshalb arbeite ich zuerst an dem, was messbar und veränderbar ist, und erst danach am
+        Schwung. Das ist weniger spektakulär als eine Schwungkorrektur, hält aber länger. Und es
+        funktioniert unabhängig vom Handicap.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Fünf Grundlagen ===== -->
+<section class="band" id="lehren">
+  <p class="eyebrow rev">Was wir zuerst anschauen</p>
+  <h2 class="h2 rev">Fünf Dinge, in dieser Reihenfolge.</h2>
+  <p class="intro rev">
+    Die ersten vier sind die Grundlagen — sie entscheiden, ob ein Schwung überhaupt funktionieren
+    kann. Das fünfte entscheidet, wohin der Ball fliegt.
+  </p>
+  <div class="steps rev">
+    <div class="step"><div class="no">1</div><div><h3>Griff</h3><p>Wie die Hände am Schläger liegen, bestimmt, was die Schlagfläche im Treffmoment tun kann — und was nicht.</p></div></div>
+    <div class="step"><div class="no">2</div><div><h3>Stand</h3><p>Die Haltung entscheidet über Balance und darüber, ob der Schwung wiederholbar ist oder jedes Mal anders aussieht.</p></div></div>
+    <div class="step"><div class="no">3</div><div><h3>Ballposition</h3><p>Wenige Zentimeter verändern den Treffmoment vollständig. Der häufigste unbemerkte Fehler.</p></div></div>
+    <div class="step"><div class="no">4</div><div><h3>Körperausrichtung</h3><p>Die meisten Spieler zielen woanders hin, als sie glauben. Das lässt sich in einer Stunde beheben.</p></div></div>
+    <div class="step key"><div class="no">5</div><div><h3>Schlagflächenstellung</h3><p>Das Entscheidende. Rund 80 % der Startrichtung hängen daran — hier trennt sich Zufall von Kontrolle.</p></div></div>
+  </div>
+  <p class="intro rev" style="margin-top:2rem">
+    Dazu gehört bei mir immer die Freude am Spiel. Wer nur an der Technik arbeitet, hört
+    irgendwann auf zu spielen.
+  </p>
+</section>
+
+<!-- ===== Werdegang ===== -->
+<section class="band tint" id="werdegang">
+  <p class="eyebrow rev">Werdegang</p>
+  <h2 class="h2 rev">Über 25 Jahre am selben Platz.</h2>
+  <dl class="years rev">
+    <div class="year"><dt>1968</dt><dd>Geboren in <b>Lidköping, Schweden</b>.</dd></div>
+    <div class="year"><dt>1982</dt><dd><b>Europameister im Team.</b></dd></div>
+    <div class="year"><dt>1989–1993</dt><dd>Turnierprofi in Schweden und auf der <b>Challenge Tour</b>.</dd></div>
+    <div class="year"><dt>1994–1999</dt><dd>Ausbildung zum Golflehrer im <b>Golf- und Land-Club Köln</b>.</dd></div>
+    <div class="year"><dt>seit 2000</dt><dd><b>Golf Professional im Golf- und Land-Club Köln.</b></dd></div>
+  </dl>
+</section>
+
+<!-- ===== Technik ===== -->
+<section class="band" id="technik">
+  <p class="eyebrow rev">Messtechnik</p>
+  <h2 class="h2 rev">Gemessen, nicht geschätzt.</h2>
+  <p class="intro rev">
+    Vieles am Golfschwung lässt sich nicht mit bloßem Auge sehen — und schon gar nicht von einem
+    selbst. Deshalb arbeite ich mit Messtechnik.
+  </p>
+  <div class="tech-grid rev">
+    <div class="tech-card"><h3>FlightScope</h3><p>Radarmessung von Ballflug und Schlägerdaten. Zeigt schwarz auf weiß, was im Treffmoment passiert.</p></div>
+    <div class="tech-card"><h3>Scope-Analyse</h3><p>Systematische Auswertung der Schlagdaten über mehrere Stunden hinweg — Fortschritt wird sichtbar.</p></div>
+    <div class="tech-card"><h3>Videoanalyse</h3><p>Der eigene Schwung von außen. Meist der Moment, in dem es zum ersten Mal wirklich klickt.</p></div>
+  </div>
+</section>
+
+<!-- ===== Buchung ===== -->
+<section class="band tint" id="buchen">
+  <p class="eyebrow rev">Termin</p>
+  <h2 class="h2 rev">Stunde buchen.</h2>
+  <p class="intro rev">
+    Auch ohne Mitgliedschaft im Golf- und Land-Club Köln. Gäste sind willkommen und zahlen
+    lediglich die Rangefee von 6&nbsp;€ für die Bälle dazu.
+  </p>
+
+  <div class="book">
+    <form id="form" class="rev" novalidate>
+      <fieldset>
+        <legend>1 · Was möchten Sie buchen?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="art" value="e60" data-preis="70" data-min="60" checked>
+            <span><span class="t">Einzelstunde</span><span class="s">60 Minuten, mit Videoanalyse</span></span><span class="p">70 €</span></label>
+          <label class="opt"><input type="radio" name="art" value="e30" data-preis="40" data-min="30">
+            <span><span class="t">Kurzstunde</span><span class="s">30 Minuten, ein Thema</span></span><span class="p">40 €</span></label>
+          <label class="opt"><input type="radio" name="art" value="pr" data-preis="290" data-min="90">
+            <span><span class="t">Platzreife</span><span class="s">Kurs über mehrere Termine</span></span><span class="p">290 €</span></label>
+          <label class="opt"><input type="radio" name="art" value="gr" data-preis="35" data-min="90">
+            <span><span class="t">Gruppentraining</span><span class="s">bis 4 Personen, 90 Minuten</span></span><span class="p">35 € p. P.</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset style="margin-top:2.2rem">
+        <legend>2 · Sind Sie Mitglied im GLC Köln?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="gast" value="mitglied" checked>
+            <span><span class="t">Mitglied</span><span class="s">Bälle über die Clubkarte</span></span></label>
+          <label class="opt"><input type="radio" name="gast" value="gast">
+            <span><span class="t">Gast</span><span class="s">keine Mitgliedschaft nötig</span></span><span class="p">+ 6 €</span></label>
+        </div>
+        <div class="guest-note" id="guestNote" hidden>
+          <b>Rangefee 6&nbsp;€.</b> Als Gast zahlen Sie zusätzlich die Bälle für die Driving Range.
+          Vor Ort zu begleichen, zusammen mit der Stunde. Sonst entstehen keine weiteren Kosten.
+        </div>
+      </fieldset>
+
+      <fieldset style="margin-top:2.2rem">
+        <legend>3 · Wann passt es Ihnen?</legend>
+        <div class="days" id="days" role="group" aria-label="Tag wählen"></div>
+        <p class="lab" style="margin:1.3rem 0 .5rem">Uhrzeit</p>
+        <div class="slots" id="slots" role="group" aria-label="Uhrzeit wählen"></div>
+      </fieldset>
+
+      <fieldset style="margin-top:2.2rem">
+        <legend>4 · Wie erreiche ich Sie?</legend>
+        <div class="fields">
+          <label><span class="lab">Name</span><input name="name" autocomplete="name" required></label>
+          <label><span class="lab">Telefon</span><input name="tel" type="tel" autocomplete="tel" required></label>
+          <label class="wide"><span class="lab">E-Mail</span><input name="mail" type="email" autocomplete="email" required></label>
+          <label class="wide"><span class="lab">Was möchten Sie erreichen? <span style="text-transform:none;letter-spacing:0;font-weight:400">(optional)</span></span>
+            <textarea name="ziel" rows="3" placeholder="Platzreife, ein hartnäckiger Slice, wieder Freude am Spiel …"></textarea></label>
+        </div>
+      </fieldset>
+    </form>
+
+    <aside class="rev">
+      <div class="summary" id="summary">
+        <h3>Ihre Buchung</h3>
+        <div class="sum-row"><span id="sArt">Einzelstunde, 60 Min.</span><span id="sPreis">70 €</span></div>
+        <div class="sum-row muted" id="rowFee" hidden><span>Rangefee (Gast)</span><span>6 €</span></div>
+        <div class="sum-row muted"><span>Termin</span><span id="sTermin">noch offen</span></div>
+        <div class="sum-row total"><span>Gesamt</span><span id="sGesamt">70 €</span></div>
+        <p class="sum-note">Zahlung vor Ort. Kostenfreie Absage bis 24 Stunden vorher.</p>
+        <button class="btn" id="btn" type="button" disabled>Termin anfragen</button>
+      </div>
+      <div class="done" id="done" hidden>
+        <h3>Anfrage steht.</h3>
+        <p id="doneText"></p>
+        <p style="margin-top:.8rem;font-size:13px;color:var(--stone)">Im Entwurf wird nichts versendet — auf der echten Seite geht diese Anfrage direkt an Jens Bümming.</p>
+        <button class="again" id="again" type="button">Noch einen Termin ansehen</button>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== Offene Angaben ===== -->
+<section class="band">
+  <p class="eyebrow rev">Für die echte Seite</p>
+  <h2 class="h2 rev">Was ich noch von dir brauche.</h2>
+  <p class="intro rev">
+    Die Preise oben sind <strong>Platzhalter</strong>, damit die Buchung im Entwurf funktioniert.
+    Sobald die echten Angaben da sind, tausche ich sie aus.
+  </p>
+  <div class="todo rev">
+    <div><p class="from">Von dir</p><h3>Preise</h3><p>Einzelstunde, 10er-Karte, Platzreife, Gruppen — und ob Bälle inbegriffen sind.</p></div>
+    <div><p class="from">Von dir</p><h3>Zeiten</h3><p>An welchen Tagen und zu welchen Uhrzeiten unterrichtet wird, und wie lange im Voraus.</p></div>
+    <div><p class="from">Von dir</p><h3>Fotos</h3><p>Zwei bis drei Aufnahmen beim Unterrichten, gern hochkant.</p></div>
+    <div><p class="from">Von dir</p><h3>Impressum</h3><p>Ob die Club-Anschrift genannt werden darf, und eine eigene E-Mail-Adresse auf der neuen Domain.</p></div>
+  </div>
+</section>
+
+<!-- ===== Kontakt ===== -->
+<section class="contact" id="kontakt">
+  <p class="eyebrow">Kontakt</p>
+  <h2 class="h2">Eine Stunde genügt, um zu merken, ob es passt.</h2>
+  <p class="intro">
+    Lieber direkt anrufen? Geht auch. Sagen Sie kurz, was Sie erreichen wollen — ob Platzreife,
+    ein hartnäckiger Slice oder einfach wieder Freude am Spiel.
+  </p>
+  <dl class="cgrid">
+    <div><dt>Telefon</dt><dd><a href="tel:+4915124058224">0151 24058224</a></dd></div>
+    <div><dt>E-Mail</dt><dd><a href="mailto:j.buemming@gmx.de">j.buemming@gmx.de</a></dd></div>
+    <div><dt>Wo</dt><dd>Golf- und Land-Club Köln<br>Refrath</dd></div>
+  </dl>
+</section>
+
+<footer class="foot">
+  <span>Jens Bümming · PGA Golf Professional</span>
+  <span>Impressum · Datenschutz — folgen beim Aufbau der echten Seite</span>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var WT=["So","Mo","Di","Mi","Do","Fr","Sa"];
+  var MT=["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+  var ZEITEN=["09:00","10:00","11:00","12:00","14:00","15:00","16:00","17:00"];
+
+  var daysEl=document.getElementById("days"), slotsEl=document.getElementById("slots");
+  var gewaehlterTag=null, gewaehlteZeit=null;
+
+  // Beispielhafte Belegung, damit der Entwurf realistisch wirkt
+  function belegt(d,z){
+    var seed=(d.getDate()*7+ZEITEN.indexOf(z)*13+d.getMonth())%10;
+    return seed<3;
+  }
+
+  var heute=new Date(); heute.setHours(0,0,0,0);
+  for(var i=1;i<=21;i++){
+    (function(){
+      var d=new Date(heute); d.setDate(heute.getDate()+i);
+      var b=document.createElement("button");
+      b.type="button"; b.className="day"; b.setAttribute("aria-pressed","false");
+      b.innerHTML='<span class="wd">'+WT[d.getDay()]+'</span>'+
+                  '<span class="dn">'+d.getDate()+'</span>'+
+                  '<span class="mo">'+MT[d.getMonth()]+'</span>';
+      if(d.getDay()===1){ b.disabled=true; b.title="Montag: Ruhetag"; }
+      b.addEventListener("click",function(){
+        daysEl.querySelectorAll(".day").forEach(function(x){x.setAttribute("aria-pressed","false");});
+        b.setAttribute("aria-pressed","true");
+        gewaehlterTag=d; gewaehlteZeit=null;
+        zeichneSlots(d); aktualisiere();
+      });
+      daysEl.appendChild(b);
+    })();
+  }
+
+  function zeichneSlots(d){
+    slotsEl.innerHTML="";
+    ZEITEN.forEach(function(z){
+      var s=document.createElement("button");
+      s.type="button"; s.className="slot"; s.textContent=z; s.setAttribute("aria-pressed","false");
+      if(belegt(d,z)){ s.disabled=true; s.title="belegt"; }
+      s.addEventListener("click",function(){
+        slotsEl.querySelectorAll(".slot").forEach(function(x){x.setAttribute("aria-pressed","false");});
+        s.setAttribute("aria-pressed","true");
+        gewaehlteZeit=z; aktualisiere();
+      });
+      slotsEl.appendChild(s);
+    });
+  }
+  slotsEl.innerHTML='<p style="grid-column:1/-1;color:var(--stone);font-size:14.5px;margin:0">Bitte zuerst einen Tag wählen.</p>';
+
+  var form=document.getElementById("form");
+  var sArt=document.getElementById("sArt"), sPreis=document.getElementById("sPreis");
+  var sTermin=document.getElementById("sTermin"), sGesamt=document.getElementById("sGesamt");
+  var rowFee=document.getElementById("rowFee"), guestNote=document.getElementById("guestNote");
+  var btn=document.getElementById("btn");
+
+  var NAMEN={e60:"Einzelstunde, 60 Min.", e30:"Kurzstunde, 30 Min.", pr:"Platzreife-Kurs", gr:"Gruppentraining, 90 Min."};
+
+  function aktualisiere(){
+    var art=form.querySelector('input[name="art"]:checked');
+    var gast=form.querySelector('input[name="gast"]:checked').value==="gast";
+    var preis=parseInt(art.dataset.preis,10);
+    sArt.textContent=NAMEN[art.value];
+    sPreis.textContent=preis+" €";
+    rowFee.hidden=!gast;
+    guestNote.hidden=!gast;
+    sGesamt.textContent=(preis+(gast?6:0))+" €";
+    if(gewaehlterTag && gewaehlteZeit){
+      sTermin.textContent=WT[gewaehlterTag.getDay()]+", "+gewaehlterTag.getDate()+". "+
+        MT[gewaehlterTag.getMonth()]+" · "+gewaehlteZeit;
+      sTermin.parentElement.classList.remove("muted");
+    }else{
+      sTermin.textContent="noch offen";
+      sTermin.parentElement.classList.add("muted");
+    }
+    btn.disabled=!(gewaehlterTag && gewaehlteZeit);
+  }
+  form.addEventListener("change",aktualisiere);
+  aktualisiere();
+
+  btn.addEventListener("click",function(){
+    var name=form.name.value.trim(), tel=form.tel.value.trim(), mail=form.mail.value.trim();
+    if(!name||!tel||!mail){
+      alert("Bitte Name, Telefon und E-Mail ausfüllen — sonst kann Jens sich nicht zurückmelden.");
+      (name?(tel?form.mail:form.tel):form.name).focus();
+      return;
+    }
+    var gast=form.querySelector('input[name="gast"]:checked').value==="gast";
+    document.getElementById("doneText").textContent =
+      NAMEN[form.querySelector('input[name="art"]:checked').value]+" am "+
+      gewaehlterTag.getDate()+". "+MT[gewaehlterTag.getMonth()]+" um "+gewaehlteZeit+" Uhr"+
+      (gast?", inklusive Rangefee":"")+". Jens meldet sich zur Bestätigung bei Ihnen.";
+    document.getElementById("summary").hidden=true;
+    document.getElementById("done").hidden=false;
+  });
+  document.getElementById("again").addEventListener("click",function(){
+    document.getElementById("done").hidden=true;
+    document.getElementById("summary").hidden=false;
+  });
+
+  if(window.matchMedia("(prefers-reduced-motion: no-preference)").matches && "IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    },{threshold:.08, rootMargin:"0px 0px -30px 0px"});
+    document.querySelectorAll(".rev").forEach(function(el){ io.observe(el); });
+  }else{
+    document.querySelectorAll(".rev").forEach(function(el){ el.classList.add("in"); });
+  }
+})();
+</script>
+
+</body>
+</html>
