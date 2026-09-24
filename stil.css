@@ -12,16 +12,16 @@
   --strich:#E3E9F0; --strich-kraeftig:#CBD6E2;
 
   --serifen:"Fraunces",Georgia,"Times New Roman",serif;
-  --grotesk:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --grotesk:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
 
-  --rund:14px; --rund-klein:9px; --rund-gross:22px;
+  --rund:2px; --rund-klein:2px; --rund-gross:3px;
   --breite:1140px;
   --spur:clamp(1.15rem,4.5vw,2.6rem);
   --schwung:cubic-bezier(.22,.61,.36,1);
 
-  --heben-1:0 1px 2px rgba(10,37,64,.05), 0 3px 8px rgba(10,37,64,.045);
-  --heben-2:0 14px 34px -14px rgba(10,37,64,.22);
-  --heben-3:0 34px 64px -24px rgba(10,37,64,.30);
+  --heben-1:none;
+  --heben-2:none;
+  --heben-3:none;
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -32,7 +32,7 @@ html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
 }
 body{
   margin:0; background:var(--grund); color:var(--schrift);
-  font-family:var(--grotesk); font-size:17px; line-height:1.68;
+  font-family:var(--grotesk); font-size:17.5px; line-height:1.64;
   -webkit-font-smoothing:antialiased;
 }
 img{max-width:100%; height:auto; display:block}
@@ -80,11 +80,11 @@ p{margin:0}
 .taste--klein{padding:.72rem 1.15rem; font-size:.92rem}
 
 .tafel{
-  background:var(--grund); border:1px solid var(--strich); border-radius:var(--rund);
-  padding:1.65rem; box-shadow:var(--heben-1);
-  transition:transform .22s var(--schwung), box-shadow .22s var(--schwung), border-color .22s;
+  background:var(--grund); border:1px solid var(--strich); border-top:2px solid var(--nacht);
+  padding:1.6rem 1.5rem 1.7rem;
+  transition:border-color .18s;
 }
-.tafel:hover{transform:translateY(-3px); box-shadow:var(--heben-2); border-color:var(--strich-kraeftig)}
+.tafel:hover{border-color:var(--strich-kraeftig); border-top-color:var(--nacht)}
 
 .raster{display:grid; gap:1.25rem}
 @media (min-width:700px){ .raster--drei{grid-template-columns:repeat(3,1fr)} .raster--zwei{grid-template-columns:repeat(2,1fr)} }
@@ -151,8 +151,8 @@ p{margin:0}
 }
 
 /* ---------- Aufschlag ---------- */
-.aufschlag{padding-block:clamp(2.6rem,6vw,4.6rem) clamp(3rem,7vw,5.2rem); background:
-  radial-gradient(1100px 520px at 88% -10%, var(--wasser-hauch), transparent 62%);}
+.aufschlag{padding-block:clamp(2.4rem,5vw,4rem) clamp(3rem,7vw,5.2rem);
+  border-bottom:1px solid var(--strich);}
 .aufschlag .bahn{display:grid; gap:2.6rem; align-items:center}
 @media (min-width:980px){ .aufschlag .bahn{grid-template-columns:1.12fr .88fr; gap:3.4rem} }
 .aufschlag h1 em{font-style:normal; color:var(--wasser)}
@@ -162,27 +162,29 @@ p{margin:0}
 .merkmale li::before{content:""; width:.42rem; height:.42rem; border-radius:50%; background:var(--nacht)}
 
 .bildnis{position:relative}
-.bildnis img{width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:var(--rund-gross); box-shadow:var(--heben-3)}
+.bildnis img{width:100%; aspect-ratio:4/5; object-fit:cover}
 .bildnis .platzhalter{
   width:100%; aspect-ratio:4/5; border-radius:var(--rund-gross); background:var(--grund-tiefer);
   display:grid; place-items:center; color:var(--schrift-still); font-size:.88rem; text-align:center; padding:1.5rem;
 }
 .faehnchen{
-  position:absolute; left:-.6rem; bottom:1.4rem; right:1.6rem; background:#fff;
-  border:1px solid var(--strich); border-left:3px solid var(--nacht);
-  border-radius:var(--rund); padding:1rem 1.15rem; box-shadow:var(--heben-2); font-size:.93rem;
+  position:absolute; left:0; bottom:0; right:3.5rem; background:var(--nacht); color:#fff;
+  padding:1.15rem 1.3rem; font-size:.93rem;
 }
-.faehnchen p{font-family:var(--serifen); font-size:1rem; line-height:1.45; color:var(--nacht)}
-.faehnchen cite{display:block; margin-top:.5rem; font-style:normal; font-size:.8rem; font-weight:600; color:var(--schrift-still)}
+.faehnchen p{font-family:var(--serifen); font-size:1rem; line-height:1.45; color:#fff}
+.faehnchen cite{display:block; margin-top:.55rem; font-style:normal; font-size:.78rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.62)}
 @media (max-width:979px){ .faehnchen{position:static; margin-top:1rem; right:auto; left:auto} }
 
 /* ---------- Partnerband ---------- */
 .partnerband{border-block:1px solid var(--strich); background:var(--grund-sanft); padding-block:1.5rem}
 .partnerband p{font-size:.86rem; font-weight:600; letter-spacing:.06em; color:var(--schrift-still); text-transform:uppercase}
-.partnerband ul{display:flex; flex-wrap:wrap; gap:.6rem .75rem; list-style:none; margin:.85rem 0 0; padding:0}
+.partnerband ul{display:flex; flex-wrap:wrap; gap:.3rem 1.5rem; list-style:none; margin:.7rem 0 0; padding:0}
 .partnerband li{
-  font-size:.9rem; font-weight:600; color:var(--nacht); background:#fff;
-  border:1.5px solid var(--nacht); border-radius:999px; padding:.42rem .95rem;
+  font-family:var(--serifen); font-size:1.02rem; font-weight:500; color:var(--nacht);
+  position:relative; padding-right:1.5rem;
+}
+.partnerband li:not(:last-child)::after{
+  content:""; position:absolute; right:0; top:.35em; width:1px; height:.95em; background:var(--strich-kraeftig);
 }
 
 /* ---------- Ziele ---------- */
@@ -203,7 +205,7 @@ p{margin:0}
 .leistung{display:grid; grid-template-columns:auto 1fr; gap:1.1rem; padding:1.6rem 0; border-top:1px solid var(--strich)}
 .leistung:last-child{border-bottom:1px solid var(--strich)}
 .leistung .zeichen{
-  width:2.9rem; height:2.9rem; border-radius:10px; background:var(--nacht);
+  width:2.9rem; height:2.9rem; background:var(--nacht);
   display:grid; place-items:center; color:#fff; font-family:var(--serifen); font-weight:600; font-size:1.08rem;
 }
 .leistung .folge{margin-top:.5rem; font-size:.93rem; color:var(--wasser-tief); font-weight:500}
@@ -211,8 +213,8 @@ p{margin:0}
 /* ---------- Ablauf ---------- */
 .schritt{position:relative; padding-left:3.3rem}
 .schritt .nummer{
-  position:absolute; left:0; top:0; width:2.4rem; height:2.4rem; border-radius:50%;
-  display:grid; place-items:center; background:var(--nacht); color:#fff;
+  position:absolute; left:0; top:0; width:2.4rem; height:2.4rem;
+  display:grid; place-items:center; background:#fff; color:var(--nacht);
   font-family:var(--serifen); font-weight:600; font-size:1rem;
 }
 .feld--nacht .schritt .nummer{background:#fff; color:var(--nacht)}
@@ -223,20 +225,20 @@ p{margin:0}
 /* ---------- Über mich ---------- */
 .vorstellung .bahn{display:grid; gap:2.4rem}
 @media (min-width:980px){ .vorstellung .bahn{grid-template-columns:.85fr 1.15fr; gap:3.4rem; align-items:start} }
-.vorstellung img{width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:var(--rund-gross); box-shadow:var(--heben-2)}
+.vorstellung img{width:100%; aspect-ratio:3/4; object-fit:cover}
 .nebenbei{background:var(--grund-sanft); border-left:3px solid var(--messing); border-radius:0 var(--rund) var(--rund) 0; padding:1.25rem 1.4rem}
 .nebenbei .vorzeile{color:var(--messing)}
 
 /* ---------- Stimmen ---------- */
 .stimmenbahn{display:grid; gap:1.25rem}
 @media (min-width:860px){ .stimmenbahn{grid-template-columns:repeat(3,1fr)} }
-.stimme{background:#fff; border:1px solid var(--strich); border-radius:var(--rund); padding:1.6rem; display:flex; flex-direction:column; gap:1rem}
+.stimme{border-top:2px solid var(--nacht); padding:1.25rem 0 0; display:flex; flex-direction:column; gap:1rem}
 .stimme blockquote{margin:0; font-family:var(--serifen); font-size:1.02rem; line-height:1.55; color:var(--nacht)}
 .stimme blockquote::before{content:"„"; font-size:2.2rem; line-height:0; vertical-align:-.35rem; color:var(--messing); margin-right:.08rem}
 .stimme figcaption{margin-top:auto; font-size:.86rem; font-weight:600; color:var(--schrift-still)}
 
 /* ---------- Termin ---------- */
-.terminkarte{background:#fff; border:1px solid var(--strich); border-radius:var(--rund-gross); padding:clamp(1.6rem,4vw,2.6rem); box-shadow:var(--heben-2); text-align:center; max-width:680px; margin-inline:auto}
+.terminkarte{background:#fff; border:1px solid var(--strich); border-top:3px solid var(--nacht); padding:clamp(1.6rem,4vw,2.4rem); max-width:660px; margin-inline:auto}
 .terminkarte .taste{margin-top:1.3rem}
 .terminkarte small{display:block; margin-top:.9rem; color:var(--schrift-still); font-size:.85rem}
 
@@ -256,8 +258,7 @@ p{margin:0}
 .frage .antwort{padding-bottom:1.25rem; color:var(--schrift-leise); max-width:72ch}
 
 /* ---------- Schlussruf ---------- */
-.schlussruf{text-align:center}
-.schlussruf .bahn{display:grid; gap:1.3rem; justify-items:center}
+.schlussruf .bahn{display:grid; gap:1.3rem; justify-items:start; max-width:min(var(--breite),56rem)}
 
 /* ---------- Fußbereich ---------- */
 .fussbereich{background:var(--nacht-tief); color:rgba(255,255,255,.76); padding-block:3.2rem 2rem; font-size:.94rem}
