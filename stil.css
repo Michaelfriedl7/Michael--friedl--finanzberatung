@@ -167,13 +167,6 @@ p{margin:0}
   width:100%; aspect-ratio:4/5; border-radius:var(--rund-gross); background:var(--grund-tiefer);
   display:grid; place-items:center; color:var(--schrift-still); font-size:.88rem; text-align:center; padding:1.5rem;
 }
-.faehnchen{
-  position:absolute; left:0; bottom:0; right:3.5rem; background:var(--nacht); color:#fff;
-  padding:1.15rem 1.3rem; font-size:.93rem;
-}
-.faehnchen p{font-family:var(--serifen); font-size:1rem; line-height:1.45; color:#fff}
-.faehnchen cite{display:block; margin-top:.55rem; font-style:normal; font-size:.78rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.62)}
-@media (max-width:979px){ .faehnchen{position:static; margin-top:1rem; right:auto; left:auto} }
 
 /* ---------- Partnerband ---------- */
 .partnerband{border-block:1px solid var(--strich); background:var(--grund-sanft); padding-block:1.5rem}
