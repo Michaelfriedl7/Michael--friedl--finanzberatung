@@ -1,0 +1,325 @@
+/* Michael Friedl · Finanzberatung — Gestaltung
+   Aufbau: Marken, Grundlage, Bausteine, Bereiche, Fragebogen, Druck. */
+
+:root{
+  /* Marken: Nacht als Leitfarbe, Wasser als Aktionsfarbe, Messing als Zierde */
+  --nacht:#0A2540; --nacht-hell:#143552; --nacht-tief:#06192C;
+  --wasser:#0A5DA5; --wasser-tief:#084B86; --wasser-hauch:#EAF2FA;
+  --messing:#C6A15B; --wiese:#1F9E60;
+
+  --schrift:#0A2540; --schrift-leise:#4A5A6B; --schrift-still:#7E8D9C;
+  --grund:#FFFFFF; --grund-sanft:#F5F8FC; --grund-tiefer:#EDF2F8;
+  --strich:#E3E9F0; --strich-kraeftig:#CBD6E2;
+
+  --serifen:"Fraunces",Georgia,"Times New Roman",serif;
+  --grotesk:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+
+  --rund:14px; --rund-klein:9px; --rund-gross:22px;
+  --breite:1140px;
+  --spur:clamp(1.15rem,4.5vw,2.6rem);
+  --schwung:cubic-bezier(.22,.61,.36,1);
+
+  --heben-1:0 1px 2px rgba(10,37,64,.05), 0 3px 8px rgba(10,37,64,.045);
+  --heben-2:0 14px 34px -14px rgba(10,37,64,.22);
+  --heben-3:0 34px 64px -24px rgba(10,37,64,.30);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important; transition-duration:.01ms !important}
+}
+body{
+  margin:0; background:var(--grund); color:var(--schrift);
+  font-family:var(--grotesk); font-size:17px; line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; height:auto; display:block}
+a{color:var(--wasser); text-decoration:none}
+a:hover{color:var(--wasser-tief)}
+:focus-visible{outline:3px solid var(--wasser); outline-offset:3px; border-radius:4px}
+
+h1,h2,h3{font-family:var(--serifen); color:var(--nacht); margin:0; text-wrap:balance; font-weight:600}
+h1{font-size:clamp(2.1rem,5.6vw,3.55rem); line-height:1.1; letter-spacing:-.018em}
+h2{font-size:clamp(1.65rem,3.9vw,2.5rem); line-height:1.18; letter-spacing:-.012em}
+h3{font-size:1.16rem; line-height:1.35}
+p{margin:0}
+
+/* ---------- Bausteine ---------- */
+.bahn{width:100%; max-width:var(--breite); margin-inline:auto; padding-inline:var(--spur)}
+.feld{padding-block:clamp(3.6rem,8vw,6.4rem)}
+.feld--sanft{background:var(--grund-sanft)}
+.feld--nacht{background:var(--nacht); color:#fff}
+.feld--nacht h2{color:#fff}
+
+.stapel{display:flex; flex-direction:column}
+.stapel--eng{gap:.75rem} .stapel--mittel{gap:1.15rem} .stapel--weit{gap:1.9rem}
+
+.vorzeile{
+  font-family:var(--grotesk); font-size:.755rem; font-weight:700;
+  letter-spacing:.15em; text-transform:uppercase; color:var(--wasser);
+}
+.feld--nacht .vorzeile{color:var(--messing)}
+.anriss{font-size:1.075rem; color:var(--schrift-leise); max-width:62ch}
+.feld--nacht .anriss{color:rgba(255,255,255,.82)}
+
+.taste{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  font-family:var(--grotesk); font-size:1rem; font-weight:600; line-height:1;
+  padding:1.02rem 1.6rem; border-radius:var(--rund-klein); border:1.5px solid transparent;
+  cursor:pointer; text-align:center; transition:transform .18s var(--schwung), background .18s, border-color .18s, box-shadow .18s;
+}
+.taste:active{transform:translateY(1px)}
+.taste--voll{background:var(--wasser); color:#fff; box-shadow:var(--heben-2)}
+.taste--voll:hover{background:var(--wasser-tief); color:#fff}
+.taste--rand{background:transparent; color:var(--nacht); border-color:var(--strich-kraeftig)}
+.taste--rand:hover{border-color:var(--wasser); color:var(--wasser)}
+.taste--hell{background:#fff; color:var(--nacht)}
+.taste--hell:hover{background:var(--wasser-hauch); color:var(--nacht)}
+.taste--klein{padding:.72rem 1.15rem; font-size:.92rem}
+
+.tafel{
+  background:var(--grund); border:1px solid var(--strich); border-radius:var(--rund);
+  padding:1.65rem; box-shadow:var(--heben-1);
+  transition:transform .22s var(--schwung), box-shadow .22s var(--schwung), border-color .22s;
+}
+.tafel:hover{transform:translateY(-3px); box-shadow:var(--heben-2); border-color:var(--strich-kraeftig)}
+
+.raster{display:grid; gap:1.25rem}
+@media (min-width:700px){ .raster--drei{grid-template-columns:repeat(3,1fr)} .raster--zwei{grid-template-columns:repeat(2,1fr)} }
+@media (min-width:700px) and (max-width:979px){ .raster--drei{grid-template-columns:repeat(2,1fr)} }
+
+.haken{list-style:none; margin:0; padding:0; display:grid; gap:.72rem}
+.haken li{display:grid; grid-template-columns:1.45rem 1fr; gap:.7rem; align-items:start; color:var(--schrift-leise)}
+.haken li::before{
+  content:""; margin-top:.42rem; width:1.45rem; height:1.45rem; margin-left:-.1rem;
+  background:var(--wasser-hauch) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.4 8.4l3 3 6.2-7' fill='none' stroke='%230A5DA5' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/.95rem no-repeat;
+  border-radius:50%;
+}
+.feld--nacht .haken li{color:rgba(255,255,255,.86)}
+.feld--nacht .haken li::before{background-color:rgba(255,255,255,.12)}
+
+.huepfmarke{position:absolute; left:-9999px; top:0; background:var(--nacht); color:#fff; padding:.8rem 1.2rem; z-index:200}
+.huepfmarke:focus{left:.6rem; top:.6rem; color:#fff}
+
+/* ---------- Kopfleiste ---------- */
+.kopfleiste{
+  position:sticky; top:0; z-index:90; background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(1.6) blur(11px); border-bottom:1px solid transparent;
+  transition:border-color .25s, box-shadow .25s;
+}
+.kopfleiste[data-gescrollt="ja"]{border-bottom-color:var(--strich); box-shadow:0 1px 14px rgba(10,37,64,.05)}
+.kopfleiste .bahn{display:flex; align-items:center; gap:1.1rem; min-height:72px}
+
+.signet{display:flex; align-items:center; gap:.62rem; color:var(--nacht); flex:none}
+.signet:hover{color:var(--nacht)}
+.signet b{
+  display:grid; place-items:center; width:2.3rem; height:2.3rem; border-radius:9px;
+  background:var(--nacht); color:#fff; font-family:var(--serifen); font-size:.92rem; font-weight:600; letter-spacing:.02em;
+}
+.signet span{font-family:var(--serifen); font-size:1.02rem; line-height:1.15; font-weight:600}
+.signet small{display:block; font-family:var(--grotesk); font-size:.68rem; font-weight:600;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--schrift-still)}
+
+.wegweiser{display:none; margin-left:auto; gap:1.5rem}
+.wegweiser a{
+  font-size:.945rem; font-weight:500; color:var(--schrift-leise);
+  padding-block:.3rem; border-bottom:2px solid transparent;
+}
+.wegweiser a:hover,.wegweiser a[aria-current="true"]{color:var(--nacht); border-bottom-color:var(--wasser)}
+.kopf-taste{display:none; flex:none}
+.klappe{
+  margin-left:auto; display:grid; place-items:center; width:2.7rem; height:2.7rem;
+  background:none; border:1px solid var(--strich); border-radius:9px; cursor:pointer;
+}
+.klappe span{display:block; width:19px; height:2px; background:var(--nacht); border-radius:2px; position:relative}
+.klappe span::before,.klappe span::after{content:""; position:absolute; left:0; width:19px; height:2px; background:var(--nacht); border-radius:2px; transition:transform .22s var(--schwung)}
+.klappe span::before{top:-6px} .klappe span::after{top:6px}
+.klappe[aria-expanded="true"] span{background:transparent}
+.klappe[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.klappe[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+
+.schublade{display:none; border-top:1px solid var(--strich); background:#fff}
+.schublade[data-offen="ja"]{display:block}
+.schublade .bahn{display:grid; gap:.15rem; padding-block:.9rem 1.3rem}
+.schublade a{padding:.72rem 0; color:var(--nacht); font-weight:500; border-bottom:1px solid var(--strich)}
+.schublade .taste{margin-top:.9rem}
+
+@media (min-width:1000px){
+  .wegweiser{display:flex} .kopf-taste{display:inline-flex} .klappe{display:none}
+}
+
+/* ---------- Aufschlag ---------- */
+.aufschlag{padding-block:clamp(2.6rem,6vw,4.6rem) clamp(3rem,7vw,5.2rem); background:
+  radial-gradient(1100px 520px at 88% -10%, var(--wasser-hauch), transparent 62%);}
+.aufschlag .bahn{display:grid; gap:2.6rem; align-items:center}
+@media (min-width:980px){ .aufschlag .bahn{grid-template-columns:1.12fr .88fr; gap:3.4rem} }
+.aufschlag h1 em{font-style:normal; color:var(--wasser)}
+.aufschlag .knoepfe{display:flex; flex-wrap:wrap; gap:.8rem; margin-top:.4rem}
+.merkmale{display:flex; flex-wrap:wrap; gap:.55rem 1.4rem; margin-top:.5rem; padding:0; list-style:none}
+.merkmale li{display:flex; align-items:center; gap:.45rem; font-size:.9rem; color:var(--schrift-leise); font-weight:500}
+.merkmale li::before{content:""; width:.42rem; height:.42rem; border-radius:50%; background:var(--wasser)}
+
+.bildnis{position:relative}
+.bildnis img{width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:var(--rund-gross); box-shadow:var(--heben-3)}
+.bildnis .platzhalter{
+  width:100%; aspect-ratio:4/5; border-radius:var(--rund-gross); background:var(--grund-tiefer);
+  display:grid; place-items:center; color:var(--schrift-still); font-size:.88rem; text-align:center; padding:1.5rem;
+}
+.faehnchen{
+  position:absolute; left:-.6rem; bottom:1.4rem; right:1.6rem; background:#fff; border:1px solid var(--strich);
+  border-radius:var(--rund); padding:1rem 1.15rem; box-shadow:var(--heben-2); font-size:.93rem;
+}
+.faehnchen p{font-family:var(--serifen); font-size:1rem; line-height:1.45; color:var(--nacht)}
+.faehnchen cite{display:block; margin-top:.5rem; font-style:normal; font-size:.8rem; font-weight:600; color:var(--schrift-still)}
+@media (max-width:979px){ .faehnchen{position:static; margin-top:1rem; right:auto; left:auto} }
+
+/* ---------- Partnerband ---------- */
+.partnerband{border-block:1px solid var(--strich); background:var(--grund-sanft); padding-block:1.5rem}
+.partnerband p{font-size:.86rem; font-weight:600; letter-spacing:.06em; color:var(--schrift-still); text-transform:uppercase}
+.partnerband ul{display:flex; flex-wrap:wrap; gap:.6rem .75rem; list-style:none; margin:.85rem 0 0; padding:0}
+.partnerband li{
+  font-size:.9rem; font-weight:600; color:var(--nacht); background:#fff;
+  border:1px solid var(--strich); border-radius:999px; padding:.42rem .95rem;
+}
+
+/* ---------- Ziele ---------- */
+.ziel{position:relative; padding-top:2.2rem}
+.ziel .zahl{
+  position:absolute; top:1.3rem; right:1.5rem; font-family:var(--serifen);
+  font-size:2.1rem; font-weight:600; color:var(--grund-tiefer); line-height:1;
+}
+
+/* ---------- Versprechen ---------- */
+.versprechen .bahn{display:grid; gap:2rem}
+@media (min-width:900px){ .versprechen .bahn{grid-template-columns:1fr 1fr; gap:3.2rem; align-items:start} }
+
+/* ---------- Leistungen ---------- */
+.leistung{display:grid; grid-template-columns:auto 1fr; gap:1.1rem; padding:1.6rem 0; border-top:1px solid var(--strich)}
+.leistung:last-child{border-bottom:1px solid var(--strich)}
+.leistung .zeichen{
+  width:2.7rem; height:2.7rem; border-radius:10px; background:var(--wasser-hauch);
+  display:grid; place-items:center; color:var(--wasser); font-family:var(--serifen); font-weight:600; font-size:1.05rem;
+}
+.leistung .folge{margin-top:.5rem; font-size:.93rem; color:var(--wasser-tief); font-weight:500}
+
+/* ---------- Ablauf ---------- */
+.schritt{position:relative; padding-left:3.3rem}
+.schritt .nummer{
+  position:absolute; left:0; top:0; width:2.4rem; height:2.4rem; border-radius:50%;
+  display:grid; place-items:center; background:var(--nacht); color:#fff;
+  font-family:var(--serifen); font-weight:600; font-size:1rem;
+}
+.feld--nacht .schritt .nummer{background:#fff; color:var(--nacht)}
+.schritt p{color:var(--schrift-leise); margin-top:.35rem}
+.feld--nacht .schritt p{color:rgba(255,255,255,.8)}
+.feld--nacht .schritt h3{color:#fff}
+
+/* ---------- Über mich ---------- */
+.vorstellung .bahn{display:grid; gap:2.4rem}
+@media (min-width:980px){ .vorstellung .bahn{grid-template-columns:.85fr 1.15fr; gap:3.4rem; align-items:start} }
+.vorstellung img{width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:var(--rund-gross); box-shadow:var(--heben-2)}
+.nebenbei{background:var(--grund-sanft); border-left:3px solid var(--messing); border-radius:0 var(--rund) var(--rund) 0; padding:1.25rem 1.4rem}
+.nebenbei .vorzeile{color:var(--messing)}
+
+/* ---------- Stimmen ---------- */
+.stimmenbahn{display:grid; gap:1.25rem}
+@media (min-width:860px){ .stimmenbahn{grid-template-columns:repeat(3,1fr)} }
+.stimme{background:#fff; border:1px solid var(--strich); border-radius:var(--rund); padding:1.6rem; display:flex; flex-direction:column; gap:1rem}
+.stimme blockquote{margin:0; font-family:var(--serifen); font-size:1.02rem; line-height:1.55; color:var(--nacht)}
+.stimme blockquote::before{content:"„"; font-size:2.2rem; line-height:0; vertical-align:-.35rem; color:var(--messing); margin-right:.08rem}
+.stimme figcaption{margin-top:auto; font-size:.86rem; font-weight:600; color:var(--schrift-still)}
+
+/* ---------- Termin ---------- */
+.terminkarte{background:#fff; border:1px solid var(--strich); border-radius:var(--rund-gross); padding:clamp(1.6rem,4vw,2.6rem); box-shadow:var(--heben-2); text-align:center; max-width:680px; margin-inline:auto}
+.terminkarte .taste{margin-top:1.3rem}
+.terminkarte small{display:block; margin-top:.9rem; color:var(--schrift-still); font-size:.85rem}
+
+/* ---------- Fragen ---------- */
+.frage{border-bottom:1px solid var(--strich)}
+.frage summary{
+  cursor:pointer; list-style:none; padding:1.15rem 2.4rem 1.15rem 0; position:relative;
+  font-family:var(--serifen); font-size:1.06rem; font-weight:600; color:var(--nacht);
+}
+.frage summary::-webkit-details-marker{display:none}
+.frage summary::after{
+  content:""; position:absolute; right:.4rem; top:1.5rem; width:.6rem; height:.6rem;
+  border-right:2px solid var(--wasser); border-bottom:2px solid var(--wasser);
+  transform:rotate(45deg); transition:transform .22s var(--schwung);
+}
+.frage[open] summary::after{transform:rotate(-135deg)}
+.frage .antwort{padding-bottom:1.25rem; color:var(--schrift-leise); max-width:72ch}
+
+/* ---------- Schlussruf ---------- */
+.schlussruf{text-align:center}
+.schlussruf .bahn{display:grid; gap:1.3rem; justify-items:center}
+
+/* ---------- Fußbereich ---------- */
+.fussbereich{background:var(--nacht-tief); color:rgba(255,255,255,.76); padding-block:3.2rem 2rem; font-size:.94rem}
+.fussbereich .bahn{display:grid; gap:2.2rem}
+@media (min-width:820px){ .fussbereich .bahn{grid-template-columns:1.4fr 1fr 1fr 1fr} }
+.fussbereich h3{color:#fff; font-family:var(--grotesk); font-size:.77rem; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase; margin-bottom:.9rem}
+.fussbereich a{color:rgba(255,255,255,.76)}
+.fussbereich a:hover{color:#fff}
+.fussbereich ul{list-style:none; margin:0; padding:0; display:grid; gap:.55rem}
+.fussbereich .signet{color:#fff}
+.fussbereich .signet b{background:#fff; color:var(--nacht)}
+.fussbereich .signet small{color:rgba(255,255,255,.55)}
+.schlusszeile{margin-top:2.4rem; padding-top:1.3rem; border-top:1px solid rgba(255,255,255,.14);
+  display:flex; flex-wrap:wrap; gap:.5rem 1.2rem; justify-content:space-between; font-size:.84rem; color:rgba(255,255,255,.55)}
+
+/* ---------- Fragebogen ---------- */
+.vorhang{
+  position:fixed; inset:0; z-index:150; display:none;
+  background:rgba(6,25,44,.55); backdrop-filter:blur(3px);
+  padding:clamp(.8rem,4vw,2.4rem); overflow-y:auto;
+}
+.vorhang[data-offen="ja"]{display:grid; place-items:center}
+.bogen{
+  width:min(560px,100%); background:#fff; border-radius:var(--rund-gross);
+  box-shadow:var(--heben-3); overflow:hidden; animation:auftauchen .26s var(--schwung);
+}
+@keyframes auftauchen{from{opacity:0; transform:translateY(14px) scale(.985)} to{opacity:1; transform:none}}
+@media (prefers-reduced-motion:reduce){ .bogen{animation:none} }
+.bogen-kopf{display:flex; align-items:center; gap:1rem; padding:1.25rem 1.5rem; border-bottom:1px solid var(--strich)}
+.bogen-kopf p{font-family:var(--grotesk); font-size:.76rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--schrift-still)}
+.bogen-zu{margin-left:auto; width:2.2rem; height:2.2rem; border:1px solid var(--strich); background:none;
+  border-radius:8px; cursor:pointer; color:var(--schrift-leise); font-size:1.4rem; line-height:1}
+.bogen-zu:hover{color:var(--wasser); border-color:var(--wasser)}
+.fortschritt{height:3px; background:var(--grund-tiefer)}
+.fortschritt i{display:block; height:100%; background:var(--wasser); width:0; transition:width .3s var(--schwung)}
+.bogen-leib{padding:1.6rem 1.5rem 1.8rem}
+.bogen-leib h3{font-size:1.32rem; margin-bottom:.35rem}
+.bogen-hilfe{color:var(--schrift-leise); font-size:.94rem; margin-bottom:1.2rem}
+.antwortliste{display:grid; gap:.6rem}
+.antwortliste button{
+  text-align:left; font:inherit; color:var(--nacht); background:#fff; cursor:pointer;
+  border:1.5px solid var(--strich); border-radius:var(--rund-klein); padding:.95rem 1.1rem;
+  transition:border-color .16s, background .16s, transform .16s var(--schwung);
+}
+.antwortliste button:hover{border-color:var(--wasser); background:var(--wasser-hauch); transform:translateX(2px)}
+.bogen-feld{display:grid; gap:.35rem; margin-bottom:1rem}
+.bogen-feld label{font-size:.87rem; font-weight:600; color:var(--schrift-leise)}
+.bogen-feld input,.bogen-feld textarea{
+  font:inherit; color:var(--nacht); padding:.85rem 1rem; border:1.5px solid var(--strich);
+  border-radius:var(--rund-klein); background:#fff; width:100%;
+}
+.bogen-feld input:focus,.bogen-feld textarea:focus{border-color:var(--wasser); outline:none}
+.bogen-feld[data-fehler="ja"] input,.bogen-feld[data-fehler="ja"] textarea{border-color:#C0392B}
+.bogen-feld .hinweis{font-size:.8rem; color:#C0392B; display:none}
+.bogen-feld[data-fehler="ja"] .hinweis{display:block}
+.bogen-fuss{display:flex; align-items:center; gap:.8rem; margin-top:1.3rem}
+.bogen-fuss .zurueck{margin-right:auto; background:none; border:0; font:inherit; color:var(--schrift-still); cursor:pointer; padding:.5rem 0}
+.bogen-fuss .zurueck:hover{color:var(--nacht)}
+.bogen-klein{font-size:.8rem; color:var(--schrift-still); margin-top:1rem; line-height:1.5}
+.gelungen{text-align:center; padding:.6rem 0 .3rem}
+.gelungen .haken-gross{width:3.4rem; height:3.4rem; border-radius:50%; background:rgba(31,158,96,.12); display:grid; place-items:center; margin:0 auto 1rem}
+.gelungen .haken-gross::after{content:""; width:1.35rem; height:.72rem; border-left:3px solid var(--wiese); border-bottom:3px solid var(--wiese); transform:rotate(-45deg) translate(2px,-3px)}
+.honigtopf{position:absolute; left:-9999px; opacity:0; height:0; width:0}
+
+@media print{
+  .kopfleiste,.schublade,.vorhang,.taste,.klappe{display:none !important}
+  body{font-size:11pt}
+}
