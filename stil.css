@@ -185,11 +185,12 @@ p{margin:0}
 }
 
 /* ---------- Ziele ---------- */
-.ziel{position:relative; padding-top:2.2rem}
+.ziel{display:flex; flex-direction:column; gap:.55rem}
 .ziel .zahl{
-  position:absolute; top:1.3rem; right:1.5rem; font-family:var(--serifen);
-  font-size:2.1rem; font-weight:600; color:var(--grund-tiefer); line-height:1;
+  font-family:var(--serifen); font-size:1.5rem; font-weight:600; line-height:1;
+  color:var(--wasser); opacity:.5; letter-spacing:.02em;
 }
+.ziel h3{margin-bottom:.2rem}
 
 /* ---------- Versprechen ---------- */
 .versprechen .bahn{display:grid; gap:2rem}
