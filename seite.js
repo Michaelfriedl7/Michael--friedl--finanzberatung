@@ -34,6 +34,7 @@ function kopfleisteEinrichten(){
 
   /* Der Punkt in der Navigation folgt dem sichtbaren Bereich */
   const ziele = alle(".wegweiser a")
+    .filter(a => (a.getAttribute("href") || "").startsWith("#"))   /* externe Ziele auslassen */
     .map(a => ({ a, bereich: hole(a.getAttribute("href")) }))
     .filter(z => z.bereich);
   if (!ziele.length || !("IntersectionObserver" in window)) return;
