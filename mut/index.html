@@ -1,0 +1,1227 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#DEDFD7">
+<title>Pflicht und Erlaubnis</title>
+<meta name="description" content="Was das Strafrecht bei Zivilcourage verlangt, was das Grundgesetz erlaubt — und ein Vordruck, der aus einem Vorhaben einen Plan mit Frist, Zuständigkeit und Rechtsgrundlage macht. Beitrag zum Martin-Gauger-Preis 2026.">
+<meta name="author" content="Michael Friedl und Tom, Wirtschaftsrecht Q2">
+<link rel="canonical" href="https://michael-friedl.com/mut/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Pflicht und Erlaubnis">
+<meta property="og:title" content="Pflicht und Erlaubnis">
+<meta property="og:description" content="Die meisten schweigen nicht, weil sie feige sind. Sie schweigen, weil sie nicht wissen, was sie dürfen und was sie müssen. Beitrag zum Martin-Gauger-Preis 2026.">
+<meta property="og:url" content="https://michael-friedl.com/mut/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pflicht und Erlaubnis">
+<meta name="twitter:description" content="Die meisten schweigen nicht, weil sie feige sind. Sie schweigen, weil sie nicht wissen, was sie dürfen und was sie müssen.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F8F8F5'/%3E%3Crect x='4' y='4' width='24' height='3' fill='%238E1B14'/%3E%3Crect x='4' y='12' width='17' height='2' fill='%231A1A16'/%3E%3Crect x='4' y='18' width='21' height='2' fill='%231A1A16'/%3E%3Crect x='4' y='24' width='13' height='2' fill='%231A1A16'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+<style>
+  :root{
+    --pult:#DEDFD7; --blatt:#F8F8F5; --feld:#EFEFEA;
+    --tinte:#1A1A16; --grau:#5A5B52; --schwach:#8C8D82;
+    --linie:#D2D3C9; --linie-2:#B9BAAE; --rand:#A6A79B;
+    --rot:#8E1B14; --rot-blass:#F2E7E5;
+    --text:"Literata",Georgia,"Times New Roman",serif;
+    --app:"IBM Plex Sans Condensed","Helvetica Neue",Arial,sans-serif;
+    --mx:clamp(1.1rem,4vw,3.2rem);
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --pult:#0E0E0A; --blatt:#1A1A15; --feld:#22221B;
+      --tinte:#E9E9E0; --grau:#9C9D91; --schwach:#6C6D62;
+      --linie:#2C2C24; --linie-2:#3C3C32; --rand:#5C5D53;
+      --rot:#DB8278; --rot-blass:#2A1815;
+    }
+  }
+  :root[data-theme="dark"]{
+    --pult:#0E0E0A; --blatt:#1A1A15; --feld:#22221B;
+    --tinte:#E9E9E0; --grau:#9C9D91; --schwach:#6C6D62;
+    --linie:#2C2C24; --linie-2:#3C3C32; --rand:#5C5D53;
+    --rot:#DB8278; --rot-blass:#2A1815;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--pult); color:var(--tinte);
+    font-family:var(--text); font-size:17px; line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+  }
+  .blatt{
+    max-width:58rem; margin:0 auto; background:var(--blatt);
+    border-left:1px solid var(--linie); border-right:1px solid var(--linie);
+    padding:0 var(--mx) 4rem;
+    counter-reset:rn;
+  }
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- Briefkopf ---------- */
+  .briefkopf{
+    display:flex; flex-wrap:wrap; gap:.4rem 2rem; justify-content:space-between;
+    font-family:var(--app); font-size:11.5px; letter-spacing:.09em; text-transform:uppercase;
+    color:var(--schwach); padding:1.1rem 0 .9rem; border-bottom:2px solid var(--tinte);
+  }
+  .briefkopf b{color:var(--rot); font-weight:600}
+
+  .titelblock{padding:clamp(2.6rem,7vw,5rem) 0 clamp(1.8rem,4vw,3rem)}
+  h1{
+    font-family:var(--text); font-weight:300;
+    font-size:clamp(2rem,6.2vw,3.4rem); line-height:1.1; letter-spacing:-.018em;
+    margin:0; max-width:19ch; text-wrap:balance;
+  }
+  h1 em{font-style:italic; color:var(--rot)}
+  .untertitel{
+    font-family:var(--app); font-size:1rem; color:var(--grau);
+    margin-top:1.3rem; max-width:44ch; line-height:1.5;
+  }
+
+  /* ---------- Sprungleiste ---------- */
+  .inhalt{
+    border-top:1px solid var(--linie); border-bottom:1px solid var(--linie);
+    padding:.9rem 0; margin-bottom:.5rem;
+  }
+  .inhalt ol{
+    list-style:none; margin:0; padding:0;
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:.3rem 1.5rem;
+    font-family:var(--app); font-size:13.5px;
+  }
+  .inhalt a{
+    text-decoration:none; color:var(--grau);
+    display:grid; grid-template-columns:2.2rem 1fr; gap:.4rem;
+  }
+  .inhalt a span{color:var(--rand); font-variant-numeric:tabular-nums}
+  .inhalt a:hover,.inhalt a:focus-visible{color:var(--rot)}
+
+  /* ---------- Abschnitte ---------- */
+  section{padding:clamp(2.4rem,5vw,3.6rem) 0 0}
+  .abschnitt{
+    display:grid; grid-template-columns:3.4rem 1fr; gap:0 1.5rem;
+    align-items:baseline; margin-bottom:1.6rem;
+  }
+  .ziffer{
+    font-family:var(--app); font-weight:600; font-size:1rem; color:var(--rot);
+    text-align:right; letter-spacing:.02em;
+  }
+  h2{
+    font-family:var(--text); font-weight:400;
+    font-size:clamp(1.45rem,3.4vw,2rem); line-height:1.2; letter-spacing:-.012em;
+    margin:0; max-width:24ch; text-wrap:balance;
+  }
+  h3{
+    font-family:var(--app); font-weight:600; font-size:1.05rem;
+    margin:2.2rem 0 .2rem; letter-spacing:.01em;
+  }
+
+  /* ---------- Randnummern ---------- */
+  .satz{
+    display:grid; grid-template-columns:3.4rem 1fr; gap:0 1.5rem;
+    counter-increment:rn; margin-bottom:1.05rem;
+  }
+  .satz > .rn{
+    font-family:var(--app); font-size:.74rem; color:var(--rand);
+    text-align:right; padding-top:.5em; font-variant-numeric:tabular-nums;
+    user-select:none;
+  }
+  .satz > .rn::before{content:counter(rn)}
+  .satz > div{max-width:63ch}
+  .satz p + p{margin-top:.8rem}
+
+  /* ---------- Gesetzeszitat ---------- */
+  .zitat{
+    margin:1.3rem 0; background:var(--feld); border:1px solid var(--linie);
+    padding:1rem 1.2rem;
+  }
+  .zitat .quelle{
+    font-family:var(--app); font-size:11.5px; font-weight:600;
+    letter-spacing:.11em; text-transform:uppercase; color:var(--rot);
+    display:block; margin-bottom:.5rem;
+  }
+  .zitat p{font-size:.95rem; line-height:1.6}
+  .zitat p + p{margin-top:.5rem}
+  .zitat .abs{font-family:var(--app); font-weight:600; color:var(--grau); font-size:.88rem}
+  .zitat .link{
+    font-family:var(--app); font-size:12px; margin-top:.7rem; display:inline-block;
+    color:var(--grau); text-decoration:none; border-bottom:1px solid var(--linie-2);
+  }
+  .zitat .link:hover,.zitat .link:focus-visible{color:var(--rot); border-color:currentColor}
+
+  .merke{
+    border-top:2px solid var(--rot); border-bottom:1px solid var(--linie);
+    padding:.9rem 0 1rem; margin:1.6rem 0;
+  }
+  .merke .k{
+    font-family:var(--app); font-size:11.5px; font-weight:600;
+    letter-spacing:.13em; text-transform:uppercase; color:var(--rot);
+    display:block; margin-bottom:.35rem;
+  }
+  .merke p{font-size:1.02rem; max-width:58ch}
+
+  /* ---------- Platzhalter Tom ---------- */
+
+  /* ---------- Vordruck / Planer ---------- */
+  .vordruck{border:2px solid var(--tinte); margin:1.6rem 0 1rem; background:var(--blatt)}
+  .vordruck .kopf{
+    display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+    background:var(--tinte); color:var(--blatt);
+    font-family:var(--app); font-size:11.5px; font-weight:600;
+    letter-spacing:.13em; text-transform:uppercase; padding:.5rem .9rem;
+  }
+  .vordruck .leib{padding:1.1rem .9rem 1.3rem}
+  .stufe{font-family:var(--app); font-size:11.5px; letter-spacing:.11em; text-transform:uppercase; color:var(--schwach)}
+  .frage{font-size:1.25rem; line-height:1.3; margin:.45rem 0 1rem; max-width:28ch}
+  .wahl{display:grid; gap:.5rem}
+  .wahl button{
+    display:block; width:100%; text-align:left; cursor:pointer;
+    font-family:var(--text); font-size:1rem; color:var(--tinte);
+    background:var(--feld); border:1px solid var(--linie-2); border-radius:0;
+    padding:.75rem .9rem;
+  }
+  .wahl button:hover,.wahl button:focus-visible{border-color:var(--rot); background:var(--rot-blass)}
+  .wahl button b{display:block; font-family:var(--app); font-weight:600; margin-bottom:.05rem}
+  .wahl button span{font-family:var(--app); font-size:.88rem; color:var(--grau)}
+  .feld{display:flex; flex-direction:column; gap:.3rem; margin-bottom:.9rem; max-width:22rem}
+  .feld label{font-family:var(--app); font-size:11.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--grau)}
+  .feld input{
+    font-family:var(--text); font-size:1.02rem; color:var(--tinte);
+    background:var(--blatt); border:0; border-bottom:1.5px solid var(--tinte);
+    border-radius:0; padding:.5rem .1rem;
+  }
+  .feld input:focus-visible{outline:none; border-color:var(--rot)}
+  .hinw{font-family:var(--app); font-size:.88rem; color:var(--grau); max-width:36rem; margin-bottom:.5rem}
+  .reihe{display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.9rem}
+  .taste{font-family:var(--app); font-size:.94rem; font-weight:600; cursor:pointer; padding:.6rem 1.1rem; border-radius:0; border:1.5px solid var(--tinte)}
+  .taste.haupt{background:var(--tinte); color:var(--blatt)}
+  .taste.haupt:hover,.taste.haupt:focus-visible{background:var(--rot); border-color:var(--rot)}
+  .taste.neben{background:transparent; color:var(--grau); border-color:var(--linie-2)}
+  .taste.neben:hover,.taste.neben:focus-visible{color:var(--tinte); border-color:var(--tinte)}
+
+  .bescheid .az{font-family:var(--app); font-size:11.5px; letter-spacing:.11em; text-transform:uppercase; color:var(--rot); margin-bottom:.3rem}
+  .bescheid h4{font-family:var(--text); font-weight:400; font-size:1.45rem; margin:0 0 1rem; line-height:1.2}
+  .bescheid dl{display:grid; grid-template-columns:auto 1fr; gap:.5rem 1.3rem; margin:0 0 1rem; font-size:.97rem}
+  .bescheid dt{font-family:var(--app); font-size:11.5px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:var(--grau); padding-top:.35em; white-space:nowrap}
+  .bescheid dd{margin:0; max-width:52ch}
+  .bescheid dd b{color:var(--rot)}
+  .bescheid .fussnote{border-top:1px solid var(--linie); padding-top:.8rem; font-size:.93rem; color:var(--grau)}
+  .bescheid .fussnote strong{font-family:var(--app); color:var(--tinte)}
+  .bescheid .fussnote p + p{margin-top:.55rem}
+  @media (max-width:560px){ .bescheid dl{grid-template-columns:1fr; gap:.1rem} .bescheid dt{margin-top:.7rem} }
+
+  /* ---------- Umfrage ---------- */
+  .skala{display:grid; gap:.45rem; margin:.9rem 0 0; max-width:30rem}
+  .skala button{
+    font-family:var(--app); font-size:.97rem; cursor:pointer; text-align:left;
+    background:var(--feld); border:1px solid var(--linie-2); border-radius:0;
+    padding:.65rem .8rem; color:var(--tinte);
+  }
+  .skala button[aria-pressed="true"]{background:var(--tinte); color:var(--blatt); border-color:var(--tinte)}
+  .echo{font-size:.99rem; color:var(--grau); margin-top:.8rem; max-width:56ch}
+
+  /* ---------- Fuß ---------- */
+  .fuss{border-top:2px solid var(--tinte); margin-top:3rem; padding-top:1.5rem}
+  .quellen{list-style:none; padding:0; margin:.5rem 0 0; font-family:var(--app); font-size:.9rem}
+  .quellen li{margin-bottom:.4rem; padding-left:1.2rem; text-indent:-1.2rem}
+  .quellen a{color:var(--grau)}
+  .quellen a:hover{color:var(--rot)}
+  .quellen .fund{display:block; margin-left:0; font-size:.82rem; color:var(--rand)}
+
+  @media (max-width:640px){
+    .abschnitt,.satz{grid-template-columns:1fr; gap:0}
+    .ziffer{text-align:left; margin-bottom:.3rem}
+    .satz > .rn{text-align:left; padding:0 0 .15rem; float:none}
+    .satz > .rn::after{content:" ·"; color:var(--linie-2)}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media print{ body{background:#fff} .blatt{border:0} .tom{display:none} }
+</style>
+</head>
+<body>
+
+<div class="blatt">
+
+<div class="briefkopf">
+  <div>Wirtschaftsrecht · Q2 · Wirtschaftsgymnasium</div>
+  <div><b>Martin-Gauger-Preis 2026</b> — Mut statt Macht</div>
+</div>
+
+<div class="titelblock">
+  <h1>Pflicht und Erlaubnis. Was das Gesetz von dir verlangt — und was es dir <em>gibt</em>.</h1>
+  <p class="untertitel">
+    Die meisten schweigen nicht, weil sie feige sind. Sie schweigen, weil sie nicht wissen,
+    was sie dürfen, was sie müssen und was es sie kostet. Diese Arbeit beantwortet beides
+    und macht aus einem Vorhaben einen Plan.
+  </p>
+</div>
+
+<div class="inhalt">
+  <ol>
+    <li><a href="#i"><span>I.</span> Der Fall</a></li>
+    <li><a href="#ii"><span>II.</span> Was wir Mut nennen</a></li>
+    <li><a href="#iii"><span>III.</span> Was das Gesetz verlangt</a></li>
+    <li><a href="#iv"><span>IV.</span> Was das Gesetz erlaubt</a></li>
+    <li><a href="#v"><span>V.</span> Der Vordruck</a></li>
+    <li><a href="#vi"><span>VI.</span> Martin Gauger</a></li>
+    <li><a href="#vii"><span>VII.</span> Die Gegenprobe</a></li>
+    <li><a href="#viii"><span>VIII.</span> Deine Antwort</a></li>
+    <li><a href="#ix"><span>IX.</span> Nachweise</a></li>
+  </ol>
+</div>
+
+<!-- ============ I ============ -->
+<section id="i">
+  <div class="abschnitt"><div class="ziffer">I.</div><h2>Der Fall</h2></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Es ist kurz nach halb zwei, der Kurs räumt zusammen. Jemand sagt einen Satz über
+    einen Mitschüler, der nicht im Raum ist. Der Satz ist nicht gebrüllt und nicht als
+    Beleidigung gemeint; er ist beiläufig gesagt, und zwei Leute lachen. Eine Sekunde
+    Stille, in der man etwas sagen könnte. Dann packt der Erste seine Tasche, und die
+    Sekunde ist vorbei.</p>
+
+    <p>Auf dem Weg zur Bahn denkt man darüber nach. Nicht lange, aber der Gedanke kommt
+    wieder: Ich hätte etwas sagen sollen. Am Abend ist er weg. Beim nächsten Mal ist
+    er wieder da.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Diese Szene ist unspektakulär, und genau das ist der Punkt. Die Fälle, in denen
+    Zivilcourage verlangt wird, sehen fast nie so aus wie auf den Plakaten, die dazu
+    aufgerufen werden. Es steht kein Schläger im Raum. Es brennt nichts. Es gibt nur einen
+    Moment, in dem etwas fällt, das nicht stehen bleiben sollte — und in dem niemand weiß,
+    was jetzt eigentlich dran wäre.</p>
+
+    <p>Die naheliegende Erklärung lautet: Feigheit. Man traut sich nicht. Diese Arbeit
+    bezweifelt das. Wer hinterher ehrlich zu sich ist, findet in der Erinnerung meist
+    keinen Mut, der gefehlt hätte, sondern eine Leerstelle: Man hätte im selben Moment
+    nicht sagen können, was man überhaupt hätte tun dürfen — und ob man etwas hätte tun
+    <strong>müssen</strong>.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Diese Frage klingt einfach. Sie ist es nicht. Wer sie beantworten will, muss zwei
+    Dinge auseinanderhalten, die im Alltag ständig durcheinandergeraten: die Frage, was
+    erlaubt ist, und die Frage, was verlangt wird. Das Recht beantwortet beide — nur an
+    verschiedenen Stellen und mit verschiedenen Mitteln.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Der Unterschied ist keine Wortklauberei. Er entscheidet darüber, was passiert, wenn
+    man nichts tut. Wo das Gesetz etwas <em>verlangt</em>, kostet Untätigkeit etwas: eine
+    Geldstrafe, im Extremfall Haft. Wo es etwas <em>erlaubt</em>, kostet Untätigkeit nichts
+    — außer der Gelegenheit. Beides fühlt sich im Moment des Zögerns gleich an. Rechtlich
+    sind es zwei völlig verschiedene Lagen.</p>
+
+    <p>Deshalb ist die Frage „Was hätte ich tun sollen?“ eigentlich zwei Fragen, und sie
+    haben zwei verschiedene Adressen im Gesetz. Die erste steht im Strafgesetzbuch. Die
+    zweite steht im Grundgesetz.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Das ist die Schwierigkeit, mit der diese Arbeit beginnt. Fast jeder kennt das
+    Gefühl, in einem solchen Moment falsch gehandelt zu haben. Fast niemand kann sagen, ob
+    das Gefühl recht hat. Und solange man das nicht sagen kann, wird man beim nächsten Mal
+    wieder so zögern — nicht weil man feige ist, sondern weil man nicht weiß, woran man
+    ist.</p>
+  </div></div>
+
+  <div class="merke">
+    <span class="k">Die Frage dieser Arbeit</span>
+    <p>Nicht: Wie wird man mutiger? Sondern: Was genau darf und muss man eigentlich tun —
+    und warum weiß das fast niemand?</p>
+  </div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Im Folgenden wird zuerst gezeigt, wo das Strafrecht Handeln <em>verlangt</em>
+    (Abschnitt III), dann, welche Werkzeuge das Verfassungs- und Verwaltungsrecht
+    <em>bereitstellt</em> (Abschnitt IV). Abschnitt V führt beides in einem Vordruck
+    zusammen, der aus einem Vorhaben einen Plan mit Frist, Zuständigkeit und
+    Rechtsgrundlage macht.</p>
+  </div></div>
+</section>
+
+<!-- ============ II ============ -->
+<section id="ii">
+  <div class="abschnitt"><div class="ziffer">II.</div><h2>Was wir Mut nennen</h2></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Zivilcourage wird als Heldentum erzählt. Die Bilder, die dazu abgerufen werden,
+    sind laut: jemand stellt sich vor einen Panzer, jemand hält eine Rede, jemand geht
+    dazwischen. Wer diese Bilder im Kopf hat und sich selbst betrachtet, kommt
+    regelmäßig zu dem Schluss, dass er dafür nicht gemacht ist.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Das Gesetz erzählt eine andere Geschichte. Es verlangt nirgends Heldentum. Es
+    verlangt das <em>Zumutbare</em> — und es sagt ausdrücklich dazu, wo das Zumutbare
+    endet. § 323c StGB nimmt die erhebliche eigene Gefahr ausdrücklich aus. § 138 StGB
+    verlangt eine Anzeige, nicht ein Eingreifen. Der Gesetzgeber hat die Messlatte
+    bewusst niedrig gelegt, weil er weiß: Helden sind selten. Mindestpflichten müssen
+    häufig sein.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Dahinter steckt eine Entscheidung des Gesetzgebers, die man leicht übersieht. Er
+    hätte die Pflicht auch höher hängen können: wer Unrecht sieht, muss einschreiten.
+    Ein solches Gesetz wäre moralisch anspruchsvoller — und praktisch wertlos, weil kaum
+    jemand ihm folgen könnte und niemand es durchsetzen würde. Eine Pflicht, die nur
+    Helden erfüllen können, ist keine Pflicht. Sie ist eine Dekoration.</p>
+
+    <p>Das Recht macht deshalb das Gegenteil: Es verlangt wenig, dieses Wenige aber von
+    allen. Den Notruf wählen. Eine geplante schwere Tat anzeigen. Bei einem Unfall stehen
+    bleiben. Das ist unspektakulär — und genau deshalb funktioniert es.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Wenn das stimmt, verschiebt sich die Frage. Sie lautet dann nicht mehr, ob jemand
+    charakterlich zu einer Heldentat fähig ist. Sie lautet, ob er in dem entscheidenden
+    Moment weiß, welche kleine Handlung von ihm erwartet wird und welche größere ihm
+    offensteht. Das ist keine Charakterfrage mehr. Das ist eine Wissensfrage.</p>
+
+    <p>Und Wissen kann man vermitteln. Charakter nicht — jedenfalls nicht auf einer
+    Website.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Daraus ergibt sich die Position dieser Arbeit: <b>Mitreden ist in den meisten Fällen
+    kein Mut-Problem. Es ist ein Wissens-Problem.</b></p>
+
+    <p>Das ist keine bequeme Behauptung, sondern eine überprüfbare. Wer schweigt, weil er
+    Angst hat, hat sich entschieden. Wer schweigt, weil er nicht weiß, was er darf, hat
+    sich <em>nicht</em> entschieden — er hatte die Wahl gar nicht vor sich. Eine Entscheidung
+    setzt voraus, dass man die Möglichkeiten kennt, zwischen denen man wählt. Fehlt dieses
+    Wissen, fällt keine Entscheidung; es passiert nur nichts.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Dagegen lässt sich einwenden, das sei eine elegante Ausrede. Wer nichts tut, sagt
+    hinterher, er habe es nicht gewusst, und ist entschuldigt. Der Einwand trifft — wenn
+    man es dabei belässt. Er trifft nicht mehr, sobald das Wissen verfügbar ist. Deshalb
+    endet diese Arbeit nicht mit einer Analyse, sondern mit einem Vordruck: Ab Abschnitt V
+    kann sich niemand mehr auf Unkenntnis berufen, der diese Seite gelesen hat. Das ist der
+    Test für die These. Nimmt man den Menschen die Unkenntnis, muss sich zeigen, ob dahinter
+    doch nur Angst saß.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Eine zweite Einschränkung ist ehrlicher Weise zuzugeben, und sie wiegt schwerer.
+    Wissen reicht nicht immer. Martin Gauger, von dem Abschnitt VI handelt, war Jurist. Er
+    wusste genauer als jeder andere, was der Eid auf Hitler bedeutete und was seine
+    Weigerung kosten würde. Sein Wissen hat ihn nicht gerettet — es hat ihn das Leben
+    gekostet.</p>
+
+    <p>Die These wird dadurch nicht falsch, aber sie braucht eine Grenze. Sie gilt für
+    einen Rechtsstaat. Dort ist Wissen deshalb wirksam, weil den eigenen Möglichkeiten auf
+    der anderen Seite Pflichten entsprechen: eine Behörde, die zuhören muss, ein Gericht,
+    das entscheiden muss, ein Verbot, jemanden für eine Meldung zu bestrafen. Wo es diese
+    Gegenseite nicht gibt, weiß der Wissende nur genauer, was er riskiert. Was das für
+    unsere Zeit bedeutet, steht in Abschnitt VII.</p>
+  </div></div>
+
+  <div class="merke">
+    <span class="k">Der Gedanke dieser Arbeit</span>
+    <p>Mut und Wissen sind keine Gegensätze. Wissen ist die Bedingung, unter der Mut
+    überhaupt eine Handlung werden kann — statt eines Gefühls, das folgenlos bleibt.</p>
+  </div>
+</section>
+
+<!-- ============ III ============ -->
+<section id="iii">
+  <div class="abschnitt"><div class="ziffer">III.</div><h2>Was das Gesetz verlangt</h2></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>„Mitlaufen“ und „Wegsehen“ gelten als moralische Kategorien. Das Strafrecht sieht
+    das enger: An mehreren Stellen ist Untätigkeit kein privates Versäumnis, sondern eine
+    Straftat. Wer das weiß, entscheidet anders.</p>
+  </div></div>
+
+  <h3>1. Die Hilfspflicht</h3>
+
+  <div class="satz"><span class="rn"></span><div>
+    <div class="zitat">
+      <span class="quelle">§ 323c StGB — Unterlassene Hilfeleistung, Behinderung von hilfeleistenden Personen</span>
+      <p><span class="abs">(1)</span> Wer bei Unglücksfällen oder gemeiner Gefahr oder Not
+      nicht Hilfe leistet, obwohl dies erforderlich und ihm den Umständen nach zuzumuten,
+      insbesondere ohne erhebliche eigene Gefahr und ohne Verletzung anderer wichtiger
+      Pflichten möglich ist, wird mit Freiheitsstrafe bis zu einem Jahr oder mit Geldstrafe
+      bestraft.</p>
+      <p><span class="abs">(2)</span> Ebenso wird bestraft, wer in diesen Situationen eine
+      Person behindert, die einem Dritten Hilfe leistet oder leisten will.</p>
+      <a class="link" href="https://www.gesetze-im-internet.de/stgb/__323c.html" target="_blank" rel="noopener">Amtlicher Wortlaut</a>
+    </div>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Drei Wörter dieser Vorschrift tragen alles: <strong>erforderlich</strong>,
+    <strong>zuzumuten</strong> und <strong>ohne erhebliche eigene Gefahr</strong>.
+    Verlangt wird nicht das Bestmögliche, sondern das Erforderliche. Und es wird
+    ausdrücklich nicht verlangt, sich selbst in Gefahr zu bringen. Wer einen Notruf
+    absetzt, hat regelmäßig genug getan.</p>
+    <p>Bemerkenswert ist auch Absatz 2: Strafbar macht sich nicht nur, wer nicht hilft,
+    sondern auch, wer <em>andere</em> am Helfen hindert. Das Gesetz schützt die
+    Hilfsbereitschaft als solche.</p>
+  </div></div>
+
+  <h3>2. Die Anzeigepflicht</h3>
+
+  <div class="satz"><span class="rn"></span><div>
+    <div class="zitat">
+      <span class="quelle">§ 138 StGB — Nichtanzeige geplanter Straftaten (Auszug)</span>
+      <p><span class="abs">(1)</span> Wer von dem Vorhaben oder der Ausführung [… es folgt
+      ein abschließender Katalog, darunter <em>Mord, Totschlag, Völkermord, Verbrechen
+      gegen die Menschlichkeit, Kriegsverbrechen, Raub und räuberische Erpressung</em> …]
+      zu einer Zeit, zu der die Ausführung oder der Erfolg noch abgewendet werden kann,
+      glaubhaft erfährt und es unterläßt, der Behörde oder dem Bedrohten rechtzeitig
+      Anzeige zu machen, wird mit Freiheitsstrafe bis zu fünf Jahren oder mit Geldstrafe
+      bestraft.</p>
+      <a class="link" href="https://www.gesetze-im-internet.de/stgb/__138.html" target="_blank" rel="noopener">Amtlicher Wortlaut mit vollständigem Katalog</a>
+    </div>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Diese Vorschrift ist die direkteste gesetzliche Entsprechung zum Wettbewerbsthema:
+    Hier verlangt der Gesetzgeber ausdrücklich, dass man <em>nicht schweigt</em>. Drei
+    Begrenzungen sind wichtig. Erstens gilt sie nur für einen <strong>abschließenden
+    Katalog</strong> schwerer Taten — nicht für jede Straftat, von der man erfährt.
+    Zweitens muss man es <strong>glaubhaft erfahren</strong> haben; ein Gerücht genügt
+    nicht. Drittens muss die Tat noch <strong>abwendbar</strong> sein.</p>
+    <p>Die Anzeige geht wahlweise an die Behörde <em>oder an den Bedrohten</em>. Auch
+    das ist eine Absenkung der Schwelle: Es genügt, den Betroffenen zu warnen.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Ein Vergleich, der hängen bleibt: Wer bei einem Unfall nicht hilft, riskiert nach
+    § 323c bis zu einem Jahr. Wer von einem geplanten Mord erfährt und schweigt, riskiert
+    nach § 138 <strong>bis zu fünf Jahre</strong>. Das Schweigen wird hier also strenger
+    bestraft als das Nichthelfen — weil der Schaden noch abwendbar gewesen wäre.</p>
+  </div></div>
+
+  <h3>3. Wenn Schweigen wie Handeln zählt</h3>
+
+  <div class="satz"><span class="rn"></span><div>
+    <div class="zitat">
+      <span class="quelle">§ 13 StGB — Begehen durch Unterlassen</span>
+      <p><span class="abs">(1)</span> Wer es unterläßt, einen Erfolg abzuwenden, der zum
+      Tatbestand eines Strafgesetzes gehört, ist nach diesem Gesetz nur dann strafbar,
+      wenn er rechtlich dafür einzustehen hat, daß der Erfolg nicht eintritt, und wenn das
+      Unterlassen der Verwirklichung des gesetzlichen Tatbestandes durch ein Tun entspricht.</p>
+      <p><span class="abs">(2)</span> Die Strafe kann nach § 49 Abs. 1 gemildert werden.</p>
+      <a class="link" href="https://www.gesetze-im-internet.de/stgb/__13.html" target="_blank" rel="noopener">Amtlicher Wortlaut</a>
+    </div>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Der Kern steht in der Wendung <em>„rechtlich dafür einzustehen hat“</em>. Gemeint
+    ist die Garantenstellung: eine besondere Pflicht, die sich aus der eigenen Rolle
+    ergibt. Eltern gegenüber ihren Kindern. Ärztinnen gegenüber ihren Patienten.
+    Vorgesetzte gegenüber dem, was in ihrem Bereich geschieht.</p>
+    <p>Wer Garant ist und bewusst nichts tut, wird behandelt, als hätte er gehandelt. In
+    Verbindung mit § 27 StGB kann daraus <strong>Beihilfe durch Unterlassen</strong>
+    werden — etwa wenn eine Führungskraft Fehlverhalten im Unternehmen stillschweigend
+    duldet. Für das Wirtschaftsstrafrecht ist das die zentrale Norm: Wegsehen in einer
+    Verantwortungsposition ist dort kein Unterlassen, sondern Mitwirkung.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Aus den drei Vorschriften zusammen ergibt sich ein Bild, das mit der üblichen
+    Erzählung über Zivilcourage wenig zu tun hat. An diesen Stellen ist Nichtstun keine
+    verpasste Gelegenheit, moralisch gut zu sein. Es ist eine Straftat.</p>
+
+    <p>Was verlangt wird, ist dabei durchweg das Kleinste, was in der Lage hilft: einen
+    Notruf absetzen, eine Behörde informieren, in der eigenen Verantwortungsposition nicht
+    wegsehen. Keine der drei Vorschriften verlangt, sich in Gefahr zu bringen. § 323c
+    nimmt die erhebliche eigene Gefahr ausdrücklich aus, § 138 verlangt eine Anzeige statt
+    eines Eingreifens, und § 13 trifft nur den, der ohnehin eine besondere Stellung
+    innehat.</p>
+  </div></div>
+
+  <div class="merke">
+    <span class="k">Zwischenergebnis</span>
+    <p>Zivilcourage beginnt nicht bei der Moral. Sie beginnt bei einer Pflicht, die das
+    Strafrecht bewusst so niedrig angesetzt hat, dass praktisch jeder sie erfüllen kann.
+    Damit ist die erste Hälfte der Frage aus Abschnitt I beantwortet: was man tun
+    <em>muss</em>. Offen ist die zweite, und sie ist die interessantere — was man tun
+    <em>darf</em>, wenn man mehr will als das Mindeste.</p>
+  </div>
+</section>
+
+<!-- ============ IV ============ -->
+<section id="iv">
+  <div class="abschnitt"><div class="ziffer">IV.</div><h2>Was das Gesetz erlaubt</h2></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Pflichten allein ergeben keine Handlungsfähigkeit. Wer etwas ändern will, braucht
+    Werkzeuge — und die stehen nicht im Strafgesetzbuch, sondern im Grundgesetz und in
+    den Gesetzen, die es ausführen.</p>
+  </div></div>
+
+  <h3>1. Sich versammeln</h3>
+
+  <div class="satz"><span class="rn"></span><div>
+    <div class="zitat">
+      <span class="quelle">Art. 8 GG — Versammlungsfreiheit</span>
+      <p><span class="abs">(1)</span> Alle Deutschen haben das Recht, sich
+      <strong>ohne Anmeldung oder Erlaubnis</strong> friedlich und ohne Waffen zu versammeln.</p>
+      <p><span class="abs">(2)</span> Für Versammlungen unter freiem Himmel kann dieses
+      Recht durch Gesetz oder auf Grund eines Gesetzes beschränkt werden.</p>
+      <a class="link" href="https://www.gesetze-im-internet.de/gg/art_8.html" target="_blank" rel="noopener">Amtlicher Wortlaut</a>
+    </div>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Die Reihenfolge ist entscheidend und wird fast immer falsch wiedergegeben. Der
+    Grundsatz lautet: <strong>ohne Anmeldung, ohne Erlaubnis.</strong> Erst Absatz 2
+    erlaubt dem Gesetzgeber, das für Versammlungen unter freiem Himmel einzuschränken.
+    Die Anzeigepflicht ist also die <em>Ausnahme</em>, die sich rechtfertigen muss — nicht
+    die Regel, von der man Ausnahmen erbetteln müsste.</p>
+    <p>Wer eine Versammlung anmeldet, bittet demnach nicht um Erlaubnis. Er teilt etwas
+    mit, damit die Behörde ihre eigenen Pflichten erfüllen kann.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>In Nordrhein-Westfalen gilt seit 2022 ein eigenes Landesgesetz. § 10 VersG NRW
+    verlangt die Anzeige <strong>spätestens 48 Stunden vor der Einladung</strong> zu der
+    Versammlung — nicht 48 Stunden vor der Versammlung selbst. Wer am Montag zu einer
+    Demonstration am Samstag aufruft, hätte am Samstag zuvor anzeigen müssen.</p>
+    <p>Die Anzeige muss schriftlich, elektronisch oder zur Niederschrift erfolgen und
+    enthalten: erwartete Teilnehmerzahl, Ort, Zeit und Thema, bei Aufzügen den
+    beabsichtigten Streckenverlauf, dazu Name, telefonische Erreichbarkeit und Anschrift
+    der anzeigenden Person und der Person, die die Versammlung leiten soll.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Und weil das Grundrecht Vorrang hat, kennt das Gesetz zwei Ausnahmen.
+    Bei der <strong>Eilversammlung</strong> (§ 10 Abs. 3) würde die Frist den Zweck
+    gefährden; dann genügt die Anzeige mit der Bekanntgabe, auch telefonisch.
+    Bei der <strong>Spontanversammlung</strong> (§ 10 Abs. 4), die sich aufgrund eines
+    aktuellen Anlasses augenblicklich bildet, entfällt die Anzeigepflicht ganz.</p>
+  </div></div>
+
+  <div class="merke">
+    <span class="k">Rechtsstaatsprinzip zum Anfassen</span>
+    <p>Die Form schützt die Versammlung, sie verhindert sie nicht. Genau daran lässt sich
+    ein Rechtsstaat von seinem Gegenteil unterscheiden — nicht daran, ob es Regeln gibt,
+    sondern daran, ob die Regeln dem Grundrecht dienen oder es ersetzen.</p>
+  </div>
+
+  <h3>2. Sich beschweren</h3>
+
+  <div class="satz"><span class="rn"></span><div>
+    <div class="zitat">
+      <span class="quelle">Art. 17 GG — Petitionsrecht</span>
+      <p><strong>Jedermann</strong> hat das Recht, sich einzeln oder in Gemeinschaft mit
+      anderen schriftlich mit Bitten oder Beschwerden an die zuständigen Stellen und an
+      die Volksvertretung zu wenden.</p>
+      <a class="link" href="https://www.gesetze-im-internet.de/gg/art_17.html" target="_blank" rel="noopener">Amtlicher Wortlaut</a>
+    </div>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Ein Satz, und er enthält bemerkenswert wenige Hürden. <em>Jedermann</em> — keine
+    Altersgrenze, keine Staatsangehörigkeit, kein Wahlrecht erforderlich. Eine Sechzehnjährige
+    darf sich an den Bundestag wenden, und der Petitionsausschuss muss ihre Eingabe
+    behandeln und bescheiden. Verlangt wird nur Schriftlichkeit, kein Formular.</p>
+    <p>Beim Deutschen Bundestag wird eine öffentliche Petition in der Regel öffentlich im
+    Ausschuss beraten, wenn sie <strong>30.000 Mitzeichnungen in sechs Wochen</strong>
+    erreicht. Die überall noch kursierende Angabe „50.000 in vier Wochen“ ist überholt:
+    Das Quorum wurde zum 1. Juli 2024 gesenkt und die Frist verlängert.</p>
+  </div></div>
+
+  <h3>3. Etwas sagen</h3>
+
+  <div class="satz"><span class="rn"></span><div>
+    <div class="zitat">
+      <span class="quelle">Art. 5 GG — Meinungsfreiheit (Auszug)</span>
+      <p><span class="abs">(1)</span> Jeder hat das Recht, seine Meinung in Wort, Schrift
+      und Bild frei zu äußern und zu verbreiten und sich aus allgemein zugänglichen Quellen
+      ungehindert zu unterrichten. […] Eine Zensur findet nicht statt.</p>
+      <p><span class="abs">(2)</span> Diese Rechte finden ihre Schranken in den Vorschriften
+      der allgemeinen Gesetze, den gesetzlichen Bestimmungen zum Schutze der Jugend und in
+      dem Recht der persönlichen Ehre.</p>
+      <a class="link" href="https://www.gesetze-im-internet.de/gg/art_5.html" target="_blank" rel="noopener">Amtlicher Wortlaut</a>
+    </div>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Für die Praxis kommt es auf eine Unterscheidung an, die im Gesetzestext nicht steht,
+    aber alles entscheidet: <strong>Meinung oder Tatsachenbehauptung.</strong> Ein Werturteil
+    — „ich halte das für falsch“ — ist auch dann geschützt, wenn es scharf ausfällt.
+    Eine Tatsachenbehauptung — „er hat X getan“ — ist nur geschützt, soweit sie zutrifft
+    oder sorgfältig geprüft wurde.</p>
+    <p>Praktisch folgt daraus eine simple Regel: Wer etwas behauptet, sollte vorher
+    aufschreiben, woher er es weiß. Das ist der Unterschied zwischen mutig und belangbar.</p>
+  </div></div>
+
+  <h3>4. Im Betrieb melden</h3>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Das Hinweisgeberschutzgesetz gilt seit 2023 und schützt Beschäftigte, die Missstände
+    oder Rechtsverstöße melden, vor Kündigung und anderen Nachteilen. Betriebe mit
+    <strong>50 oder mehr Beschäftigten</strong> müssen eine interne Meldestelle einrichten.
+    Daneben gibt es externe Meldestellen — beim Bundesamt für Justiz, für Finanzthemen bei
+    der BaFin, für Kartellsachen beim Bundeskartellamt.</p>
+    <p>Entscheidend ist das <strong>Wahlrecht</strong>: Intern und extern sind rechtlich
+    gleichwertig. Niemand muss erst im eigenen Haus melden, bevor er sich an eine Behörde
+    wenden darf. Repressalien wegen einer Meldung sind verboten und bußgeldbewehrt.</p>
+  </div></div>
+
+  <div class="merke">
+    <span class="k">Der Bogen zu Martin Gauger</span>
+    <p>Dieses Gesetz adressiert genau das Machtgefälle, um das es im Wettbewerbstitel geht:
+    Mut zu zeigen, obwohl man selbst wenig Macht hat. Als Gauger 1934 den Eid verweigerte,
+    gab es nichts dergleichen. Er verlor seine Stellung, und niemand schützte ihn.</p>
+  </div>
+</section>
+
+<!-- ============ V ============ -->
+<section id="v">
+  <div class="abschnitt"><div class="ziffer">V.</div><h2>Der Vordruck</h2></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Alles Bisherige ist Wissen. Hier wird daraus ein Plan. Beantworte ein paar Fragen;
+    am Ende steht kein Ratschlag, sondern ein Blatt mit Frist, Zuständigkeit, Form und
+    Rechtsgrundlage — zum Ausdrucken.</p>
+  </div></div>
+
+  <div class="vordruck">
+    <div class="kopf"><span>Anlage 1 — Vorhaben</span><span>auszufüllen</span></div>
+    <div class="leib" id="planer" aria-live="polite"></div>
+  </div>
+
+  <p class="hinw">Stand: 24. September 2026. Eine Orientierung, keine Rechtsberatung.
+  Jede genannte Vorschrift ist unter IX. verlinkt.</p>
+</section>
+
+<!-- ============ VI ============ -->
+<section id="vi">
+  <div class="abschnitt"><div class="ziffer">VI.</div><h2>Martin Gauger</h2></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Martin Gauger wird am 4. August 1905 in Elberfeld geboren, als Sohn eines Pfarrers.
+    Er studiert Jura und tritt in den preußischen Staatsdienst ein. 1934 verlangt das Regime
+    von allen Beamten den Treueeid auf Adolf Hitler. Gauger leistet ihn nicht. Er ist der
+    einzige namentlich bekannte deutsche Jurist, von dem das überliefert ist. Er scheidet
+    daraufhin aus dem Dienst der Staatsanwaltschaft aus.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Seine Begründung ist keine politische. Sie ist eine juristische. Er hält es für
+    unerträglich, jemandem unbedingte Treue zu schwören, der — so die Formulierung des
+    Deutschen Richterbundes — „an kein Recht und kein Gesetz gebunden ist“. Ein Jurist
+    schwört auf die Bindung an das Gesetz. Wo diese Bindung auf der Gegenseite fehlt, ist
+    der Eid kein Eid mehr, sondern eine Unterwerfung.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Er geht nicht ins Private. Er arbeitet danach als Jurist für die evangelische Kirche,
+    beteiligt sich an der innerkirchlichen Opposition und setzt sich für Verfolgte ein,
+    darunter verfolgte Juden. Als er 1940 einberufen wird, versucht der überzeugte Pazifist,
+    sich das Leben zu nehmen. Bei dem anschließenden Fluchtversuch ins Ausland wird er
+    angeschossen; es folgt Gestapohaft.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Nach etwa einem Monat im Konzentrationslager Buchenwald schickt ihn die SS mit einem
+    sogenannten „Invalidentransport“ in die Tötungsanstalt Pirna-Sonnenstein. Dort wird
+    Martin Gauger am 14. Juli 1941 in der Gaskammer ermordet. Er ist 35 Jahre alt.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>An seiner Geschichte fällt auf, was <em>nicht</em> darin vorkommt. Keine Rede, keine
+    Demonstration, kein Flugblatt, kein Attentat. Der Akt, um den es geht, ist eine
+    Unterschrift, die nicht geleistet wurde. Deshalb steht über dem Preis, der seinen Namen
+    trägt, das Motto <b>„Mut statt Macht — Mitreden statt Mitlaufen. Warum Demokratie leise
+    Held/innen braucht!“</b></p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>An dieser Stelle läuft die Arbeit zusammen, und zwar an einem Detail, das leicht
+    übersehen wird: <b>Gauger war Jurist.</b></p>
+
+    <p>Das ist keine biografische Nebensache, sondern der Kern des Falls. Wer 1934 im
+    Staatsdienst stand, hatte für den Eid keine freie Wahl zwischen zwei Haltungen. Er
+    hatte einen Rechtsakt vor sich, dessen Wortlaut, Rechtsfolgen und Bruchstellen er als
+    Einziger im Raum präzise verstand. Gauger konnte die Formel lesen und sah, was sie
+    juristisch anrichtete: Ein Eid bindet an eine Ordnung. Ein Eid auf eine Person, die
+    selbst an keine Ordnung gebunden ist, bindet nur eine Seite. Das ist kein Gefühl. Das
+    ist eine Subsumtion.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Seine Verweigerung war deshalb keine Aufwallung, die er später hätte bereuen
+    können. Sie war das Ergebnis genau des Vorgangs, den diese Arbeit für die Gegenwart
+    beschreibt: erst wissen, was das Recht sagt — dann handeln. Nur dass er nicht
+    nachschlagen musste, weil er es ohnehin wusste.</p>
+
+    <p>Und was er wusste, umfasste auch den Preis. Er konnte abschätzen, was die Weigerung
+    kosten würde: die Stelle, die Laufbahn, die Sicherheit. Er hat sie trotzdem nicht
+    geleistet. Wissen hat ihn hier nicht bequem gemacht, sondern unbequem — es hat ihm die
+    Ausrede genommen, er habe es nicht besser wissen können.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Damit steht der Einwand im Raum, der sich gegen unsere eigene These richtet, und wir
+    müssen ihn aussprechen, statt ihn zu umgehen: <b>Gaugers Wissen hat ihn nicht gerettet.
+    Es hat ihn das Leben gekostet.</b> Sieben Jahre nach der verweigerten Unterschrift
+    stirbt er in einer Gaskammer. Wenn Rechtskenntnis das ist, was aus einem Gefühl eine
+    Handlung macht — was hilft sie, wenn die Handlung tödlich endet?</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Die Antwort, die wir geben, ist keine tröstliche. Wissen macht nicht sicher. Es
+    macht <em>zurechnungsfähig</em>. Es verwandelt eine Situation, in der einem etwas
+    zustößt, in eine, in der man entscheidet. Gauger ist nicht in die Verweigerung
+    hineingeraten; er hat sie gewählt, in Kenntnis dessen, was sie bedeutete. Das ist das
+    Einzige, was sein Wissen ihm gegeben hat, und es ist nicht wenig: Es hat aus einem
+    Opfer der Umstände einen Handelnden gemacht.</p>
+
+    <p>Ob diese Entscheidung ihn schützt, hängt nicht an ihm. Es hängt an der Ordnung, in
+    der er sie trifft. 1934 stand auf der anderen Seite niemand, der verpflichtet gewesen
+    wäre, ihn anzuhören. Heute steht dort eine Versammlungsbehörde, ein Petitionsausschuss,
+    eine Meldestelle. Das ist der ganze Unterschied — und er liegt nicht im Charakter der
+    Menschen, sondern in den Vorschriften aus Abschnitt IV.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Seit 2023 gibt es in Deutschland ein Gesetz, das Menschen in Gaugers Lage schützen
+    soll. Wer einen Missstand meldet, darf dafür nicht gekündigt, abgemahnt oder versetzt
+    werden; wer es doch tut, zahlt. Man kann das für spät halten — 82 Jahre nach seinem
+    Tod — und man kann fragen, ob ein Bußgeld ausreicht, wenn der Preis am Ende doch die
+    eigene Stellung ist.</p>
+
+    <p>Beides stimmt. Und trotzdem ist es der Satz, den Gauger nicht vorfand. Ihm hat
+    niemand gesagt, dass er geschützt sei, weil es nicht stimmte. Uns sagt es jemand, und
+    es stimmt. Was einem diese Zusage wert ist, merkt man erst, wenn man den Fall daneben
+    legt, in dem sie fehlte.</p>
+  </div></div>
+
+  <div class="merke">
+    <span class="k">Der Bogen</span>
+    <p>Gaugers Verweigerung war eine informierte Entscheidung, keine Aufwallung — daran
+    zeigt sich, dass Rechtskenntnis aus einer Haltung eine Handlung macht. Dass sie ihn
+    nicht gerettet hat, widerlegt das nicht. Es zeigt nur, woran ihr Schutzwert hängt:
+    nicht am Wissenden, sondern daran, ob es eine Stelle gibt, die zuhören muss.</p>
+  </div>
+</section>
+
+<!-- ============ VII ============ -->
+<section id="vii">
+  <div class="abschnitt"><div class="ziffer">VII.</div><h2>Die Gegenprobe</h2></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Gegen diese Arbeit lässt sich ein Einwand erheben, und er ist ernst zu nehmen:
+    Wer eine Demonstration anmeldet, macht sich bei der Behörde aktenkundig. Wer eine
+    Petition einreicht, gibt seinen Namen an. Wer im Betrieb etwas meldet, ist
+    identifizierbar. Alles, was diese Arbeit als Werkzeug beschreibt, hinterlässt eine
+    Spur. Ist das nicht genau die Kontrolle, vor der man Angst haben müsste?</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Die Gegenprobe beantwortet den Einwand. Man muss dafür dieselben Handlungen in die
+    Zeit versetzen, in der Martin Gauger gelebt hat.</p>
+
+    <p>1934 gab es keine Versammlungsbehörde, bei der man eine Kundgebung gegen die
+    Regierung hätte anzeigen können. Es gab keinen Petitionsausschuss, der eine Beschwerde
+    hätte prüfen müssen. Es gab keine Meldestelle, die einen Hinweisgeber vor Repressalien
+    geschützt hätte. Es gab die Formulare durchaus — nur führten sie zur Gestapo.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Daran zeigt sich, was ein Verfahren eigentlich ist. Eine Anzeigepflicht ist nicht
+    deshalb lästig, weil der Staat neugierig wäre. Sie ist der Punkt, an dem eine Behörde
+    eine <em>eigene</em> Pflicht bekommt: Sie muss die Versammlung nun schützen, den Verkehr
+    umleiten, die Gegendemonstration auf Abstand halten. Die Anzeige verwandelt ein
+    Vorhaben in einen Anspruch.</p>
+
+    <p>Dasselbe gilt für die Petition. Art. 17 GG gibt nicht nur das Recht, etwas
+    einzureichen. Aus ihm folgt, dass die angerufene Stelle die Eingabe entgegennehmen,
+    prüfen und bescheiden muss. Ein Recht, dem keine Pflicht gegenübersteht, wäre eine
+    Höflichkeitsfloskel.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Der Unterschied zwischen 1934 und heute liegt also nicht darin, ob es Formulare
+    gibt. Er liegt darin, wen das Formular verpflichtet. In einer Diktatur verpflichtet es
+    den Bürger gegenüber dem Staat. In einem Rechtsstaat verpflichtet es den Staat
+    gegenüber dem Bürger.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Daraus folgt nicht, dass heute alles gut ist. Der Vergleich mit 1934 taugt nicht als
+    Beruhigungsmittel, und wer ihn so benutzt, macht ihn wertlos: Dass es einmal schlimmer
+    war, ist kein Argument in irgendeiner Sache. Eine Behörde kann eine Versammlung
+    schikanös behandeln, eine Meldung kann versanden, eine Petition kann abgelegt werden.
+    Nichts davon ist mit dem Hinweis erledigt, dass es 1934 keine Behörde gab.</p>
+
+    <p>Was folgt, ist etwas Kleineres und Brauchbareres. Der Ärger über ein Formular richtet
+    sich fast immer gegen den falschen Adressaten. Das Formular ist nicht der Gegner. Es ist
+    die Stelle, an der man eine Zuständigkeit festnageln kann — und der Punkt, ab dem
+    jemand anderes eine Pflicht hat und nicht mehr nur man selbst.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Für die These aus Abschnitt II heißt das: Sie ist enger, als sie zunächst klingt.
+    Wissen macht handlungsfähig — aber nicht aus eigener Kraft. Es wirkt, weil auf der
+    anderen Seite jemand steht, den dieses Wissen bindet. Man kann die These deshalb auch
+    umgekehrt lesen, und so ist sie am genauesten: <b>Nicht das Wissen schützt. Der
+    Rechtsstaat schützt. Das Wissen ist nur der Zugang dazu</b> — und ein Zugang, den
+    niemand benutzt, ist so gut wie keiner.</p>
+  </div></div>
+</section>
+
+<!-- ============ VIII ============ -->
+<section id="viii">
+  <div class="abschnitt"><div class="ziffer">VIII.</div><h2>Deine Antwort</h2></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p><strong>Bevor du diese Seite geöffnet hast:</strong> Hättest du gewusst, wie man
+    eine Demonstration anmeldet?</p>
+    <div class="skala" id="vorher">
+      <button type="button" data-w="ja" aria-pressed="false">Ja, ungefähr</button>
+      <button type="button" data-w="nein" aria-pressed="false">Nein</button>
+      <button type="button" data-w="egal" aria-pressed="false">Darüber nie nachgedacht</button>
+    </div>
+    <p class="echo" id="echo" hidden></p>
+    <p class="hinw" style="margin-top:.9rem">Deine Antwort bleibt auf diesem Gerät.
+    Nichts wird gespeichert, nichts gesendet.</p>
+  </div></div>
+</section>
+
+<!-- ============ IX ============ -->
+<section id="ix" class="fuss">
+  <div class="abschnitt"><div class="ziffer">IX.</div><h2>Nachweise</h2></div>
+
+  <h3>Verfasser</h3>
+  <p>Michael Friedl und Tom &middot; Wirtschaftsrecht Q2 &middot; Berufskolleg an der
+  Lindenstraße, Köln. Beitrag zum Martin-Gauger-Preis 2026 des Deutschen Richterbundes
+  Nordrhein-Westfalen.</p>
+
+  <p>Wir haben dieses Thema gewählt, weil uns im Kurs aufgefallen ist, dass wir über
+  Zivilcourage reden konnten, ohne eine einzige Vorschrift zu kennen, die dabei gilt.
+  Diese Arbeit ist der Versuch, das für uns selbst zu ändern.</p>
+
+  <h3>Rechtsquellen</h3>
+  <ul class="quellen">
+    <li><a href="https://www.gesetze-im-internet.de/gg/art_5.html" target="_blank" rel="noopener">Art. 5 GG — Meinungsfreiheit</a></li>
+    <li><a href="https://www.gesetze-im-internet.de/gg/art_8.html" target="_blank" rel="noopener">Art. 8 GG — Versammlungsfreiheit</a></li>
+    <li><a href="https://www.gesetze-im-internet.de/gg/art_17.html" target="_blank" rel="noopener">Art. 17 GG — Petitionsrecht</a></li>
+    <li><a href="https://www.gesetze-im-internet.de/stgb/__13.html" target="_blank" rel="noopener">§ 13 StGB — Begehen durch Unterlassen</a></li>
+    <li><a href="https://www.gesetze-im-internet.de/stgb/__138.html" target="_blank" rel="noopener">§ 138 StGB — Nichtanzeige geplanter Straftaten</a></li>
+    <li><a href="https://www.gesetze-im-internet.de/stgb/__323c.html" target="_blank" rel="noopener">§ 323c StGB — Unterlassene Hilfeleistung</a></li>
+    <li><a href="https://recht.nrw.de/lmi/owa/br_bes_detail?sg=2&amp;menu=1&amp;bes_id=47651&amp;anw_nr=2&amp;aufgehoben=N&amp;det_id=542455" target="_blank" rel="noopener">§ 10 Versammlungsgesetz NRW — Anzeige</a></li>
+    <li><a href="https://www.gesetze-im-internet.de/hinschg/" target="_blank" rel="noopener">Hinweisgeberschutzgesetz</a></li>
+  </ul>
+
+  <h3>Weitere Quellen</h3>
+  <ul class="quellen">
+    <li><a href="https://polizei.nrw/sites/default/files/2023-02/anzeige-einer-versammlung.pdf" target="_blank" rel="noopener">Polizei NRW — Anzeige einer Versammlung unter freiem Himmel, Pflichtangaben</a></li>
+    <li><a href="https://www.bundestag.de/dokumente/textarchiv/2024/kw26-pa-petitionen-quorum-1010108" target="_blank" rel="noopener">Deutscher Bundestag — Senkung des Petitions-Quorums auf 30.000 Mitzeichnungen, 2024</a></li>
+    <li><a href="https://www.bundesjustizamt.de/DE/MeldestelledesBundes/Fragen/Fragen_node.html" target="_blank" rel="noopener">Bundesamt für Justiz — Externe Meldestelle des Bundes</a></li>
+    <li><a href="https://www.buchenwald.de/geschichte/biografien/bag-ausstellung/martin-gauger" target="_blank" rel="noopener">Gedenkstätte Buchenwald — Biografie Martin Gotthard Gauger</a> <span class="fund">(Lebensdaten, Eidverweigerung, Flucht, Pirna-Sonnenstein, 14.7.1941)</span></li>
+    <li><a href="https://www.drb-nrw.de/positionen-und-leistungen/martin-gauger-preis/martin-gauger" target="_blank" rel="noopener">Deutscher Richterbund NRW — Martin Gauger und der Martin-Gauger-Preis</a> <span class="fund">(Begründung der Eidverweigerung, Motto des Preises)</span></li>
+  </ul>
+
+  <h3>Einsatz von KI</h3>
+  <p>Diese Arbeit ist unter Einsatz von Claude (Anthropic) entstanden. Wir halten offen,
+  wofür:</p>
+  <ul class="quellen">
+    <li>Die <b>technische Umsetzung</b> der Website und des Vordrucks in Abschnitt V wurde
+    mit Claude erstellt.</li>
+    <li>Die <b>Recherche</b> zu den Rechtsgrundlagen haben wir mit Claude begonnen. Jede
+    hier zitierte Vorschrift haben wir anschließend im amtlichen Wortlaut auf
+    gesetze-im-internet.de beziehungsweise recht.nrw.de nachgelesen; die Angaben zu Martin
+    Gauger sind an der Biografie der Gedenkstätte Buchenwald geprüft.</li>
+    <li>Bei den <b>Texten</b> haben wir mit Claude formuliert und überarbeitet. Die
+    Fragestellung, die These und die Wertungen sind unsere.</li>
+  </ul>
+  <p>Wir halten das für angebracht, weil eine Arbeit über Rechtskenntnis schlecht damit
+  anfangen kann, die eigenen Quellen zu verschweigen. Zwei Stellen haben wir bei der
+  Prüfung korrigiert: Das Petitions-Quorum liegt seit 2024 bei 30.000 Mitzeichnungen in
+  sechs Wochen, nicht bei 50.000 in vier — und Martin Gauger wurde nicht in Buchenwald
+  ermordet, sondern in der Tötungsanstalt Pirna-Sonnenstein.</p>
+
+  <h3>Datenschutz</h3>
+  <p>Diese Seite setzt keine Cookies, bindet keine Analysedienste ein und speichert keine
+  personenbezogenen Daten. Die Antworten im Vordruck (Abschnitt V) und in Abschnitt VIII
+  werden ausschließlich im Browser verarbeitet und verlassen das Gerät nicht; beim
+  Schließen der Seite sind sie weg. Die Schriften werden von Google Fonts geladen, dabei
+  wird die IP-Adresse an Google übertragen.</p>
+</section>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var wurzel = document.getElementById("planer");
+  var zustand = { weg:null, schritt:0, daten:{} };
+
+  function el(tag, klasse, text){
+    var n = document.createElement(tag);
+    if (klasse) n.className = klasse;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function datum(d){
+    return d.toLocaleDateString("de-DE",{weekday:"long", day:"2-digit", month:"long", year:"numeric"});
+  }
+  function uhr(d){ return d.toLocaleTimeString("de-DE",{hour:"2-digit", minute:"2-digit"}); }
+
+  var wege = [
+    { id:"demo",     titel:"Eine Versammlung durchführen", unter:"Demonstration, Mahnwache, Kundgebung, Aufzug" },
+    { id:"petition", titel:"Eine Petition einreichen",     unter:"An den Bundestag, den Landtag oder eine Behörde" },
+    { id:"melden",   titel:"Im Betrieb etwas melden",      unter:"Missstände ansprechen, ohne die Stelle zu riskieren" },
+    { id:"sagen",    titel:"Öffentlich etwas behaupten",   unter:"Und wissen, wo die Grenze verläuft" }
+  ];
+
+  function zeigeStart(){
+    wurzel.textContent = "";
+    wurzel.appendChild(el("p","stufe","Feld 1 von 3"));
+    wurzel.appendChild(el("p","frage","Was hast du vor?"));
+    var box = el("div","wahl");
+    wege.forEach(function(w){
+      var b = document.createElement("button"); b.type = "button";
+      b.appendChild(el("b", null, w.titel));
+      b.appendChild(el("span", null, w.unter));
+      b.addEventListener("click", function(){
+        zustand.weg = w.id; zustand.schritt = 1; zustand.daten = {};
+        zeigeFragen();
+      });
+      box.appendChild(b);
+    });
+    wurzel.appendChild(box);
+  }
+
+  var fragen = {
+    demo: [
+      { art:"wahl", schluessel:"ort", text:"Wo soll sie stattfinden?",
+        optionen:[
+          {wert:"draussen", titel:"Unter freiem Himmel", unter:"Straße, Platz, Park"},
+          {wert:"drinnen",  titel:"In einem geschlossenen Raum", unter:"Saal, Aula, Gaststätte"}
+        ]},
+      { art:"text", schluessel:"stadt", text:"In welcher Stadt oder welchem Kreis?",
+        marke:"Ort", platzhalter:"z. B. Köln" },
+      { art:"datum", schluessel:"einladung", text:"Wann willst du öffentlich dazu aufrufen?",
+        marke:"Tag der Einladung",
+        hinweis:"Der Tag, an dem der Aufruf erscheint oder die Plakate hängen — nicht der Tag der Versammlung." }
+    ],
+    petition: [
+      { art:"wahl", schluessel:"adressat", text:"An wen richtet sie sich?",
+        optionen:[
+          {wert:"bund",     titel:"Deutscher Bundestag", unter:"Bundesrecht, bundesweite Themen"},
+          {wert:"land",     titel:"Landtag Nordrhein-Westfalen", unter:"Schule, Polizei, Hochschulen, Kommunales"},
+          {wert:"behoerde", titel:"Eine einzelne Behörde", unter:"Stadt, Amt, Ministerium"}
+        ]}
+    ],
+    melden: [
+      { art:"wahl", schluessel:"groesse", text:"Wie viele Beschäftigte hat der Betrieb?",
+        optionen:[
+          {wert:"gross", titel:"50 oder mehr", unter:"Dann muss es eine interne Meldestelle geben"},
+          {wert:"klein", titel:"Weniger als 50", unter:"Keine Pflicht zur internen Meldestelle"},
+          {wert:"unbek", titel:"Unbekannt", unter:"Der externe Weg steht dir ohnehin offen"}
+        ]}
+    ],
+    sagen: [
+      { art:"wahl", schluessel:"art", text:"Worum geht es?",
+        optionen:[
+          {wert:"meinung",  titel:"Um eine Bewertung", unter:"Etwas, das man richtig oder falsch finden kann"},
+          {wert:"tatsache", titel:"Um eine Tatsachenbehauptung", unter:"Etwas, das wahr oder unwahr ist"}
+        ]}
+    ]
+  };
+
+  function zurueckTaste(){
+    var b = el("button","taste neben","Zurück"); b.type = "button";
+    b.addEventListener("click", function(){
+      zustand.schritt--;
+      if (zustand.schritt < 1) zeigeStart(); else zeigeFragen();
+    });
+    return b;
+  }
+
+  function zeigeFragen(){
+    var liste = fragen[zustand.weg];
+    var i = zustand.schritt - 1;
+    if (i >= liste.length){ zeigePlan(); return; }
+    var f = liste[i];
+
+    wurzel.textContent = "";
+    wurzel.appendChild(el("p","stufe","Feld " + (i + 2) + " von " + (liste.length + 1)));
+    wurzel.appendChild(el("p","frage", f.text));
+
+    if (f.art === "wahl"){
+      var box = el("div","wahl");
+      f.optionen.forEach(function(o){
+        var b = document.createElement("button"); b.type = "button";
+        b.appendChild(el("b", null, o.titel));
+        if (o.unter) b.appendChild(el("span", null, o.unter));
+        b.addEventListener("click", function(){
+          zustand.daten[f.schluessel] = o.wert;
+          zustand.schritt++; zeigeFragen();
+        });
+        box.appendChild(b);
+      });
+      wurzel.appendChild(box);
+      var r = el("div","reihe"); r.appendChild(zurueckTaste()); wurzel.appendChild(r);
+    } else {
+      var feld = el("div","feld");
+      var lab = el("label", null, f.marke); lab.htmlFor = "eingabe";
+      var inp = document.createElement("input");
+      inp.id = "eingabe";
+      inp.type = (f.art === "datum") ? "date" : "text";
+      if (f.platzhalter) inp.placeholder = f.platzhalter;
+      feld.appendChild(lab); feld.appendChild(inp);
+      wurzel.appendChild(feld);
+      if (f.hinweis) wurzel.appendChild(el("p","hinw", f.hinweis));
+      var reihe = el("div","reihe");
+      var weiter = el("button","taste haupt","Weiter"); weiter.type = "button";
+      weiter.addEventListener("click", function(){
+        zustand.daten[f.schluessel] = inp.value;
+        zustand.schritt++; zeigeFragen();
+      });
+      reihe.appendChild(weiter); reihe.appendChild(zurueckTaste());
+      wurzel.appendChild(reihe);
+      inp.focus();
+      inp.addEventListener("keydown", function(e){ if (e.key === "Enter") weiter.click(); });
+    }
+  }
+
+  function zeigePlan(){
+    var d = zustand.daten;
+    wurzel.textContent = "";
+    var b = el("div","bescheid");
+    b.appendChild(el("p","az","Ergebnis — Anlage 2"));
+
+    var dl = document.createElement("dl");
+    function zeile(t, inhalt){
+      dl.appendChild(el("dt", null, t));
+      var dd = document.createElement("dd"); dd.innerHTML = inhalt; dl.appendChild(dd);
+    }
+    var fussnoten = [];
+
+    if (zustand.weg === "demo"){
+      if (d.ort === "drinnen"){
+        b.appendChild(el("h4", null, "Versammlung in einem geschlossenen Raum"));
+        zeile("Grundlage", "Art. 8 Abs. 1 GG — ohne Anmeldung und ohne Erlaubnis.");
+        zeile("Anzeige", "Die Anzeigepflicht des <b>§ 10 VersG NRW</b> gilt nur für Versammlungen <b>unter freiem Himmel</b>. Für geschlossene Räume gilt sie nicht.");
+        zeile("Trotzdem klären", "Wem gehört der Raum? Hausrecht, Mietvertrag und Hausordnung entscheiden über die Nutzung.");
+      } else {
+        b.appendChild(el("h4", null, "Versammlung unter freiem Himmel" + (d.stadt ? " in " + d.stadt : "")));
+        var frist = null;
+        if (d.einladung){
+          var ein = new Date(d.einladung + "T12:00:00");
+          if (!isNaN(ein)) frist = new Date(ein.getTime() - 48*60*60*1000);
+        }
+        zeile("Grundlage", "Art. 8 GG · <b>§ 10 VersG NRW</b>");
+        if (frist){
+          zeile("Frist", "Anzeige spätestens am <b>" + datum(frist) + "</b> gegen " + uhr(frist) +
+                " Uhr. Das sind 48 Stunden vor deiner Einladung — nicht vor der Versammlung.");
+        } else {
+          zeile("Frist", "Spätestens <b>48 Stunden vor der Einladung</b> zur Versammlung.");
+        }
+        zeile("Zuständig", "Die Versammlungsbehörde" + (d.stadt ? " in " + d.stadt : "") + "; in NRW die Kreispolizeibehörde.");
+        zeile("Form", "Schriftlich, elektronisch oder zur Niederschrift.");
+        zeile("Inhalt", "Erwartete Teilnehmerzahl, Ort, Zeit und Thema; bei Aufzügen der beabsichtigte Streckenverlauf. Dazu Name, telefonische Erreichbarkeit und Anschrift der anzeigenden Person und der Person, die die Versammlung leiten soll.");
+        fussnoten.push(["Wenn die Zeit nicht reicht",
+          "Würde die 48-Stunden-Frist den Zweck der Versammlung gefährden, genügt die Anzeige spätestens mit der Bekanntgabe, auch telefonisch (§ 10 Abs. 3 VersG NRW — Eilversammlung)."]);
+        fussnoten.push(["Wenn gar keine Zeit bleibt",
+          "Bildet sich eine Versammlung aufgrund eines aktuellen Anlasses augenblicklich, entfällt die Anzeigepflicht ganz (§ 10 Abs. 4 — Spontanversammlung). Das Grundrecht geht der Form vor."]);
+      }
+
+    } else if (zustand.weg === "petition"){
+      b.appendChild(el("h4", null, "Petition"));
+      zeile("Grundlage", "<b>Art. 17 GG</b> — „Jedermann hat das Recht, sich einzeln oder in Gemeinschaft mit anderen schriftlich mit Bitten oder Beschwerden an die zuständigen Stellen und an die Volksvertretung zu wenden.“");
+      zeile("Wer darf", "Jedermann. Das Grundgesetz nennt keine Altersgrenze und verlangt keine Staatsangehörigkeit.");
+      zeile("Form", "Schriftlich. Ein Brief oder eine elektronische Eingabe genügt; ein Formular ist nicht vorgeschrieben.");
+      if (d.adressat === "bund"){
+        zeile("Adressat", "Petitionsausschuss des Deutschen Bundestages, online über das ePetitionsportal.");
+        zeile("Öffentliche Beratung", "Bei <b>30.000 Mitzeichnungen in sechs Wochen</b> wird eine öffentliche Petition in der Regel öffentlich im Ausschuss beraten; die Petenten werden angehört.");
+        fussnoten.push(["Veraltete Angaben im Umlauf",
+          "Fast überall steht noch „50.000 in vier Wochen“. Das Quorum wurde zum 1. Juli 2024 auf 30.000 gesenkt und die Mitzeichnungsfrist auf sechs Wochen verlängert."]);
+      } else if (d.adressat === "land"){
+        zeile("Adressat", "Petitionsausschuss des Landtags Nordrhein-Westfalen.");
+        zeile("Wofür", "Alles, wofür das Land zuständig ist: Schule, Polizei, Hochschulen, Kommunales.");
+      } else {
+        zeile("Adressat", "Die zuständige Stelle unmittelbar. Sie ist verpflichtet, die Eingabe entgegenzunehmen und zu bescheiden.");
+      }
+
+    } else if (zustand.weg === "melden"){
+      b.appendChild(el("h4", null, "Meldung im Betrieb"));
+      zeile("Grundlage", "<b>Hinweisgeberschutzgesetz</b> (HinSchG), in Kraft seit 2023.");
+      if (d.groesse === "gross"){
+        zeile("Interner Weg", "Betriebe mit <b>50 oder mehr Beschäftigten</b> müssen eine interne Meldestelle unterhalten. Du darfst verlangen, dass sie dir genannt wird.");
+      } else if (d.groesse === "klein"){
+        zeile("Interner Weg", "Unter 50 Beschäftigten besteht keine Pflicht zu einer internen Meldestelle.");
+      } else {
+        zeile("Interner Weg", "Ab <b>50 Beschäftigten</b> muss eine interne Meldestelle bestehen.");
+      }
+      zeile("Externer Weg", "Externe Meldestelle des Bundes beim <b>Bundesamt für Justiz</b>; für Finanzthemen die BaFin, für Kartellsachen das Bundeskartellamt.");
+      zeile("Wahlrecht", "Intern und extern sind rechtlich gleichwertig. Eine vorherige interne Meldung ist nicht vorgeschrieben.");
+      fussnoten.push(["Was dich schützt",
+        "Repressalien wegen einer Meldung — Kündigung, Abmahnung, Versetzung — sind verboten und mit Bußgeld bedroht. Wer heute meldet, riskiert damit nicht mehr automatisch die Stelle. Wie neu das ist, zeigt Abschnitt VI."]);
+
+    } else {
+      b.appendChild(el("h4", null, "Eine öffentliche Äußerung"));
+      zeile("Grundlage", "<b>Art. 5 Abs. 1 GG</b>. Die Schranken nennt Absatz 2: die allgemeinen Gesetze, der Jugendschutz und das Recht der persönlichen Ehre.");
+      if (d.art === "meinung"){
+        zeile("Einordnung", "Werturteile sind besonders geschützt — auch scharfe und unbequeme. Die Grenze liegt dort, wo es nicht mehr um die Sache geht, sondern nur noch um die Herabwürdigung einer Person.");
+        zeile("Grenzen", "<b>§ 185 StGB</b> Beleidigung. Bei Äußerungen gegen Gruppen zusätzlich <b>§ 130 StGB</b> Volksverhetzung.");
+      } else {
+        zeile("Einordnung", "Tatsachenbehauptungen sind geschützt, soweit sie zutreffen oder sorgfältig geprüft wurden. Bewusst Unwahres ist von Art. 5 GG nicht gedeckt.");
+        zeile("Grenzen", "<b>§ 186 StGB</b> üble Nachrede — die Wahrheit muss beweisbar sein. <b>§ 187 StGB</b> Verleumdung, wenn wider besseres Wissen behauptet wird.");
+        fussnoten.push(["Praktisch",
+          "Schreib auf, woher du es weißt, bevor du es sagst. Das ist der Unterschied zwischen mutig und belangbar."]);
+      }
+    }
+
+    b.appendChild(dl);
+
+    if (fussnoten.length){
+      var fn = el("div","fussnote");
+      fussnoten.forEach(function(f){
+        var p = document.createElement("p");
+        p.innerHTML = "<strong>" + f[0] + ":</strong> " + f[1];
+        fn.appendChild(p);
+      });
+      b.appendChild(fn);
+    }
+
+    var reihe = el("div","reihe");
+    var neu = el("button","taste haupt","Neues Vorhaben"); neu.type = "button";
+    neu.addEventListener("click", function(){
+      zeigeStart();
+      document.getElementById("v").scrollIntoView({block:"start", behavior:"smooth"});
+    });
+    var druck = el("button","taste neben","Drucken"); druck.type = "button";
+    druck.addEventListener("click", function(){ window.print(); });
+    reihe.appendChild(neu); reihe.appendChild(druck);
+    b.appendChild(reihe);
+
+    wurzel.appendChild(b);
+  }
+
+  zeigeStart();
+
+  var echo = document.getElementById("echo");
+  var texte = {
+    ja:   "Dann gehörst du zu einer Minderheit — und weißt jetzt hoffentlich auch, dass die 48 Stunden vor der Einladung laufen und nicht vor der Versammlung.",
+    nein: "Damit bist du in guter Gesellschaft. Genau das ist der Punkt dieser Arbeit: Es fehlt selten der Mut, es fehlt das Wissen.",
+    egal: "Die häufigste Antwort — und die interessanteste. Über etwas nicht nachzudenken ist die leiseste Form des Mitlaufens."
+  };
+  document.querySelectorAll("#vorher button").forEach(function(knopf){
+    knopf.addEventListener("click", function(){
+      document.querySelectorAll("#vorher button").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+      knopf.setAttribute("aria-pressed","true");
+      echo.textContent = texte[knopf.dataset.w];
+      echo.hidden = false;
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
