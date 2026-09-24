@@ -1,4 +1,4 @@
-/* Michael Friedl · Finanzberatung — Seitenlogik
+/* Michael Friedl · Finanzberatung, Seitenlogik
    Aufbau: Einstellungen, Kopfleiste, Jahreszahl, Fragebogen. */
 
 const EINSTELLUNGEN = {
@@ -72,13 +72,13 @@ const SCHRITTE = [
   {
     schluessel: "alter",
     frage: "In welcher Altersgruppe sind Sie?",
-    antworten: ["Unter 25", "25 – 39", "40 – 55", "Über 55"]
+    antworten: ["Unter 25", "25 bis 39", "40 bis 55", "Über 55"]
   },
   {
     schluessel: "kapital",
     frage: "Wie viel möchten Sie monatlich investieren oder zurücklegen?",
-    hilfe: "Eine grobe Einschätzung genügt — es geht nur um die Richtung.",
-    antworten: ["Bis 250 €", "250 – 750 €", "750 – 1.500 €", "Mehr als 1.500 € / Einmalbetrag vorhanden"]
+    hilfe: "Eine grobe Einschätzung genügt, es geht nur um die Richtung.",
+    antworten: ["Bis 250 €", "250 bis 750 €", "750 bis 1.500 €", "Mehr als 1.500 € / Einmalbetrag vorhanden"]
   },
   {
     schluessel: "dringlichkeit",
@@ -264,8 +264,8 @@ async function absenden(ereignis, form, knopf, klein){
     replyto: email,
     Name: name,
     "E-Mail": email,
-    Telefon: (daten.get("telefon") || "").toString().trim() || "—",
-    Nachricht: (daten.get("nachricht") || "").toString().trim() || "—"
+    Telefon: (daten.get("telefon") || "").toString().trim() || "nicht angegeben",
+    Nachricht: (daten.get("nachricht") || "").toString().trim() || "nicht angegeben"
   };
   SCHRITTE.forEach(s => {
     if (s.art !== "formular" && bogen.antworten[s.schluessel]) paket[s.frage] = bogen.antworten[s.schluessel];
@@ -303,7 +303,7 @@ function erfolgZeichnen(name){
   const text = document.createElement("p");
   text.className = "bogen-hilfe";
   text.style.marginTop = ".5rem";
-  text.textContent = "Ihre Anfrage ist bei mir angekommen. Ich melde mich persönlich bei Ihnen — meist noch am selben Tag.";
+  text.textContent = "Ihre Anfrage ist bei mir angekommen. Ich melde mich persönlich bei Ihnen, meist noch am selben Tag.";
   const reihe = document.createElement("div");
   reihe.style.cssText = "display:flex; gap:.7rem; justify-content:center; flex-wrap:wrap; margin-top:1.4rem";
   const termin = document.createElement("a");
