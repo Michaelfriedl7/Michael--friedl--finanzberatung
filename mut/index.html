@@ -1001,7 +1001,7 @@ const LAENDER = {
     var fussnoten = [];
 
     if (zustand.weg === "demo"){
-      var LR = LAENDER[d.land] || LAENDER["Nordrhein-Westfalen"];
+      var LR = LAENDER[d.land] || LAENDER["Hamburg"];   /* ohne Angabe: Bundesrecht */
       if (d.ort === "drinnen"){
         b.appendChild(el("h4", null, "Versammlung in einem geschlossenen Raum"));
         zeile("Grundlage", "Art. 8 Abs. 1 GG, ohne Anmeldung und ohne Erlaubnis.");
@@ -1029,8 +1029,16 @@ const LAENDER = {
         }
         zeile("Zuständig", "Die Versammlungsbehörde" + (d.stadt ? " in " + d.stadt : "") +
               ". Wer das ist, regelt jedes Land selbst: teils die Kommune, teils die Polizeibehörde.");
-        zeile("Form", "Schriftlich, elektronisch oder zur Niederschrift.");
-        zeile("Inhalt", "Erwartete Teilnehmerzahl, Ort, Zeit und Thema; bei Aufzügen der beabsichtigte Streckenverlauf. Dazu Name, telefonische Erreichbarkeit und Anschrift der anzeigenden Person und der Person, die die Versammlung leiten soll.");
+        if (d.land === "Nordrhein-Westfalen"){
+          zeile("Form", "Schriftlich, elektronisch oder zur Niederschrift.");
+          zeile("Inhalt", "Erwartete Teilnehmerzahl, Ort, Zeit und Thema; bei Aufzügen der beabsichtigte Streckenverlauf. Dazu Name, telefonische Erreichbarkeit und Anschrift der anzeigenden Person und der Person, die die Versammlung leiten soll.");
+        } else if (LR.bund){
+          zeile("Inhalt", "Vorgeschrieben sind der <b>Gegenstand</b> der Versammlung und die Person, die für die <b>Leitung</b> verantwortlich ist (§ 14 VersammlG). Die Behörden fragen in der Praxis zusätzlich Ort, Zeit, erwartete Teilnehmerzahl und bei Aufzügen die Route ab.");
+          zeile("Form", "Nicht einheitlich geregelt. Viele Versammlungsbehörden bieten ein Formular oder eine Online-Anzeige an; frag im Zweifel dort nach.");
+        } else {
+          zeile("Inhalt", "Mindestens das Thema der Versammlung und wer sie leitet. Welche Angaben dein Land zusätzlich verlangt, steht im " + LR.gesetz + ".");
+          zeile("Form", "Regelt dein Land selbst. Viele Versammlungsbehörden bieten ein Formular oder eine Online-Anzeige an.");
+        }
         if (LR.wortlaut) fussnoten.push(["Der Wortlaut", "„" + LR.wortlaut + "“ (" + LR.norm + ")"]);
         fussnoten.push(["Wenn die Zeit nicht reicht",
           "Eilversammlung: Ist die Versammlung aus aktuellem Anlass kurzfristig geplant und würde die Regelfrist ihren Zweck vereiteln, genügt die Anzeige spätestens mit der Bekanntgabe, vielfach auch telefonisch. Diese Ausnahme kennen alle Versammlungsgesetze, die Einzelheiten stehen im Recht deines Landes."]);
@@ -1354,10 +1362,10 @@ const NORMEN = {
 },
 "eil": {
 "marke": "Eilversammlung",
-"titel": "§ 10 Abs. 3 VersG NRW",
+"titel": "Begriff aus dem Versammlungsrecht",
 "text": [
-"Eine Versammlung, die aus einem aktuellen Anlass kurzfristig geplant wird und bei Einhaltung der 48-Stunden-Frist ihren Zweck verfehlen würde.",
-"Hier genügt die Anzeige spätestens mit der Bekanntgabe der Versammlung; sie kann auch telefonisch erfolgen."
+"Eine Versammlung, die aus einem aktuellen Anlass kurzfristig geplant wird und bei Einhaltung der regulären Anzeigefrist ihren Zweck verfehlen würde.",
+"Dann genügt eine kurzfristige Anzeige, in der Regel spätestens mit der Bekanntgabe. Die Einzelheiten regelt jedes Land selbst, in NRW etwa § 10 Abs. 3 VersG NRW."
 ],
 "link": null,
 "note": "Der Unterschied zur Spontanversammlung: Die Eilversammlung wird geplant, nur eben kurzfristig. Angezeigt werden muss sie trotzdem, nur ohne Vorlauf.",
@@ -1368,7 +1376,7 @@ const NORMEN = {
 },
 "spontan": {
 "marke": "Spontanversammlung",
-"titel": "§ 10 Abs. 4 VersG NRW",
+"titel": "Begriff aus dem Versammlungsrecht",
 "text": [
 "Eine Versammlung, die sich aufgrund eines aktuellen Anlasses augenblicklich bildet, ohne Veranstalter und ohne vorherige Planung.",
 "Für sie entfällt die Anzeigepflicht vollständig."
