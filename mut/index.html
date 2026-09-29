@@ -268,6 +268,15 @@
   .fund:hover, .fund.aktiv{ background:var(--rot-blass) }
   .fund:focus-visible{ outline:2px solid var(--rot); outline-offset:2px }
 
+  .vordruck .auswahl{
+    font:inherit; color:var(--tinte); background:var(--blatt);
+    border:0; border-bottom:1.5px solid var(--tinte); border-radius:0;
+    padding:.5rem .1rem; width:100%; -webkit-appearance:none; appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%238E1B14' stroke-width='1.8'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right .2rem center; background-size:.7rem;
+  }
+  .bescheid dd .leise{ font-size:.86em; color:var(--grau) }
+
   .apparat-schatten{
     position:fixed; inset:0; background:rgba(26,26,22,.28);
     opacity:0; transition:opacity .2s; z-index:40;
@@ -1082,6 +1091,153 @@
 </div>
 
 <script>
+const LAENDER = {
+"Baden-Württemberg": {
+"gesetz": "Versammlungsgesetz des Bundes (VersammlG)",
+"norm": "§ 14 Abs. 1 VersammlG",
+"frist": "spätestens 48 Stunden vor der Bekanntgabe",
+"wortlaut": "Wer die Absicht hat, eine öffentliche Versammlung unter freiem Himmel oder einen Aufzug zu veranstalten, hat dies spätestens 48 Stunden vor der Bekanntgabe der zuständigen Behörde unter Angabe des Gegenstandes der Versammlung oder des Aufzuges anzumelden.",
+"link": "https://www.gesetze-im-internet.de/versammlg/__14.html",
+"geprueft": true,
+"bund": true
+},
+"Brandenburg": {
+"gesetz": "Versammlungsgesetz des Bundes (VersammlG)",
+"norm": "§ 14 Abs. 1 VersammlG",
+"frist": "spätestens 48 Stunden vor der Bekanntgabe",
+"wortlaut": "Wer die Absicht hat, eine öffentliche Versammlung unter freiem Himmel oder einen Aufzug zu veranstalten, hat dies spätestens 48 Stunden vor der Bekanntgabe der zuständigen Behörde unter Angabe des Gegenstandes der Versammlung oder des Aufzuges anzumelden.",
+"link": "https://www.gesetze-im-internet.de/versammlg/__14.html",
+"geprueft": true,
+"bund": true
+},
+"Bremen": {
+"gesetz": "Versammlungsgesetz des Bundes (VersammlG)",
+"norm": "§ 14 Abs. 1 VersammlG",
+"frist": "spätestens 48 Stunden vor der Bekanntgabe",
+"wortlaut": "Wer die Absicht hat, eine öffentliche Versammlung unter freiem Himmel oder einen Aufzug zu veranstalten, hat dies spätestens 48 Stunden vor der Bekanntgabe der zuständigen Behörde unter Angabe des Gegenstandes der Versammlung oder des Aufzuges anzumelden.",
+"link": "https://www.gesetze-im-internet.de/versammlg/__14.html",
+"geprueft": true,
+"bund": true
+},
+"Hamburg": {
+"gesetz": "Versammlungsgesetz des Bundes (VersammlG)",
+"norm": "§ 14 Abs. 1 VersammlG",
+"frist": "spätestens 48 Stunden vor der Bekanntgabe",
+"wortlaut": "Wer die Absicht hat, eine öffentliche Versammlung unter freiem Himmel oder einen Aufzug zu veranstalten, hat dies spätestens 48 Stunden vor der Bekanntgabe der zuständigen Behörde unter Angabe des Gegenstandes der Versammlung oder des Aufzuges anzumelden.",
+"link": "https://www.gesetze-im-internet.de/versammlg/__14.html",
+"geprueft": true,
+"bund": true
+},
+"Mecklenburg-Vorpommern": {
+"gesetz": "Versammlungsgesetz des Bundes (VersammlG)",
+"norm": "§ 14 Abs. 1 VersammlG",
+"frist": "spätestens 48 Stunden vor der Bekanntgabe",
+"wortlaut": "Wer die Absicht hat, eine öffentliche Versammlung unter freiem Himmel oder einen Aufzug zu veranstalten, hat dies spätestens 48 Stunden vor der Bekanntgabe der zuständigen Behörde unter Angabe des Gegenstandes der Versammlung oder des Aufzuges anzumelden.",
+"link": "https://www.gesetze-im-internet.de/versammlg/__14.html",
+"geprueft": true,
+"bund": true
+},
+"Rheinland-Pfalz": {
+"gesetz": "Versammlungsgesetz des Bundes (VersammlG)",
+"norm": "§ 14 Abs. 1 VersammlG",
+"frist": "spätestens 48 Stunden vor der Bekanntgabe",
+"wortlaut": "Wer die Absicht hat, eine öffentliche Versammlung unter freiem Himmel oder einen Aufzug zu veranstalten, hat dies spätestens 48 Stunden vor der Bekanntgabe der zuständigen Behörde unter Angabe des Gegenstandes der Versammlung oder des Aufzuges anzumelden.",
+"link": "https://www.gesetze-im-internet.de/versammlg/__14.html",
+"geprueft": true,
+"bund": true
+},
+"Saarland": {
+"gesetz": "Versammlungsgesetz des Bundes (VersammlG)",
+"norm": "§ 14 Abs. 1 VersammlG",
+"frist": "spätestens 48 Stunden vor der Bekanntgabe",
+"wortlaut": "Wer die Absicht hat, eine öffentliche Versammlung unter freiem Himmel oder einen Aufzug zu veranstalten, hat dies spätestens 48 Stunden vor der Bekanntgabe der zuständigen Behörde unter Angabe des Gegenstandes der Versammlung oder des Aufzuges anzumelden.",
+"link": "https://www.gesetze-im-internet.de/versammlg/__14.html",
+"geprueft": true,
+"bund": true
+},
+"Thüringen": {
+"gesetz": "Versammlungsgesetz des Bundes (VersammlG)",
+"norm": "§ 14 Abs. 1 VersammlG",
+"frist": "spätestens 48 Stunden vor der Bekanntgabe",
+"wortlaut": "Wer die Absicht hat, eine öffentliche Versammlung unter freiem Himmel oder einen Aufzug zu veranstalten, hat dies spätestens 48 Stunden vor der Bekanntgabe der zuständigen Behörde unter Angabe des Gegenstandes der Versammlung oder des Aufzuges anzumelden.",
+"link": "https://www.gesetze-im-internet.de/versammlg/__14.html",
+"geprueft": true,
+"bund": true
+},
+"Bayern": {
+"gesetz": "Bayerisches Versammlungsgesetz (BayVersG)",
+"norm": "Art. 13 BayVersG",
+"frist": "spätestens 48 Stunden vor der öffentlichen Bekanntgabe",
+"wortlaut": null,
+"geprueft": true,
+"link": "https://www.gesetze-bayern.de/Content/Document/BayVersG",
+"bund": false
+},
+"Berlin": {
+"gesetz": "Versammlungsfreiheitsgesetz Berlin (VersFG BE)",
+"norm": "Anzeigevorschrift im VersFG BE",
+"frist": "Die Regelfrist steht im Landesgesetz und ist dort nachzulesen.",
+"wortlaut": null,
+"geprueft": false,
+"link": "https://gesetze.berlin.de/",
+"bund": false
+},
+"Hessen": {
+"gesetz": "Hessisches Versammlungsfreiheitsgesetz (HVersFG)",
+"norm": "Anzeigevorschrift im HVersFG",
+"frist": "Die Regelfrist steht im Landesgesetz und ist dort nachzulesen.",
+"wortlaut": null,
+"geprueft": false,
+"link": "https://www.rv.hessenrecht.hessen.de/",
+"bund": false
+},
+"Niedersachsen": {
+"gesetz": "Niedersächsisches Versammlungsgesetz (NVersG)",
+"norm": "Anzeigevorschrift im NVersG",
+"frist": "Die Regelfrist steht im Landesgesetz und ist dort nachzulesen.",
+"wortlaut": null,
+"geprueft": false,
+"link": "https://www.nds-voris.de/",
+"bund": false
+},
+"Nordrhein-Westfalen": {
+"gesetz": "Versammlungsgesetz des Landes Nordrhein-Westfalen (VersG NRW)",
+"norm": "§ 10 Abs. 1 VersG NRW",
+"frist": "spätestens 48 Stunden vor der Einladung zu der Versammlung",
+"wortlaut": "Wer eine Versammlung unter freiem Himmel veranstalten will, hat dies der zuständigen Behörde spätestens 48 Stunden vor der Einladung zu der Versammlung unter Angabe des Gegenstandes der Versammlung anzuzeigen.",
+"geprueft": true,
+"link": "https://recht.nrw.de/lmi/owa/br_bes_detail?sg=2&menu=1&bes_id=47651&anw_nr=2&aufgehoben=N&det_id=542455",
+"bund": false
+},
+"Sachsen": {
+"gesetz": "Sächsisches Versammlungsgesetz (SächsVersG)",
+"norm": "§§ 14 ff. SächsVersG",
+"frist": "Die Regelfrist steht im Landesgesetz und ist dort nachzulesen.",
+"wortlaut": null,
+"geprueft": false,
+"link": "https://www.revosax.sachsen.de/",
+"bund": false
+},
+"Sachsen-Anhalt": {
+"gesetz": "Landesversammlungsgesetz Sachsen-Anhalt (VersammlG LSA)",
+"norm": "Anzeigevorschrift im VersammlG LSA",
+"frist": "Die Regelfrist steht im Landesgesetz und ist dort nachzulesen.",
+"wortlaut": null,
+"geprueft": false,
+"link": "https://www.landesrecht.sachsen-anhalt.de/",
+"bund": false
+},
+"Schleswig-Holstein": {
+"gesetz": "Versammlungsfreiheitsgesetz Schleswig-Holstein (VersFG SH)",
+"norm": "Anzeigevorschrift im VersFG SH",
+"frist": "Die Regelfrist steht im Landesgesetz und ist dort nachzulesen.",
+"wortlaut": null,
+"geprueft": false,
+"link": "https://www.gesetze-rechtsprechung.sh.juris.de/",
+"bund": false
+}
+};
+
 (function(){
   "use strict";
   var wurzel = document.getElementById("planer");
@@ -1130,6 +1286,9 @@
           {wert:"draussen", titel:"Unter freiem Himmel", unter:"Straße, Platz, Park"},
           {wert:"drinnen",  titel:"In einem geschlossenen Raum", unter:"Saal, Aula, Gaststätte"}
         ]},
+      { art:"liste", schluessel:"land", text:"In welchem Bundesland?",
+        hinweis:"Das Versammlungsrecht ist seit 2006 Ländersache. Acht Länder haben ein eigenes Gesetz, in den übrigen gilt das Bundesgesetz weiter.",
+        marke:"Bundesland" },
       { art:"text", schluessel:"stadt", text:"In welcher Stadt oder welchem Kreis?",
         marke:"Ort", platzhalter:"z. B. Köln" },
       { art:"datum", schluessel:"einladung", text:"Wann willst du öffentlich dazu aufrufen?",
@@ -1194,6 +1353,35 @@
       });
       wurzel.appendChild(box);
       var r = el("div","reihe"); r.appendChild(zurueckTaste()); wurzel.appendChild(r);
+
+    } else if (f.art === "liste"){
+      var feldL = el("div","feld");
+      var labL = el("label", null, f.marke); labL.htmlFor = "eingabe";
+      var sel = document.createElement("select");
+      sel.id = "eingabe"; sel.className = "auswahl";
+      var leer = document.createElement("option");
+      leer.value = ""; leer.textContent = "Bitte wählen"; leer.disabled = true; leer.selected = true;
+      sel.appendChild(leer);
+      Object.keys(LAENDER).sort(function(a,b){ return a.localeCompare(b,"de"); }).forEach(function(name){
+        var o = document.createElement("option");
+        o.value = name;
+        o.textContent = name + (LAENDER[name].bund ? "  (Bundesgesetz)" : "  (eigenes Gesetz)");
+        sel.appendChild(o);
+      });
+      feldL.appendChild(labL); feldL.appendChild(sel);
+      wurzel.appendChild(feldL);
+      if (f.hinweis) wurzel.appendChild(el("p","hinw", f.hinweis));
+      var reiheL = el("div","reihe");
+      var weiterL = el("button","taste haupt","Weiter"); weiterL.type = "button";
+      weiterL.addEventListener("click", function(){
+        if (!sel.value) { sel.focus(); return; }
+        zustand.daten[f.schluessel] = sel.value;
+        zustand.schritt++; zeigeFragen();
+      });
+      reiheL.appendChild(weiterL); reiheL.appendChild(zurueckTaste());
+      wurzel.appendChild(reiheL);
+      sel.focus();
+
     } else {
       var feld = el("div","feld");
       var lab = el("label", null, f.marke); lab.htmlFor = "eingabe";
@@ -1231,10 +1419,11 @@
     var fussnoten = [];
 
     if (zustand.weg === "demo"){
+      var LR = LAENDER[d.land] || LAENDER["Nordrhein-Westfalen"];
       if (d.ort === "drinnen"){
         b.appendChild(el("h4", null, "Versammlung in einem geschlossenen Raum"));
         zeile("Grundlage", "Art. 8 Abs. 1 GG, ohne Anmeldung und ohne Erlaubnis.");
-        zeile("Anzeige", "Die Anzeigepflicht des <b>§ 10 VersG NRW</b> gilt nur für Versammlungen <b>unter freiem Himmel</b>. Für geschlossene Räume gilt sie nicht.");
+        zeile("Anzeige", "Die Anzeigepflicht nach " + LR.norm + " gilt nur für Versammlungen <b>unter freiem Himmel</b>. Für geschlossene Räume gilt sie nicht.");
         zeile("Trotzdem klären", "Wem gehört der Raum? Hausrecht, Mietvertrag und Hausordnung entscheiden über die Nutzung.");
       } else {
         b.appendChild(el("h4", null, "Versammlung unter freiem Himmel" + (d.stadt ? " in " + d.stadt : "")));
@@ -1243,20 +1432,30 @@
           var ein = new Date(d.einladung + "T12:00:00");
           if (!isNaN(ein)) frist = new Date(ein.getTime() - 48*60*60*1000);
         }
-        zeile("Grundlage", "Art. 8 GG · <b>§ 10 VersG NRW</b>");
-        if (frist){
+        zeile("Recht des Landes", (d.land ? "<b>" + d.land + "</b><br>" : "") + LR.gesetz +
+              (LR.bund ? "<br><span class=\"leise\">Dieses Land hat kein eigenes Versammlungsgesetz erlassen. Deshalb gilt das Bundesgesetz fort.</span>"
+                       : "<br><span class=\"leise\">Dieses Land hat ein eigenes Versammlungsgesetz. Das Bundesgesetz gilt hier nicht.</span>"));
+        zeile("Grundlage", "Art. 8 GG · <b>" + LR.norm + "</b>");
+        if (LR.geprueft && frist){
           zeile("Frist", "Anzeige spätestens am <b>" + datum(frist) + "</b> gegen " + uhr(frist) +
-                " Uhr. Das sind 48 Stunden vor deiner Einladung, nicht vor der Versammlung.");
+                " Uhr.<br>" + LR.frist + " — nicht vor der Versammlung.");
+        } else if (LR.geprueft){
+          zeile("Frist", "Anzeige " + LR.frist + ".");
         } else {
-          zeile("Frist", "Spätestens <b>48 Stunden vor der Einladung</b> zur Versammlung.");
+          zeile("Frist", "<b>Hier musst du selbst nachsehen.</b> " + LR.frist +
+                " Die 48-Stunden-Regel des Bundes ist verbreitet, aber die Länder weichen davon ab.");
         }
-        zeile("Zuständig", "Die Versammlungsbehörde" + (d.stadt ? " in " + d.stadt : "") + "; in NRW die Kreispolizeibehörde.");
+        zeile("Zuständig", "Die Versammlungsbehörde" + (d.stadt ? " in " + d.stadt : "") +
+              ". Wer das ist, regelt jedes Land selbst: teils die Kommune, teils die Polizeibehörde.");
         zeile("Form", "Schriftlich, elektronisch oder zur Niederschrift.");
         zeile("Inhalt", "Erwartete Teilnehmerzahl, Ort, Zeit und Thema; bei Aufzügen der beabsichtigte Streckenverlauf. Dazu Name, telefonische Erreichbarkeit und Anschrift der anzeigenden Person und der Person, die die Versammlung leiten soll.");
+        if (LR.wortlaut) fussnoten.push(["Der Wortlaut", "„" + LR.wortlaut + "“ (" + LR.norm + ")"]);
         fussnoten.push(["Wenn die Zeit nicht reicht",
-          "Würde die 48-Stunden-Frist den Zweck der Versammlung gefährden, genügt die Anzeige spätestens mit der Bekanntgabe, auch telefonisch (§ 10 Abs. 3 VersG NRW, Eilversammlung)."]);
+          "Eilversammlung: Ist die Versammlung aus aktuellem Anlass kurzfristig geplant und würde die Regelfrist ihren Zweck vereiteln, genügt die Anzeige spätestens mit der Bekanntgabe, vielfach auch telefonisch. Diese Ausnahme kennen alle Versammlungsgesetze, die Einzelheiten stehen im Recht deines Landes."]);
         fussnoten.push(["Wenn gar keine Zeit bleibt",
-          "Bildet sich eine Versammlung aufgrund eines aktuellen Anlasses augenblicklich, entfällt die Anzeigepflicht ganz (§ 10 Abs. 4, Spontanversammlung). Das Grundrecht geht der Form vor."]);
+          "Spontanversammlung: Bildet sich eine Versammlung aufgrund eines aktuellen Anlasses augenblicklich, entfällt die Anzeigepflicht ganz. Das Grundrecht aus Art. 8 GG geht der Form vor."]);
+        fussnoten.push(["Nachlesen",
+          "<a href=\"" + LR.link + "\" target=\"_blank\" rel=\"noopener\">" + LR.gesetz + " im Volltext</a>"]);
       }
 
     } else if (zustand.weg === "petition"){
