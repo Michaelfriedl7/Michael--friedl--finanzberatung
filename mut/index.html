@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#DEDFD7">
+<meta name="theme-color" content="#FFFFFF">
 <title>Pflicht und Erlaubnis</title>
 <meta name="description" content="Was das Strafrecht bei Zivilcourage verlangt, was das Grundgesetz erlaubt, und ein Vordruck, der aus einem Vorhaben einen Plan mit Frist, Zuständigkeit und Rechtsgrundlage macht. Beitrag zum Martin-Gauger-Preis 2026.">
 <meta name="author" content="Michael Friedl und Tom, Wirtschaftsrecht Q2">
@@ -23,9 +23,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
 <style>
   :root{
-    --pult:#DEDFD7; --blatt:#F8F8F5; --feld:#EFEFEA;
+    --pult:#FFFFFF; --blatt:#FFFFFF; --feld:#F6F6F3;
     --tinte:#1A1A16; --grau:#5A5B52; --schwach:#8C8D82;
-    --linie:#D2D3C9; --linie-2:#B9BAAE; --rand:#A6A79B;
+    --linie:#DCDCD4; --linie-2:#BFBFB5; --rand:#A6A79B;
     --rot:#8E1B14; --rot-blass:#F2E7E5;
     --text:"Literata",Georgia,"Times New Roman",serif;
     --app:"IBM Plex Sans Condensed","Helvetica Neue",Arial,sans-serif;
@@ -33,14 +33,14 @@
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
-      --pult:#0E0E0A; --blatt:#1A1A15; --feld:#22221B;
+      --pult:#101010; --blatt:#141412; --feld:#1E1E1A;
       --tinte:#E9E9E0; --grau:#9C9D91; --schwach:#6C6D62;
       --linie:#2C2C24; --linie-2:#3C3C32; --rand:#5C5D53;
       --rot:#DB8278; --rot-blass:#2A1815;
     }
   }
   :root[data-theme="dark"]{
-    --pult:#0E0E0A; --blatt:#1A1A15; --feld:#22221B;
+    --pult:#101010; --blatt:#141412; --feld:#1E1E1A;
     --tinte:#E9E9E0; --grau:#9C9D91; --schwach:#6C6D62;
     --linie:#2C2C24; --linie-2:#3C3C32; --rand:#5C5D53;
     --rot:#DB8278; --rot-blass:#2A1815;
@@ -276,6 +276,31 @@
     background-repeat:no-repeat; background-position:right .2rem center; background-size:.7rem;
   }
   .bescheid dd .leise{ font-size:.86em; color:var(--grau) }
+
+  /* Erklaerung beim Darueberfahren */
+  .winkfeld{
+    position:fixed; z-index:60; max-width:min(23rem, calc(100vw - 20px));
+    background:var(--tinte); color:#fff;
+    padding:.75rem .9rem; font-family:var(--app); font-size:.85rem; line-height:1.5;
+    display:flex; flex-direction:column; gap:.35rem;
+    box-shadow:0 10px 30px rgba(26,26,22,.24);
+    opacity:0; transform:translateY(3px); transition:opacity .14s, transform .14s;
+    pointer-events:none;
+  }
+  .winkfeld.sichtbar{ opacity:1; transform:none }
+  .winkfeld b{ font-weight:700; color:#fff; font-size:.88rem; letter-spacing:.01em }
+  .winkfeld span{ color:rgba(255,255,255,.88) }
+  .winkfeld i{ font-style:normal; font-size:.72rem; letter-spacing:.07em;
+               text-transform:uppercase; color:rgba(255,255,255,.5) }
+  .winkfeld::after{
+    content:""; position:absolute; left:50%; margin-left:-6px;
+    border:6px solid transparent; border-top-color:var(--tinte); bottom:-12px;
+  }
+  .winkfeld[data-unten="ja"]::after{
+    bottom:auto; top:-12px; border-top-color:transparent; border-bottom-color:var(--tinte);
+  }
+  @media (prefers-reduced-motion:reduce){ .winkfeld{ transition:none } }
+  @media print{ .winkfeld{ display:none } }
 
   .apparat-schatten{
     position:fixed; inset:0; background:rgba(26,26,22,.28);
@@ -1846,7 +1871,6 @@ const NORMEN = {
   }
 
   document.querySelectorAll("section").forEach(function(sec){
-    var schonMarkiert = {};          /* pro Abschnitt jede Norm nur einmal */
     var knoten = [], lauf = document.createTreeWalker(sec, NodeFilter.SHOW_TEXT, null);
     var t;
     while ((t = lauf.nextNode())) {
@@ -1864,14 +1888,14 @@ const NORMEN = {
       var frag = document.createDocumentFragment(), zuletzt = 0, m;
       while ((m = regex.exec(text))) {
         var k = schluessel(m[0]);
-        if (!k || schonMarkiert[k]) continue;
-        schonMarkiert[k] = true;
+        if (!k) continue;                /* jedes Vorkommen wird ausgezeichnet */
         frag.appendChild(document.createTextNode(text.slice(zuletzt, m.index)));
         var b = document.createElement("button");
         b.type = "button";
         b.className = "fund" + (NORMEN[k].art === "begriff" ? " begriff" : "");
         b.setAttribute("data-norm", k);
         b.setAttribute("aria-haspopup", "dialog");
+        b.setAttribute("aria-describedby", "winkfeld");
         b.textContent = m[0].replace(/ /g, "\u00a0");   /* haelt "\u00a7 323c StGB" zusammen */
         frag.appendChild(b);
         zuletzt = m.index + m[0].length;
@@ -1956,6 +1980,71 @@ const NORMEN = {
     setTimeout(function(){
       if (!blatt.classList.contains("sichtbar")){ blatt.hidden = true; schatten.hidden = true; }
     }, 220);
+  }
+
+  /* ---------- Erklaerung beim Darueberfahren ---------- */
+  var winkfeld = document.createElement("div");
+  winkfeld.className = "winkfeld";
+  winkfeld.id = "winkfeld";
+  winkfeld.setAttribute("role", "tooltip");
+  winkfeld.hidden = true;
+  document.body.appendChild(winkfeld);
+  var winkZeit = null;
+
+  function winkZeigen(knopf){
+    var d = NORMEN[knopf.getAttribute("data-norm")];
+    if (!d) return;
+    winkfeld.textContent = "";
+    var kopf = document.createElement("b");
+    kopf.textContent = d.marke + (d.titel ? " · " + d.titel : "");
+    var leib = document.createElement("span");
+    leib.textContent = d.note || d.text[0];
+    var fuss = document.createElement("i");
+    fuss.textContent = d.art === "begriff" ? "Antippen für die Einordnung" : "Antippen für den amtlichen Wortlaut";
+    winkfeld.append(kopf, leib, fuss);
+
+    winkfeld.hidden = false;
+    winkfeld.style.visibility = "hidden";
+    winkfeld.classList.remove("sichtbar");
+
+    var r = knopf.getBoundingClientRect();
+    var breite = winkfeld.offsetWidth, hoehe = winkfeld.offsetHeight;
+    var links = r.left + r.width / 2 - breite / 2;
+    links = Math.max(10, Math.min(links, window.innerWidth - breite - 10));
+    var oben = r.top - hoehe - 10;
+    if (oben < 8) { oben = r.bottom + 10; winkfeld.dataset.unten = "ja"; }
+    else winkfeld.dataset.unten = "nein";
+    winkfeld.style.left = Math.round(links) + "px";
+    winkfeld.style.top  = Math.round(oben) + "px";
+    winkfeld.style.visibility = "";
+    requestAnimationFrame(function(){ winkfeld.classList.add("sichtbar"); });
+  }
+
+  function winkWeg(){
+    clearTimeout(winkZeit);
+    winkfeld.classList.remove("sichtbar");
+    winkZeit = setTimeout(function(){
+      if (!winkfeld.classList.contains("sichtbar")) winkfeld.hidden = true;
+    }, 160);
+  }
+
+  if (window.matchMedia && window.matchMedia("(hover: hover)").matches){
+    document.addEventListener("mouseover", function(e){
+      var b = e.target.closest ? e.target.closest(".fund") : null;
+      if (!b) return;
+      clearTimeout(winkZeit);
+      winkZeit = setTimeout(function(){ winkZeigen(b); }, 120);
+    });
+    document.addEventListener("mouseout", function(e){
+      if (e.target.closest && e.target.closest(".fund")) winkWeg();
+    });
+    document.addEventListener("focusin", function(e){
+      if (e.target.classList && e.target.classList.contains("fund")) winkZeigen(e.target);
+    });
+    document.addEventListener("focusout", function(e){
+      if (e.target.classList && e.target.classList.contains("fund")) winkWeg();
+    });
+    window.addEventListener("scroll", winkWeg, { passive:true });
   }
 
   document.addEventListener("click", function(e){
