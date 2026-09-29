@@ -1,0 +1,32 @@
+:root{
+  --tinte:#1A1A16; --grau:#5A5B52; --linie:#DCDCD4; --linie-2:#BFBFB5; --rot:#8E1B14;
+  --text:"Literata",Georgia,"Times New Roman",serif;
+  --app:"IBM Plex Sans Condensed","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; background:#FFFFFF; color:var(--tinte); font-family:var(--text);
+     font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased}
+.rechtsblatt{max-width:44rem; margin:0 auto; padding:2.2rem 16px 3rem}
+.zurueck{margin:0 0 2rem; font-family:var(--app); font-size:.82rem; letter-spacing:.04em}
+.zurueck a{color:var(--grau); text-decoration:none; border-bottom:1px solid var(--linie-2)}
+.zurueck a:hover{color:var(--rot); border-bottom-color:var(--rot)}
+h1{font-weight:400; font-size:clamp(2rem,6vw,2.8rem); line-height:1.1; margin:0 0 1.6rem;
+   padding-bottom:1rem; border-bottom:2px solid var(--tinte)}
+h2{font-family:var(--app); font-weight:600; font-size:.8rem; letter-spacing:.1em;
+   text-transform:uppercase; color:var(--rot); margin:0 0 .5rem}
+section{padding:1.2rem 0; border-bottom:1px solid var(--linie)}
+section p{margin:0 0 .7rem} section p:last-child{margin-bottom:0}
+.kurz{font-size:1.05rem; margin:0 0 .8rem; padding:1rem 1.1rem; background:#F6F6F3;
+      border-left:2px solid var(--tinte)}
+a{color:var(--tinte); text-decoration-color:var(--linie-2); text-underline-offset:.15em}
+a:hover{color:var(--rot)}
+a:focus-visible{outline:2px solid var(--rot); outline-offset:2px}
+.seitenfuss{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline;
+  gap:.6rem 1.5rem; margin-top:2rem; padding-top:1rem; border-top:1px solid var(--linie);
+  font-family:var(--app); font-size:.8rem; letter-spacing:.04em; color:var(--grau)}
+.seitenfuss nav{display:flex; gap:1.4rem}
+.seitenfuss a{text-decoration:none; border-bottom:1px solid var(--linie-2); text-transform:uppercase;
+  letter-spacing:.08em; font-size:.76rem}
+@media print{ .zurueck, .seitenfuss nav{display:none} }

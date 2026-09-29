@@ -19,9 +19,7 @@
 <meta name="twitter:description" content="Wie man die Demokratie legal schützt: Versammlung, Petition, Meinungsäußerung und Hinweisgeberschutz, mit einem Vordruck für jedes Bundesland. Beitrag zum Martin-Gauger-Preis 2026.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F8F8F5'/%3E%3Crect x='4' y='4' width='24' height='3' fill='%238E1B14'/%3E%3Crect x='4' y='12' width='17' height='2' fill='%231A1A16'/%3E%3Crect x='4' y='18' width='21' height='2' fill='%231A1A16'/%3E%3Crect x='4' y='24' width='13' height='2' fill='%231A1A16'/%3E%3C/svg%3E">
 <meta name="color-scheme" content="light only">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+<link rel="stylesheet" href="schriften.css">
 <style>
   :root{
     --pult:#FFFFFF; --blatt:#FFFFFF; --feld:#F6F6F3;
@@ -289,6 +287,17 @@
   }
   @media (prefers-reduced-motion:reduce){ .winkfeld{ transition:none } }
   @media print{ .winkfeld{ display:none } }
+
+  /* Seitenfuss mit Impressum und Datenschutz */
+  .seitenfuss{
+    display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:.6rem 1.5rem;
+    margin-top:3rem; padding:1.1rem 0 .4rem; border-top:1px solid var(--linie);
+    font-family:var(--app); font-size:.8rem; letter-spacing:.04em; color:var(--grau);
+  }
+  .seitenfuss nav{ display:flex; gap:1.4rem }
+  .seitenfuss a{ color:var(--tinte); text-decoration:none; border-bottom:1px solid var(--linie-2);
+                 text-transform:uppercase; letter-spacing:.08em; font-size:.76rem }
+  .seitenfuss a:hover{ color:var(--rot); border-bottom-color:var(--rot) }
 
   .apparat-schatten{
     position:fixed; inset:0; background:rgba(26,26,22,.28);
@@ -628,7 +637,7 @@
   <div class="abschnitt"><div class="ziffer">VI.</div><h2>Nachweise</h2></div>
 
   <h3>Verfasser</h3>
-  <p>Michael Friedl und Tom &middot; Wirtschaftsrecht Q2 &middot; Berufskolleg an der
+  <p>Michael Friedl und Tom Lammert &middot; Wirtschaftsrecht Q2 &middot; Berufskolleg an der
   Lindenstraße, Köln. Beitrag zum Martin-Gauger-Preis 2026 des Deutschen Richterbundes
   Nordrhein-Westfalen.</p>
 
@@ -663,12 +672,15 @@
   Das Petitions-Quorum liegt seit 2024 bei 30.000, nicht bei 50.000 Mitzeichnungen, und
   Martin Gauger wurde nicht in Buchenwald ermordet, sondern in Pirna-Sonnenstein.</p>
 
-  <h3>Datenschutz</h3>
-  <p>Diese Seite setzt keine Cookies, bindet keine Analysedienste ein und speichert keine
-  personenbezogenen Daten. Die Angaben im Vordruck bleiben im Browser und verlassen das
-  Gerät nicht. Die Schriften werden von Google Fonts geladen, dabei wird die IP-Adresse an
-  Google übertragen.</p>
 </section>
+
+<footer class="seitenfuss">
+  <span>Michael Friedl &middot; Tom Lammert &middot; 2026</span>
+  <nav aria-label="Rechtliches">
+    <a href="https://michael-friedl.com/mut/impressum.html">Impressum</a>
+    <a href="https://michael-friedl.com/mut/datenschutz.html">Datenschutz</a>
+  </nav>
+</footer>
 
 </div>
 
