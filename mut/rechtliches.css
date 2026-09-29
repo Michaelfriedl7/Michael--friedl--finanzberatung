@@ -1,13 +1,13 @@
 :root{
   --tinte:#1A1A16; --grau:#5A5B52; --linie:#DCDCD4; --linie-2:#BFBFB5; --rot:#8E1B14;
-  --text:"Literata",Georgia,"Times New Roman",serif;
-  --app:"IBM Plex Sans Condensed","Helvetica Neue",Arial,sans-serif;
+  --text:"Vollkorn",Georgia,"Times New Roman",serif;
+  --app:"Fira Sans Condensed","Helvetica Neue",Arial,sans-serif;
   color-scheme:light;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0; background:#FFFFFF; color:var(--tinte); font-family:var(--text);
-     font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased}
+     font-size:18px; line-height:1.6; font-variant-numeric:lining-nums; -webkit-font-smoothing:antialiased}
 .rechtsblatt{max-width:44rem; margin:0 auto; padding:2.2rem 16px 3rem}
 .zurueck{margin:0 0 2rem; font-family:var(--app); font-size:.82rem; letter-spacing:.04em}
 .zurueck a{color:var(--grau); text-decoration:none; border-bottom:1px solid var(--linie-2)}

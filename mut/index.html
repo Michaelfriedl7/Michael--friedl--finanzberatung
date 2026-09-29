@@ -26,8 +26,8 @@
     --tinte:#1A1A16; --grau:#5A5B52; --schwach:#8C8D82;
     --linie:#DCDCD4; --linie-2:#BFBFB5; --rand:#A6A79B;
     --rot:#8E1B14; --rot-blass:#F2E7E5;
-    --text:"Literata",Georgia,"Times New Roman",serif;
-    --app:"IBM Plex Sans Condensed","Helvetica Neue",Arial,sans-serif;
+    --text:"Vollkorn",Georgia,"Times New Roman",serif;
+    --app:"Fira Sans Condensed","Helvetica Neue",Arial,sans-serif;
     --mx:clamp(1.1rem,4vw,3.2rem);
     color-scheme:light;   /* immer weiss, auch wenn das Geraet auf Dunkel steht */
   }
@@ -35,7 +35,8 @@
   *{box-sizing:border-box}
   body{
     margin:0; background:var(--pult); color:var(--tinte);
-    font-family:var(--text); font-size:17px; line-height:1.68;
+    font-family:var(--text); font-size:18px; line-height:1.6;
+    font-variant-numeric:lining-nums;   /* Vollkorn hat Mediaevalziffern; bei Fristen und Paragrafen sollen es Versalziffern sein */
     -webkit-font-smoothing:antialiased;
   }
   .blatt{
@@ -57,7 +58,7 @@
 
   .titelblock{padding:clamp(2.6rem,7vw,5rem) 0 clamp(1.8rem,4vw,3rem)}
   h1{
-    font-family:var(--text); font-weight:300;
+    font-family:var(--text); font-weight:400;
     font-size:clamp(2rem,6.2vw,3.4rem); line-height:1.1; letter-spacing:-.018em;
     margin:0; max-width:19ch; text-wrap:balance;
   }
@@ -151,7 +152,7 @@
   /* ---------- Platzhalter Tom ---------- */
 
   /* ---------- Vordruck / Planer ---------- */
-  .vordruck{border:2px solid var(--tinte); margin:1.6rem 0 1rem; background:var(--blatt)}
+  .vordruck{border:2px solid var(--tinte); margin:1.6rem 0 1rem; background:var(--blatt); scroll-margin-top:12px}
   .vordruck .kopf{
     display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;
     background:var(--tinte); color:var(--blatt);
@@ -274,7 +275,7 @@
     pointer-events:none;
   }
   .winkfeld.sichtbar{ opacity:1; transform:none }
-  .winkfeld b{ font-weight:700; color:#fff; font-size:.88rem; letter-spacing:.01em }
+  .winkfeld b{ font-weight:600; color:#fff; font-size:.88rem; letter-spacing:.01em }
   .winkfeld span{ color:rgba(255,255,255,.88) }
   .winkfeld i{ font-style:normal; font-size:.72rem; letter-spacing:.07em;
                text-transform:uppercase; color:rgba(255,255,255,.5) }
@@ -287,6 +288,26 @@
   }
   @media (prefers-reduced-motion:reduce){ .winkfeld{ transition:none } }
   @media print{ .winkfeld{ display:none } }
+
+  /* Druckblatt: nur der Plan aus dem Vordruck */
+  #druckblatt{ display:none }
+  @media print{
+    @page{ size:A4; margin:16mm 16mm 18mm }
+    body.nur-plan > *:not(#druckblatt){ display:none !important }
+    body.nur-plan{ background:#fff !important }
+    body.nur-plan #druckblatt{ display:block; color:#000; font-size:11pt; line-height:1.5 }
+    #druckblatt .druckkopf{ border-bottom:1.5pt solid #000; padding-bottom:4mm; margin-bottom:6mm }
+    #druckblatt .druckmarke{ font-family:var(--app); font-size:8pt; letter-spacing:.12em;
+      text-transform:uppercase; color:var(--rot); margin:0 0 1.5mm }
+    #druckblatt h1{ font-family:var(--text); font-weight:400; font-size:24pt; line-height:1.1; margin:0 }
+    #druckblatt .druckdatum{ font-family:var(--app); font-size:9pt; color:#555; margin:2mm 0 0 }
+    #druckblatt .bescheid h4{ font-size:15pt }
+    #druckblatt .bescheid dl{ grid-template-columns:34mm 1fr; font-size:10.5pt }
+    #druckblatt .bescheid dd{ max-width:none }
+    #druckblatt .bescheid dt, #druckblatt .bescheid dd{ break-inside:avoid }
+    #druckblatt .druckfuss{ margin-top:8mm; padding-top:3mm; border-top:.5pt solid #999;
+      font-family:var(--app); font-size:8.5pt; color:#555 }
+  }
 
   /* Seitenfuss mit Impressum und Datenschutz */
   .seitenfuss{
@@ -323,7 +344,7 @@
     border-bottom:1px solid var(--linie);
   }
   .apparat-marke{
-    display:block; font-family:var(--app); font-weight:700; font-size:1.02rem;
+    display:block; font-family:var(--app); font-weight:600; font-size:1.02rem;
     letter-spacing:.01em; color:var(--rot);
   }
   .apparat-titel{
@@ -855,6 +876,19 @@ const LAENDER = {
     { id:"sagen",    titel:"Öffentlich etwas behaupten",   unter:"Und wissen, wo die Grenze verläuft" }
   ];
 
+  /* Haelt den Vordruck im Blick: Liegt seine Oberkante ueber oder unter dem
+     Bildschirm, wird er sanft nach oben geholt; ist er sichtbar, bleibt alles
+     wie es ist. Mit immer=true (Neues Vorhaben) landet er in jedem Fall oben. */
+  var vordruck = document.querySelector(".vordruck");
+  function imBlick(immer){
+    if (!vordruck) return;
+    var oben = vordruck.getBoundingClientRect().top;
+    var hoehe = window.innerHeight || document.documentElement.clientHeight;
+    if (!immer && oben >= 0 && oben < hoehe) return;
+    var ruhig = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    vordruck.scrollIntoView({block:"start", behavior: ruhig ? "auto" : "smooth"});
+  }
+
   function zeigeStart(){
     wurzel.textContent = "";
     wurzel.appendChild(el("p","stufe","Feld 1 von 3"));
@@ -918,12 +952,14 @@ const LAENDER = {
     var b = el("button","taste neben","Zurück"); b.type = "button";
     b.addEventListener("click", function(){
       zustand.schritt--;
-      if (zustand.schritt < 1) zeigeStart(); else zeigeFragen();
+      if (zustand.schritt < 1){ zeigeStart(); imBlick(false); } else zeigeFragen();
     });
     return b;
   }
 
-  function zeigeFragen(){
+  function zeigeFragen(){ baueFragen(); imBlick(false); }
+
+  function baueFragen(){
     var liste = fragen[zustand.weg];
     var i = zustand.schritt - 1;
     if (i >= liste.length){ zeigePlan(); return; }
@@ -968,13 +1004,13 @@ const LAENDER = {
       var reiheL = el("div","reihe");
       var weiterL = el("button","taste haupt","Weiter"); weiterL.type = "button";
       weiterL.addEventListener("click", function(){
-        if (!sel.value) { sel.focus(); return; }
+        if (!sel.value) { sel.focus({preventScroll:true}); return; }
         zustand.daten[f.schluessel] = sel.value;
         zustand.schritt++; zeigeFragen();
       });
       reiheL.appendChild(weiterL); reiheL.appendChild(zurueckTaste());
       wurzel.appendChild(reiheL);
-      sel.focus();
+      sel.focus({preventScroll:true});
 
     } else {
       var feld = el("div","feld");
@@ -994,7 +1030,7 @@ const LAENDER = {
       });
       reihe.appendChild(weiter); reihe.appendChild(zurueckTaste());
       wurzel.appendChild(reihe);
-      inp.focus();
+      inp.focus({preventScroll:true});
       inp.addEventListener("keydown", function(e){ if (e.key === "Enter") weiter.click(); });
     }
   }
@@ -1122,14 +1158,63 @@ const LAENDER = {
     var neu = el("button","taste haupt","Neues Vorhaben"); neu.type = "button";
     neu.addEventListener("click", function(){
       zeigeStart();
-      document.getElementById("v").scrollIntoView({block:"start", behavior:"smooth"});
+      imBlick(true);
     });
-    var druck = el("button","taste neben","Drucken"); druck.type = "button";
-    druck.addEventListener("click", function(){ window.print(); });
+    var druck = el("button","taste neben","Nur den Plan drucken"); druck.type = "button";
+    druck.addEventListener("click", function(){ planDrucken(b); });
     reihe.appendChild(neu); reihe.appendChild(druck);
     b.appendChild(reihe);
 
     wurzel.appendChild(b);
+  }
+
+  /* Druckt nur das Ergebnis, nicht die ganze Seite. Das Blatt wird eigens
+     zusammengestellt; ausgeblendet wird der Rest nur fuer den Druck. */
+  var zuletztGedruckt = 0;
+  function planDrucken(quelle){
+    /* Doppeltipp: nicht zweimal den Druckdialog oeffnen */
+    var jetzt = Date.now();
+    if (jetzt - zuletztGedruckt < 800) return;
+    zuletztGedruckt = jetzt;
+    var alt = document.getElementById("druckblatt");
+    if (alt) alt.parentNode.removeChild(alt);
+
+    var blatt = document.createElement("div");
+    blatt.id = "druckblatt";
+    var kopf = el("div","druckkopf");
+    kopf.appendChild(el("p","druckmarke","Die Demokratie schützen · Vordruck"));
+    kopf.appendChild(el("h1", null, "Dein Plan"));
+    kopf.appendChild(el("p","druckdatum","Erstellt am " + datum(new Date())));
+    blatt.appendChild(kopf);
+
+    var kopie = quelle.cloneNode(true);
+    Array.prototype.forEach.call(kopie.querySelectorAll(".reihe, button"), function(x){
+      x.parentNode.removeChild(x);
+    });
+    blatt.appendChild(kopie);
+
+    blatt.appendChild(el("p","druckfuss",
+      "Eine Orientierung, keine Rechtsberatung. Maßgeblich sind der aktuelle Wortlaut des " +
+      "Gesetzes und die Auskunft der zuständigen Behörde. Erstellt mit dem Vordruck auf " +
+      "michael-friedl.com/mut/"));
+
+    document.body.appendChild(blatt);
+    document.body.classList.add("nur-plan");
+    window.print();
+
+    /* Aufraeumen erst beim naechsten Tippen: Safari auf dem iPad kehrt aus
+       window.print() sofort zurueck, das Blatt muss bis dahin stehen bleiben. */
+    setTimeout(function(){
+      function aufraeumen(){
+        document.body.classList.remove("nur-plan");
+        var d = document.getElementById("druckblatt");
+        if (d) d.parentNode.removeChild(d);
+        document.removeEventListener("pointerdown", aufraeumen, true);
+        document.removeEventListener("keydown", aufraeumen, true);
+      }
+      document.addEventListener("pointerdown", aufraeumen, true);
+      document.addEventListener("keydown", aufraeumen, true);
+    }, 600);
   }
 
   zeigeStart();
