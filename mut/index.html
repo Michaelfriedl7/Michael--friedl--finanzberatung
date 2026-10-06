@@ -408,6 +408,15 @@
   .sprungmenu a span{color:var(--rot);font-weight:600;min-width:2.4em;font-variant-numeric:tabular-nums}
   .sprungmenu a:hover,.sprungmenu a:focus-visible{background:var(--rot-blass);outline:none}
   @media (prefers-reduced-motion:reduce){.sm-knopf span{transition:none}}
+  .demo-bild{margin:1.9rem 0 .4rem}
+  .demo-bild svg{display:block;width:100%;height:auto}
+  .demo-bild figcaption{font-family:var(--app);font-size:.8rem;color:var(--schwach);margin-top:.55rem;text-align:center}
+  .mitmach{border:1px solid var(--linie);border-top:3px solid var(--rot);background:var(--feld);padding:1.3rem 1.3rem 1.4rem;margin:2.4rem 0;border-radius:2px}
+  .mitmach .k{font-family:var(--app);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rot);font-weight:600}
+  .mitmach p{font-family:var(--app);margin:.5rem 0 0;color:var(--tinte);line-height:1.5}
+  .mitmach-knopf{display:inline-block;margin-top:1.05rem;background:var(--rot);color:#fff;font-family:var(--app);font-weight:600;font-size:1rem;padding:.72rem 1.35rem;text-decoration:none;border-radius:3px}
+  .mitmach-knopf:hover,.mitmach-knopf:focus-visible{background:#73150F;outline:none}
+  .mitmach-hinw{font-size:.8rem;color:var(--grau);margin-top:.65rem!important}
   @media (max-width:64rem){.briefkopf{padding-top:4.2rem}}
   .lesehinweis .nur-touch{display:none}
   @media (hover:none){ .lesehinweis .nur-hover{display:none} .lesehinweis .nur-touch{display:inline} }
@@ -517,6 +526,40 @@
     <p>Die Demokratie schützt sich nicht von selbst. Aber sie gibt jedem vier Werkzeuge,
     mit denen er sich legal einmischen kann. Jedes hat eigene Regeln.</p>
   </div></div>
+
+  <figure class="demo-bild">
+    <svg viewBox="0 0 760 240" role="img" aria-label="Illustration: Menschen bei einer Demonstration mit Transparenten">
+      <g stroke="var(--tinte)" stroke-width="4" stroke-linecap="round">
+        <line x1="190" y1="200" x2="182" y2="62"/>
+        <line x1="370" y1="200" x2="370" y2="46"/>
+        <line x1="540" y1="200" x2="548" y2="72"/>
+        <line x1="660" y1="200" x2="656" y2="56"/>
+      </g>
+      <g>
+        <rect x="128" y="50" width="140" height="42" rx="3" fill="var(--rot)" transform="rotate(-3 198 71)"/>
+        <rect x="308" y="32" width="150" height="44" rx="3" fill="var(--tinte)"/>
+        <rect x="518" y="58" width="122" height="40" rx="3" fill="var(--rot)" transform="rotate(4 579 78)"/>
+        <rect x="598" y="42" width="120" height="40" rx="3" fill="var(--tinte)" transform="rotate(-2 658 62)"/>
+      </g>
+      <g stroke="#fff" stroke-width="3" opacity=".85" stroke-linecap="round">
+        <line x1="143" y1="65" x2="253" y2="63"/><line x1="143" y1="77" x2="218" y2="76"/>
+        <line x1="323" y1="48" x2="443" y2="48"/><line x1="323" y1="62" x2="408" y2="62"/>
+        <line x1="531" y1="72" x2="625" y2="74"/>
+        <line x1="611" y1="56" x2="705" y2="54"/>
+      </g>
+      <path d="M0 240 V196 Q40 178 80 190 Q120 176 160 190 Q200 174 240 190 Q280 176 320 190 Q360 174 400 190 Q440 176 480 190 Q520 174 560 190 Q600 176 640 190 Q680 174 720 190 Q742 182 760 196 V240 Z" fill="var(--tinte)"/>
+      <g fill="var(--tinte)">
+        <circle cx="60" cy="176" r="15"/><circle cx="150" cy="172" r="15"/><circle cx="235" cy="178" r="15"/>
+        <circle cx="330" cy="172" r="15"/><circle cx="420" cy="178" r="15"/><circle cx="510" cy="173" r="15"/>
+        <circle cx="600" cy="178" r="15"/><circle cx="690" cy="173" r="15"/>
+      </g>
+      <g fill="var(--grau)">
+        <circle cx="20" cy="170" r="12"/><circle cx="105" cy="168" r="12"/><circle cx="285" cy="168" r="12"/>
+        <circle cx="465" cy="168" r="12"/><circle cx="645" cy="168" r="12"/><circle cx="730" cy="170" r="12"/>
+      </g>
+    </svg>
+    <figcaption>Versammlungsfreiheit nach Art. 8 GG: sich zeigen, ohne um Erlaubnis zu fragen. (Illustration)</figcaption>
+  </figure>
 
   <h3>1. Sich versammeln</h3>
 
@@ -698,6 +741,14 @@
     Abschnitt II.</p>
   </div>
 </section>
+
+<div class="mitmach">
+  <span class="k">Deine Antwort</span>
+  <p>Diese Arbeit endet mit einer Frage an dich. Deine Rückmeldung hilft uns und zeigt, ob
+  das Thema ankommt. Freiwillig, dauert nur einen Moment.</p>
+  <a class="mitmach-knopf" href="https://forms.cloud.microsoft/e/EXPpz9mNcc?origin=lprLink" target="_blank" rel="noopener">Zum Fragebogen →</a>
+  <p class="mitmach-hinw">Öffnet Microsoft Forms in einem neuen Tab. Erst beim Klick entsteht eine Verbindung zu Microsoft.</p>
+</div>
 
 <!-- ============ VI ============ -->
 <section id="vi" class="fuss">
