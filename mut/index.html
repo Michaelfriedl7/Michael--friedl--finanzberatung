@@ -396,13 +396,13 @@
     .apparat, .apparat-schatten{ display:none }
   }
   /* Sprungmenü (drei Striche), bleibt oben, beim Drucken aus */
-  .sprungmenu{position:fixed;top:14px;right:14px;z-index:50;font-family:var(--app)}
+  .sprungmenu{position:fixed;top:14px;left:14px;z-index:50;font-family:var(--app)}
   .sm-knopf{width:44px;height:44px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:var(--blatt);border:1px solid var(--linie);border-radius:8px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.09);padding:0}
   .sm-knopf span{display:block;width:20px;height:2px;background:var(--tinte);transition:transform .2s,opacity .2s}
   .sm-knopf[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   .sm-knopf[aria-expanded="true"] span:nth-child(2){opacity:0}
   .sm-knopf[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-  .sprungmenu ul{list-style:none;margin:8px 0 0;padding:6px;position:absolute;right:0;top:48px;background:var(--blatt);border:1px solid var(--linie);border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.15);min-width:234px}
+  .sprungmenu ul{list-style:none;margin:8px 0 0;padding:6px;position:absolute;left:0;top:48px;background:var(--blatt);border:1px solid var(--linie);border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.15);min-width:234px}
   .sprungmenu li{margin:0}
   .sprungmenu a{display:flex;gap:10px;align-items:baseline;padding:9px 12px;color:var(--tinte);text-decoration:none;border-radius:7px;font-size:.95rem;line-height:1.3}
   .sprungmenu a span{color:var(--rot);font-weight:600;min-width:2.4em;font-variant-numeric:tabular-nums}
@@ -536,9 +536,12 @@
     Föderalismusreform 2006 ist das Versammlungsrecht Ländersache. Acht Länder haben ein
     eigenes Gesetz erlassen, etwa Bayern mit Art. 13 BayVersG und Nordrhein-Westfalen mit
     § 10 VersG NRW. In den übrigen acht gilt § 14 VersammlG, das Gesetz des Bundes, fort.
-    Die Anzeige ist meist 48 Stunden vor der <em>Bekanntgabe</em> fällig, nicht vor der
-    Versammlung. Für eine Eilversammlung genügt eine kurzfristige Anzeige, eine
-    Spontanversammlung muss gar nicht angezeigt werden.</p>
+    Die Frist beträgt in all diesen Gesetzen <strong>48 Stunden</strong>. Entscheidend ist
+    der Bezugspunkt: Sie läuft ab der <em>Einladung</em> oder <em>Bekanntgabe</em> der
+    Versammlung, nicht ab der Versammlung selbst, und das wird fast überall falsch erzählt.
+    Welche Formulierung dein Bundesland benutzt, zeigt der Vordruck in Abschnitt III. Für
+    eine Eilversammlung genügt eine kurzfristige Anzeige, eine Spontanversammlung muss gar
+    nicht angezeigt werden.</p>
     <p>In die Anzeige gehören Thema, Ort, Zeit und erwartete Teilnehmerzahl, bei einem Umzug
     die Route, dazu der Name der Person, die die Versammlung leitet. Verbieten oder mit
     Auflagen versehen darf die Behörde eine Versammlung nach Bundesrecht nur, wenn die
@@ -624,7 +627,7 @@
     <div class="leib" id="planer" aria-live="polite"></div>
   </div>
 
-  <p class="hinw">Stand: September 2026. Eine Orientierung, keine Rechtsberatung.
+  <p class="hinw">Stand: Oktober 2026. Eine Orientierung, keine Rechtsberatung.
   Jede genannte Vorschrift ist unter VI. verlinkt.</p>
 </section>
 
