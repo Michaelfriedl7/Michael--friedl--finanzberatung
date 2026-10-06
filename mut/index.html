@@ -430,6 +430,9 @@
   .fuss details.akk[open] summary::after{content:"\2212"}
   .fuss details.akk summary:focus-visible{outline:2px solid var(--rot);outline-offset:3px}
   .fuss details.akk > ul.quellen{margin-top:0;padding-bottom:1.1rem}
+  .muster-block{margin-top:1.4rem;border-top:1px solid var(--linie);padding-top:1.1rem}
+  .muster-titel{font-family:var(--app);font-size:.85rem;color:var(--grau);margin:0 0 .6rem}
+  pre.muster{font-family:var(--app);font-size:.92rem;line-height:1.55;color:var(--tinte);background:var(--feld);border:1px solid var(--linie);border-radius:3px;padding:1rem 1.1rem;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 .8rem}
   @media (max-width:64rem){.briefkopf{padding-top:4.2rem}}
   .lesehinweis .nur-touch{display:none}
   @media (hover:none){ .lesehinweis .nur-hover{display:none} .lesehinweis .nur-touch{display:inline} }
@@ -1172,6 +1175,121 @@ const LAENDER = {
     }
   }
 
+  function kopiere(text, btn){
+    function ok(){ var alt = btn.textContent; btn.textContent = "Kopiert ✓"; setTimeout(function(){ btn.textContent = alt; }, 1800); }
+    function fallback(){
+      var ta = document.createElement("textarea");
+      ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      try { document.execCommand("copy"); ok(); } catch(e){ btn.textContent = "Bitte Text oben markieren"; }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(ok).catch(fallback);
+    } else { fallback(); }
+  }
+
+  function mustertext(weg, d, LR){
+    var stadt = d && d.stadt ? d.stadt : "";
+    if (weg === "demo"){
+      if (d.ort === "drinnen") return "";
+      var norm = LR && LR.norm ? LR.norm : "dem Versammlungsgesetz";
+      return [
+        "An die zuständige Versammlungsbehörde" + (stadt ? " in " + stadt : ""),
+        "",
+        "Betreff: Anzeige einer öffentlichen Versammlung unter freiem Himmel",
+        "",
+        "Sehr geehrte Damen und Herren,",
+        "",
+        "hiermit zeige ich gemäß " + norm + " eine öffentliche Versammlung unter freiem Himmel an.",
+        "",
+        "Thema / Gegenstand: [kurzes Thema]",
+        "Ort: [genauer Ort oder Platz]" + (stadt ? ", " + stadt : ""),
+        "Datum und Uhrzeit: [Tag], [von ... bis ... Uhr]",
+        "Art: [Kundgebung / Aufzug / Mahnwache]",
+        "Erwartete Teilnehmerzahl: [ungefähre Zahl]",
+        "Bei einem Aufzug, geplante Route: [Start, Strecke, Ziel]",
+        "",
+        "Anzeigende Person (Veranstalter):",
+        "Name: [Vor- und Nachname]",
+        "Anschrift: [Straße, PLZ, Ort]",
+        "Telefon: [Nummer]",
+        "E-Mail: [Adresse]",
+        "",
+        "Versammlungsleitung: [Name der leitenden Person]",
+        "",
+        "Mit freundlichen Grüßen",
+        "[Ort, Datum]",
+        "[Name]"
+      ].join("\n");
+    }
+    if (weg === "petition"){
+      var adr = d.adressat === "bund" ? "An den Petitionsausschuss des Deutschen Bundestages"
+              : d.adressat === "land" ? "An den Petitionsausschuss des Landtags [Bundesland]"
+              : "An [zuständige Stelle oder Behörde]";
+      return [
+        adr,
+        "",
+        "Betreff: Petition nach Art. 17 GG",
+        "",
+        "Sehr geehrte Damen und Herren,",
+        "",
+        "hiermit wende ich mich mit folgender Bitte an Sie:",
+        "",
+        "Anliegen: [worum es geht, in ein, zwei Sätzen]",
+        "Begründung: [warum, kurz und sachlich]",
+        "Ziel: [was konkret geschehen soll]",
+        "",
+        "Ich bitte um Prüfung und um eine Rückmeldung.",
+        "",
+        "Mit freundlichen Grüßen",
+        "[Vor- und Nachname]",
+        "[Anschrift]",
+        "[Ort, Datum]"
+      ].join("\n");
+    }
+    if (weg === "melden"){
+      var stelle = d.groesse === "klein"
+        ? "externe Meldestelle des Bundes (Bundesamt für Justiz)"
+        : "interne Meldestelle [oder: externe Meldestelle des Bundes]";
+      return [
+        "An die " + stelle,
+        "",
+        "Betreff: Meldung nach dem Hinweisgeberschutzgesetz (HinSchG)",
+        "",
+        "Sehr geehrte Damen und Herren,",
+        "",
+        "hiermit melde ich folgenden Sachverhalt:",
+        "",
+        "Was ist passiert: [Beschreibung des Verstoßes, sachlich]",
+        "Wann und wo: [Zeitraum, Ort, Abteilung]",
+        "Beteiligte / Belege: [soweit bekannt]",
+        "",
+        "Ich mache diese Meldung im Vertrauen auf den Schutz vor Repressalien nach § 36 HinSchG",
+        "und bitte um eine Empfangsbestätigung sowie um Rückmeldung zum weiteren Vorgehen.",
+        "",
+        "[Name — oder: Ich möchte, soweit möglich, anonym bleiben.]",
+        "[Kontakt für Rückfragen, falls gewünscht]",
+        "[Ort, Datum]"
+      ].join("\n");
+    }
+    if (weg === "sagen"){
+      return [
+        "Notiz, bevor ich etwas öffentlich behaupte",
+        "",
+        "Was ich sagen will: [die Aussage]",
+        "Meinung oder Tatsache? [Werturteil / Tatsachenbehauptung]",
+        "",
+        "Wenn Tatsache, woher weiß ich das:",
+        "Quelle 1: [Beleg, Datum, Fundstelle]",
+        "Quelle 2: [Beleg]",
+        "",
+        "Formulierung, die bei der Sache bleibt: [so sachlich wie möglich]"
+      ].join("\n");
+    }
+    return "";
+  }
+
   function zeigePlan(){
     var d = zustand.daten;
     wurzel.textContent = "";
@@ -1289,6 +1407,20 @@ const LAENDER = {
         fn.appendChild(p);
       });
       b.appendChild(fn);
+    }
+
+    var mt = mustertext(zustand.weg, d, LR);
+    if (mt){
+      var mblock = el("div","muster-block");
+      mblock.appendChild(el("p","muster-titel","Zum Kopieren. Setz nur noch deine Angaben in die [Klammern] ein:"));
+      var pre = document.createElement("pre");
+      pre.className = "muster";
+      pre.textContent = mt;
+      mblock.appendChild(pre);
+      var kop = el("button","taste neben","Text kopieren"); kop.type = "button";
+      kop.addEventListener("click", function(){ kopiere(mt, kop); });
+      mblock.appendChild(kop);
+      b.appendChild(mblock);
     }
 
     var reihe = el("div","reihe");
