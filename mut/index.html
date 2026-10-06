@@ -409,6 +409,8 @@
   .sprungmenu a:hover,.sprungmenu a:focus-visible{background:var(--rot-blass);outline:none}
   @media (prefers-reduced-motion:reduce){.sm-knopf span{transition:none}}
   @media (max-width:64rem){.briefkopf{padding-top:4.2rem}}
+  .lesehinweis .nur-touch{display:none}
+  @media (hover:none){ .lesehinweis .nur-hover{display:none} .lesehinweis .nur-touch{display:inline} }
   @media print{.sprungmenu{display:none}}
 </style>
 </head>
@@ -456,7 +458,8 @@
   </p>
   <p class="lesehinweis">
     <span class="probe">Art. 8 GG</span>
-    Fundstellen sind rot unterstrichen. Darüberfahren zeigt eine Erklärung, Antippen den Gesetzestext.
+    <span class="nur-hover">Fundstellen sind rot unterstrichen. Darüberfahren zeigt eine kurze Erklärung, Antippen den vollen Gesetzestext.</span>
+    <span class="nur-touch">Fundstellen sind rot unterstrichen. Tippe eine an für Erklärung und Gesetzestext.</span>
   </p>
 </div>
 
