@@ -395,9 +395,48 @@
     .fund::after{ content:"" }
     .apparat, .apparat-schatten{ display:none }
   }
+  /* Sprungmenü (drei Striche), bleibt oben, beim Drucken aus */
+  .sprungmenu{position:fixed;top:14px;right:14px;z-index:50;font-family:var(--app)}
+  .sm-knopf{width:44px;height:44px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:var(--blatt);border:1px solid var(--linie);border-radius:8px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.09);padding:0}
+  .sm-knopf span{display:block;width:20px;height:2px;background:var(--tinte);transition:transform .2s,opacity .2s}
+  .sm-knopf[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .sm-knopf[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .sm-knopf[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .sprungmenu ul{list-style:none;margin:8px 0 0;padding:6px;position:absolute;right:0;top:48px;background:var(--blatt);border:1px solid var(--linie);border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.15);min-width:234px}
+  .sprungmenu li{margin:0}
+  .sprungmenu a{display:flex;gap:10px;align-items:baseline;padding:9px 12px;color:var(--tinte);text-decoration:none;border-radius:7px;font-size:.95rem;line-height:1.3}
+  .sprungmenu a span{color:var(--rot);font-weight:600;min-width:2.4em;font-variant-numeric:tabular-nums}
+  .sprungmenu a:hover,.sprungmenu a:focus-visible{background:var(--rot-blass);outline:none}
+  @media (prefers-reduced-motion:reduce){.sm-knopf span{transition:none}}
+  @media print{.sprungmenu{display:none}}
 </style>
 </head>
 <body>
+
+<nav class="sprungmenu" aria-label="Abschnitte">
+  <button class="sm-knopf" type="button" aria-expanded="false" aria-controls="sm-liste" aria-label="Abschnitte anzeigen">
+    <span></span><span></span><span></span>
+  </button>
+  <ul id="sm-liste" hidden>
+    <li><a href="#i"><span>I.</span> Die Frage</a></li>
+    <li><a href="#ii"><span>II.</span> Die vier legalen Wege</a></li>
+    <li><a href="#iii"><span>III.</span> Der Vordruck</a></li>
+    <li><a href="#iv"><span>IV.</span> Martin Gauger</a></li>
+    <li><a href="#v"><span>V.</span> Was das Gesetz verlangt</a></li>
+    <li><a href="#vi"><span>VI.</span> Nachweise</a></li>
+  </ul>
+</nav>
+<script>
+(function(){
+  var nav=document.querySelector('.sprungmenu');if(!nav)return;
+  var btn=nav.querySelector('.sm-knopf'),list=nav.querySelector('#sm-liste');
+  function set(open){btn.setAttribute('aria-expanded',open?'true':'false');list.hidden=!open;}
+  btn.addEventListener('click',function(e){e.stopPropagation();set(list.hidden);});
+  list.addEventListener('click',function(e){if(e.target.closest('a'))set(false);});
+  document.addEventListener('click',function(e){if(!nav.contains(e.target))set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+})();
+</script>
 
 <div class="blatt">
 
@@ -683,15 +722,6 @@
     <li><a href="https://www.buchenwald.de/geschichte/biografien/bag-ausstellung/martin-gauger" target="_blank" rel="noopener">Gedenkstätte Buchenwald · Biografie Martin Gotthard Gauger</a></li>
     <li><a href="https://www.drb-nrw.de/positionen-und-leistungen/martin-gauger-preis/martin-gauger" target="_blank" rel="noopener">Deutscher Richterbund NRW · Martin Gauger und der Martin-Gauger-Preis</a></li>
   </ul>
-
-  <h3>Einsatz von KI</h3>
-  <p>Diese Arbeit ist unter Einsatz von Claude (Anthropic) entstanden. Die technische
-  Umsetzung der Website und des Vordrucks wurde mit Claude erstellt. Die Recherche haben
-  wir mit Claude begonnen und jede zitierte Vorschrift anschließend im amtlichen Wortlaut
-  nachgelesen. Bei den Texten haben wir mit Claude formuliert; Fragestellung, These und
-  Wertungen sind unsere. Bei der Prüfung haben wir zwei verbreitete Fehler korrigiert:
-  Das Petitions-Quorum liegt seit 2024 bei 30.000, nicht bei 50.000 Mitzeichnungen, und
-  Martin Gauger wurde nicht in Buchenwald ermordet, sondern in Pirna-Sonnenstein.</p>
 
 </section>
 
