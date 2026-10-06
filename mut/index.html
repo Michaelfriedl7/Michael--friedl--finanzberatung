@@ -421,6 +421,15 @@
   .foto img{display:block;width:100%;height:auto;border:1px solid var(--linie);border-radius:2px}
   .foto figcaption{font-family:var(--app);font-size:.8rem;color:var(--grau);margin-top:.55rem;line-height:1.45}
   .foto figcaption .credit{color:var(--schwach)}
+  .fuss details.akk{border-top:1px solid var(--linie)}
+  .fuss details.akk:last-of-type{border-bottom:1px solid var(--linie)}
+  .fuss details.akk summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:.6rem;padding:.9rem 0;font-family:var(--app);font-weight:600;font-size:1rem;color:var(--tinte)}
+  .fuss details.akk summary::-webkit-details-marker{display:none}
+  .fuss details.akk summary .anzahl{color:var(--schwach);font-weight:400;font-size:.82rem}
+  .fuss details.akk summary::after{content:"+";margin-left:auto;color:var(--rot);font-weight:400;font-size:1.35rem;line-height:1}
+  .fuss details.akk[open] summary::after{content:"\2212"}
+  .fuss details.akk summary:focus-visible{outline:2px solid var(--rot);outline-offset:3px}
+  .fuss details.akk > ul.quellen{margin-top:0;padding-bottom:1.1rem}
   @media (max-width:64rem){.briefkopf{padding-top:4.2rem}}
   .lesehinweis .nur-touch{display:none}
   @media (hover:none){ .lesehinweis .nur-hover{display:none} .lesehinweis .nur-touch{display:inline} }
@@ -451,6 +460,9 @@
   list.addEventListener('click',function(e){if(e.target.closest('a'))set(false);});
   document.addEventListener('click',function(e){if(!nav.contains(e.target))set(false);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+  // Beim Drucken alle Quellen-Klappen öffnen, danach zurücksetzen
+  window.addEventListener('beforeprint',function(){document.querySelectorAll('details.akk').forEach(function(d){d.dataset.wasopen=d.open?'1':'0';d.open=true;});});
+  window.addEventListener('afterprint',function(){document.querySelectorAll('details.akk').forEach(function(d){d.open=d.dataset.wasopen==='1';});});
 })();
 </script>
 
@@ -773,34 +785,50 @@
   Lindenstraße, Köln. Beitrag zum Martin-Gauger-Preis 2026 des Deutschen Richterbundes
   Nordrhein-Westfalen.</p>
 
-  <h3>Rechtsquellen</h3>
-  <ul class="quellen">
-    <li><a href="https://www.gesetze-im-internet.de/gg/art_5.html" target="_blank" rel="noopener">Art. 5 GG · Meinungsfreiheit</a></li>
-    <li><a href="https://www.gesetze-im-internet.de/gg/art_8.html" target="_blank" rel="noopener">Art. 8 GG · Versammlungsfreiheit</a></li>
-    <li><a href="https://www.gesetze-im-internet.de/gg/art_17.html" target="_blank" rel="noopener">Art. 17 GG · Petitionsrecht</a></li>
-    <li><a href="https://www.gesetze-im-internet.de/versammlg/__14.html" target="_blank" rel="noopener">§ 14 VersammlG · Anmeldepflicht nach Bundesrecht</a> <span class="was">(gilt in acht Ländern ohne eigenes Gesetz)</span></li>
-    <li><a href="https://recht.nrw.de/lmi/owa/br_bes_detail?sg=2&amp;menu=1&amp;bes_id=47651&amp;anw_nr=2&amp;aufgehoben=N&amp;det_id=542455" target="_blank" rel="noopener">§ 10 VersG NRW · Anzeige</a></li>
-    <li><a href="https://www.gesetze-bayern.de/Content/Document/BayVersG" target="_blank" rel="noopener">Bayerisches Versammlungsgesetz (BayVersG)</a></li>
-    <li><a href="https://www.gesetze-im-internet.de/hinschg/" target="_blank" rel="noopener">Hinweisgeberschutzgesetz</a></li>
-    <li><a href="https://www.gesetze-im-internet.de/stgb/__323c.html" target="_blank" rel="noopener">§ 323c StGB · Unterlassene Hilfeleistung</a></li>
-    <li><a href="https://www.gesetze-im-internet.de/stgb/__138.html" target="_blank" rel="noopener">§ 138 StGB · Nichtanzeige geplanter Straftaten</a></li>
-    <li><a href="https://www.gesetze-im-internet.de/stgb/__13.html" target="_blank" rel="noopener">§ 13 StGB · Begehen durch Unterlassen</a></li>
-  </ul>
+  <details class="akk" open>
+    <summary>Rechtsquellen <span class="anzahl">Grundgesetz, Versammlungsrecht aller Länder, Strafrecht</span></summary>
+    <ul class="quellen">
+      <li><a href="https://www.gesetze-im-internet.de/gg/art_5.html" target="_blank" rel="noopener">Art. 5 GG · Meinungsfreiheit</a></li>
+      <li><a href="https://www.gesetze-im-internet.de/gg/art_8.html" target="_blank" rel="noopener">Art. 8 GG · Versammlungsfreiheit</a></li>
+      <li><a href="https://www.gesetze-im-internet.de/gg/art_17.html" target="_blank" rel="noopener">Art. 17 GG · Petitionsrecht</a></li>
+      <li><a href="https://www.gesetze-im-internet.de/versammlg/__14.html" target="_blank" rel="noopener">§ 14 VersammlG · Anmeldepflicht nach Bundesrecht</a> <span class="was">(gilt in acht Ländern ohne eigenes Gesetz)</span></li>
+      <li><a href="https://www.gesetze-im-internet.de/versammlg/__15.html" target="_blank" rel="noopener">§ 15 VersammlG · Beschränkungen, Verbot, Auflösung</a></li>
+      <li><a href="https://recht.nrw.de/lmi/owa/br_bes_detail?sg=2&amp;menu=1&amp;bes_id=47651&amp;anw_nr=2&amp;aufgehoben=N&amp;det_id=542455" target="_blank" rel="noopener">§ 10 VersG NRW · Anzeige (Nordrhein-Westfalen)</a></li>
+      <li><a href="https://www.gesetze-bayern.de/Content/Document/BayVersG" target="_blank" rel="noopener">Art. 13 BayVersG · Anzeige (Bayern)</a></li>
+      <li><a href="https://gesetze.berlin.de/" target="_blank" rel="noopener">§ 12 VersFG BE · Anzeige (Berlin)</a></li>
+      <li><a href="https://www.rv.hessenrecht.hessen.de/" target="_blank" rel="noopener">§ 12 HVersFG · Anzeige (Hessen)</a></li>
+      <li><a href="https://www.nds-voris.de/" target="_blank" rel="noopener">§ 5 NVersG · Anzeige (Niedersachsen)</a></li>
+      <li><a href="https://www.revosax.sachsen.de/vorschrift/20981" target="_blank" rel="noopener">§ 14 SächsVersG · Anzeige (Sachsen, Neufassung 2024)</a></li>
+      <li><a href="https://www.landesrecht.sachsen-anhalt.de/" target="_blank" rel="noopener">§ 12 VersammlG LSA · Anmeldung (Sachsen-Anhalt)</a></li>
+      <li><a href="https://www.gesetze-rechtsprechung.sh.juris.de/" target="_blank" rel="noopener">§ 11 VersFG SH · Anzeige (Schleswig-Holstein)</a></li>
+      <li><a href="https://www.gesetze-im-internet.de/hinschg/" target="_blank" rel="noopener">Hinweisgeberschutzgesetz · §§ 7, 12, 36 HinSchG</a></li>
+      <li><a href="https://www.gesetze-im-internet.de/stgb/__13.html" target="_blank" rel="noopener">§ 13 StGB · Begehen durch Unterlassen</a></li>
+      <li><a href="https://www.gesetze-im-internet.de/stgb/__27.html" target="_blank" rel="noopener">§ 27 StGB · Beihilfe</a></li>
+      <li><a href="https://www.gesetze-im-internet.de/stgb/__138.html" target="_blank" rel="noopener">§ 138 StGB · Nichtanzeige geplanter Straftaten</a></li>
+      <li><a href="https://www.gesetze-im-internet.de/stgb/__186.html" target="_blank" rel="noopener">§ 186 StGB · Üble Nachrede</a></li>
+      <li><a href="https://www.gesetze-im-internet.de/stgb/__187.html" target="_blank" rel="noopener">§ 187 StGB · Verleumdung</a></li>
+      <li><a href="https://www.gesetze-im-internet.de/stgb/__323c.html" target="_blank" rel="noopener">§ 323c StGB · Unterlassene Hilfeleistung</a></li>
+    </ul>
+  </details>
 
-  <h3>Weitere Quellen</h3>
-  <ul class="quellen">
-    <li><a href="https://www.bundestag.de/dokumente/textarchiv/2024/kw26-pa-petitionen-quorum-1010108" target="_blank" rel="noopener">Deutscher Bundestag · Senkung des Petitions-Quorums auf 30.000 Mitzeichnungen, 2024</a></li>
-    <li><a href="https://www.bundesjustizamt.de/DE/MeldestelledesBundes/Fragen/Fragen_node.html" target="_blank" rel="noopener">Bundesamt für Justiz · Externe Meldestelle des Bundes</a></li>
-    <li><a href="https://www.buchenwald.de/geschichte/biografien/bag-ausstellung/martin-gauger" target="_blank" rel="noopener">Gedenkstätte Buchenwald · Biografie Martin Gotthard Gauger</a></li>
-    <li><a href="https://www.drb-nrw.de/positionen-und-leistungen/martin-gauger-preis/martin-gauger" target="_blank" rel="noopener">Deutscher Richterbund NRW · Martin Gauger und der Martin-Gauger-Preis</a></li>
-  </ul>
+  <details class="akk">
+    <summary>Weitere Quellen <span class="anzahl">Belege und Hintergrund</span></summary>
+    <ul class="quellen">
+      <li><a href="https://www.bundestag.de/dokumente/textarchiv/2024/kw26-pa-petitionen-quorum-1010108" target="_blank" rel="noopener">Deutscher Bundestag · Senkung des Petitions-Quorums auf 30.000 Mitzeichnungen, 2024</a></li>
+      <li><a href="https://www.bundesjustizamt.de/DE/MeldestelledesBundes/Fragen/Fragen_node.html" target="_blank" rel="noopener">Bundesamt für Justiz · Externe Meldestelle des Bundes</a></li>
+      <li><a href="https://www.buchenwald.de/geschichte/biografien/bag-ausstellung/martin-gauger" target="_blank" rel="noopener">Gedenkstätte Buchenwald · Biografie Martin Gotthard Gauger</a></li>
+      <li><a href="https://www.drb-nrw.de/positionen-und-leistungen/martin-gauger-preis/martin-gauger" target="_blank" rel="noopener">Deutscher Richterbund NRW · Martin Gauger und der Martin-Gauger-Preis</a></li>
+    </ul>
+  </details>
 
-  <h3>Bildnachweise</h3>
-  <ul class="quellen">
-    <li>Reichstagsgebäude · Foto: Jörg Braukmann, 2021 · <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" target="_blank" rel="noopener">CC BY-SA 4.0</a> · via <a href="https://commons.wikimedia.org/wiki/File:Reichstagsgeb%C3%A4ude_(Westfassade).jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
-    <li>Martin-Gauger-Gedenktafel, Wuppertal (Panoramafreiheit, § 59 UrhG) · Foto: Alraunenstern, 2019 · <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" target="_blank" rel="noopener">CC BY-SA 4.0</a> · via <a href="https://commons.wikimedia.org/wiki/File:Martin_Gauger_1.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
-    <li>Illustration einer Demonstration (Abschnitt II) · eigene Grafik</li>
-  </ul>
+  <details class="akk">
+    <summary>Bildnachweise <span class="anzahl">Fotos und Lizenzen</span></summary>
+    <ul class="quellen">
+      <li>Reichstagsgebäude · Foto: Jörg Braukmann, 2021 · <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" target="_blank" rel="noopener">CC BY-SA 4.0</a> · via <a href="https://commons.wikimedia.org/wiki/File:Reichstagsgeb%C3%A4ude_(Westfassade).jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li>Martin-Gauger-Gedenktafel, Wuppertal (Panoramafreiheit, § 59 UrhG) · Foto: Alraunenstern, 2019 · <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" target="_blank" rel="noopener">CC BY-SA 4.0</a> · via <a href="https://commons.wikimedia.org/wiki/File:Martin_Gauger_1.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li>Illustration einer Demonstration (Abschnitt II) · eigene Grafik</li>
+    </ul>
+  </details>
 
 </section>
 
