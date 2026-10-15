@@ -316,6 +316,7 @@
     font-family:var(--app); font-size:.8rem; letter-spacing:.04em; color:var(--grau);
   }
   .seitenfuss nav{ display:flex; gap:1.4rem }
+  .seitenfuss .ki-hinweis{ flex:1 1 100%; order:3; color:var(--schwach) }
   .seitenfuss a{ color:var(--tinte); text-decoration:none; border-bottom:1px solid var(--linie-2);
                  text-transform:uppercase; letter-spacing:.08em; font-size:.76rem }
   .seitenfuss a:hover{ color:var(--rot); border-bottom-color:var(--rot) }
@@ -441,7 +442,10 @@
   @media (max-width:64rem){.titelblock{padding-top:3.8rem}}
   .lesehinweis .nur-touch{display:none}
   @media (hover:none){ .lesehinweis .nur-hover{display:none} .lesehinweis .nur-touch{display:inline} }
-  @media print{.sprungmenu{display:none}}
+  .im-vordruck{font-family:var(--app);font-size:.85rem;color:var(--grau);margin:-.1rem 0 .6rem}
+  .im-vordruck a{color:var(--grau);text-decoration:underline;text-decoration-color:var(--rot);text-underline-offset:2px}
+  .im-vordruck a:hover,.im-vordruck a:focus-visible{color:var(--rot)}
+  @media print{.sprungmenu{display:none}.im-vordruck{display:none}}
 </style>
 </head>
 <body>
@@ -452,10 +456,10 @@
   </button>
   <ul id="sm-liste" hidden>
     <li><a href="#i"><span>I.</span> Die Frage</a></li>
-    <li><a href="#ii"><span>II.</span> Die vier legalen Wege</a></li>
+    <li><a href="#ii"><span>II.</span> Die legalen Wege</a></li>
     <li><a href="#iii"><span>III.</span> Der Vordruck</a></li>
-    <li><a href="#iv"><span>IV.</span> Martin Gauger</a></li>
-    <li><a href="#v"><span>V.</span> Was das Gesetz verlangt</a></li>
+    <li><a href="#iv"><span>IV.</span> Was das Gesetz verlangt</a></li>
+    <li><a href="#v"><span>V.</span> Martin Gauger</a></li>
     <li><a href="#vi"><span>VI.</span> Nachweise</a></li>
   </ul>
 </nav>
@@ -499,10 +503,10 @@
 <div class="inhalt">
   <ol>
     <li><a href="#i"><span>I.</span> Die Frage</a></li>
-    <li><a href="#ii"><span>II.</span> Die vier legalen Wege</a></li>
+    <li><a href="#ii"><span>II.</span> Die legalen Wege</a></li>
     <li><a href="#iii"><span>III.</span> Der Vordruck</a></li>
-    <li><a href="#iv"><span>IV.</span> Martin Gauger</a></li>
-    <li><a href="#v"><span>V.</span> Was das Gesetz verlangt</a></li>
+    <li><a href="#iv"><span>IV.</span> Was das Gesetz verlangt</a></li>
+    <li><a href="#v"><span>V.</span> Martin Gauger</a></li>
     <li><a href="#vi"><span>VI.</span> Nachweise</a></li>
   </ol>
 </div>
@@ -544,11 +548,15 @@
 
 <!-- ============ II ============ -->
 <section id="ii">
-  <div class="abschnitt"><div class="ziffer">II.</div><h2>Die vier legalen Wege</h2></div>
+  <div class="abschnitt"><div class="ziffer">II.</div><h2>Die legalen Wege</h2></div>
 
   <div class="satz"><span class="rn"></span><div>
-    <p>Die Demokratie schützt sich nicht von selbst. Aber sie gibt jedem vier Werkzeuge,
-    mit denen er sich legal einmischen kann. Jedes hat eigene Regeln.</p>
+    <p>Die Demokratie schützt sich nicht von selbst. Aber unser Rechtsstaat gibt uns Werkzeuge,
+    mit denen Demokratie durch Einmischung gestärkt werden kann.</p>
+  </div></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Dieses Einmischen hat Regeln.</p>
   </div></div>
 
   <figure class="demo-bild">
@@ -586,6 +594,7 @@
   </figure>
 
   <h3>1. Sich versammeln</h3>
+  <p class="im-vordruck">Im Vordruck: <a href="#iii">„Eine Versammlung durchführen“</a></p>
 
   <div class="satz"><span class="rn"></span><div>
     <div class="zitat">
@@ -621,6 +630,7 @@
   </div></div>
 
   <h3>2. Sich beschweren</h3>
+  <p class="im-vordruck">Im Vordruck: <a href="#iii">„Eine Petition einreichen“</a></p>
 
   <div class="satz"><span class="rn"></span><div>
     <div class="zitat">
@@ -641,6 +651,7 @@
   </div></div>
 
   <h3>3. Seine Meinung sagen</h3>
+  <p class="im-vordruck">Im Vordruck: <a href="#iii">„Öffentlich etwas behaupten“</a></p>
 
   <div class="satz"><span class="rn"></span><div>
     <div class="zitat">
@@ -664,6 +675,7 @@
   </div></div>
 
   <h3>4. Missstände melden</h3>
+  <p class="im-vordruck">Im Vordruck: <a href="#iii">„Im Betrieb etwas melden“</a></p>
 
   <div class="satz"><span class="rn"></span><div>
     <p>Das Hinweisgeberschutzgesetz schützt seit 2023 alle, die im Beruf Rechtsverstöße
@@ -677,7 +689,7 @@
 
   <div class="merke">
     <span class="k">Der rote Faden</span>
-    <p>Alle vier Wege folgen demselben Muster: Das Grundrecht ist die Regel, die Form ist
+    <p>Alle vier Wege folgen demselben Muster: Das Recht ist die Regel, die Form ist
     die Ausnahme. Und jedem Recht des Bürgers steht eine Pflicht des Staates gegenüber,
     zuzuhören, zu prüfen und zu schützen.</p>
   </div>
@@ -704,7 +716,30 @@
 
 <!-- ============ IV ============ -->
 <section id="iv">
-  <div class="abschnitt"><div class="ziffer">IV.</div><h2>Martin Gauger</h2></div>
+  <div class="abschnitt"><div class="ziffer">IV.</div><h2>Was das Gesetz verlangt</h2></div>
+
+  <div class="satz"><span class="rn"></span><div>
+    <p>Die Demokratie zu verteidigen ist fast immer ein Recht, keine Pflicht. An drei Stellen
+    macht das Strafrecht aus bloßem Zusehen aber eine Straftat:</p>
+    <p>§ 323c StGB verlangt Hilfe bei Unglücksfällen, soweit sie zumutbar ist, ausdrücklich
+    ohne erhebliche eigene Gefahr. § 138 StGB verlangt, bestimmte schwere geplante
+    Straftaten anzuzeigen, etwa Mord oder Raub. Verlangt wird eine Anzeige, kein Eingreifen.
+    Und § 13 StGB macht Wegsehen strafbar, wenn man eine Garantenstellung hat, also rechtlich
+    dafür einstehen muss, dass nichts passiert. Zusammen mit § 27 StGB wird daraus zum
+    Beispiel im Unternehmen die Beihilfe durch Unterlassen.</p>
+  </div></div>
+
+  <div class="merke">
+    <span class="k">Das Maß</span>
+    <p>Verlangt wird durchweg das Kleinste, was hilft: ein Notruf, eine Anzeige. Heldentum
+    verlangt das Gesetz nirgends. Alles darüber hinaus ist Erlaubnis, und die steht in
+    Abschnitt II.</p>
+  </div>
+</section>
+
+<!-- ============ V ============ -->
+<section id="v">
+  <div class="abschnitt"><div class="ziffer">V.</div><h2>Martin Gauger</h2></div>
 
   <figure class="foto">
     <img src="bilder/gauger-gedenktafel.jpg" width="1280" height="877" loading="lazy" alt="Gedenktafel an der Martin-Gauger-Brücke in Wuppertal mit einem Porträt Martin Gaugers und einem Text zu seinem Leben.">
@@ -745,29 +780,6 @@
     <span class="k">Der Bogen</span>
     <p>Nicht das Wissen allein schützt. Der Rechtsstaat schützt, und das Wissen ist der
     Zugang dazu. Ein Zugang, den niemand benutzt, ist so gut wie keiner.</p>
-  </div>
-</section>
-
-<!-- ============ V ============ -->
-<section id="v">
-  <div class="abschnitt"><div class="ziffer">V.</div><h2>Was das Gesetz verlangt</h2></div>
-
-  <div class="satz"><span class="rn"></span><div>
-    <p>Die Demokratie zu verteidigen ist fast immer ein Recht, keine Pflicht. An drei Stellen
-    macht das Strafrecht aus bloßem Zusehen aber eine Straftat:</p>
-    <p>§ 323c StGB verlangt Hilfe bei Unglücksfällen, soweit sie zumutbar ist, ausdrücklich
-    ohne erhebliche eigene Gefahr. § 138 StGB verlangt, bestimmte schwere geplante
-    Straftaten anzuzeigen, etwa Mord oder Raub. Verlangt wird eine Anzeige, kein Eingreifen.
-    Und § 13 StGB macht Wegsehen strafbar, wenn man eine Garantenstellung hat, also rechtlich
-    dafür einstehen muss, dass nichts passiert. Zusammen mit § 27 StGB wird daraus zum
-    Beispiel im Unternehmen die Beihilfe durch Unterlassen.</p>
-  </div></div>
-
-  <div class="merke">
-    <span class="k">Das Maß</span>
-    <p>Verlangt wird durchweg das Kleinste, was hilft: ein Notruf, eine Anzeige. Heldentum
-    verlangt das Gesetz nirgends. Alles darüber hinaus ist Erlaubnis, und die steht in
-    Abschnitt II.</p>
   </div>
 </section>
 
@@ -841,6 +853,7 @@
 
 <footer class="seitenfuss">
   <span>Michael Friedl &middot; Tom Lammert &middot; 2026</span>
+  <span class="ki-hinweis">Diese Internetseite wurde mit Hilfe von KI erstellt.</span>
   <nav aria-label="Rechtliches">
     <a href="https://michael-friedl.com/mut/impressum.html">Impressum</a>
     <a href="https://michael-friedl.com/mut/datenschutz.html">Datenschutz</a>
